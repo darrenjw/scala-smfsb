@@ -1,4 +1,4 @@
-name := "examples"
+name := "scala-smfsb-examples"
 
 version := "0.1-SNAPSHOT"
 
@@ -8,9 +8,10 @@ scalacOptions ++= Seq(
 
 libraryDependencies  ++= Seq(
   "org.scalatest" %% "scalatest" % "3.0.1" % "test",
-  "org.scalanlp" %% "breeze" % "0.13",
-  // "org.scalanlp" %% "breeze-viz" % "0.13",
-  "org.scalanlp" %% "breeze-natives" % "0.13"
+  //"org.scalanlp" %% "breeze" % "0.13",
+  "org.scalanlp" %% "breeze-viz" % "0.13",
+  //"org.scalanlp" %% "breeze-natives" % "0.13",
+  "com.github.darrenjw" %% "scala-smfsb" % "0.1-SNAPSHOT"
 )
 
 resolvers ++= Seq(
@@ -20,5 +21,5 @@ resolvers ++= Seq(
     "https://oss.sonatype.org/content/repositories/releases/"
 )
 
-scalaVersion := "2.12.1"
+scalaVersion := "2.12.6"
 
