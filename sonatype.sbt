@@ -10,7 +10,7 @@ publishTo := {
 
 pomIncludeRepository := { _ => false }
 
-licenses := Seq("APL2" -> url("https://opensource.org/licenses/Apache-2.0"))
+licenses := Seq("GPL2" -> url("https://opensource.org/licenses/GPL-3.0"))
 
 homepage := Some(url("https://github.com/darrenjw/scala-glm/blob/master/README.md"))
 
