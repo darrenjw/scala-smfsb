@@ -1,5 +1,5 @@
 /*
-smfsb-test.scala
+scala-smfsb-test.scala
 
 Some basic tests
 
