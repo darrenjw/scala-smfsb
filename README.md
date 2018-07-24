@@ -5,7 +5,7 @@
 * The current *stable* version of this library is COMING SOON!
 * The current unstable *snapshot* release of this library is "0.1-SNAPSHOT"
 
-Binaries are published to Sonatype.
+Binaries are published to Sonatype, cross-built for Scala 2.11.x and 2.12.x.
 
 ## Quickstart
 
@@ -32,7 +32,7 @@ plotTs(ts)
 
 ![Lotka-Volterra trajectory](LV-trajectory.png)
 
-To get the most out of this library, you should already be familiar with the R package [smfsb](https://cran.r-project.org/package=smfsb) associated with the (2nd or) 3rd edition of the textbook [Stochastic modelling for systems biology](https://github.com/darrenjw/smfsb/), and have a basic familiarity with [Scala](https://www.scala-lang.org/) and [Breeze](https://github.com/scalanlp/breeze). For those new to Scala, my course on [Scala for statistical computing](https://github.com/darrenjw/scala-course/) is a good place to start.
+To get the most out of this library, you should already be familiar with the R package [smfsb](https://cran.r-project.org/package=smfsb) associated with the (2nd or) 3rd edition of the textbook [Stochastic modelling for systems biology](https://github.com/darrenjw/smfsb/), and have a basic familiarity with [Scala](https://www.scala-lang.org/) and [Breeze](https://github.com/scalanlp/breeze). For those new to Scala, my course on [Scala for statistical computing](https://github.com/darrenjw/scala-course/blob/master/SelfStudyGuide.md) is a good place to start.
 
 ## Examples
 
