@@ -9,7 +9,7 @@ Binaries are published to Sonatype.
 
 ## Quickstart
 
-* To use this software library, you should first install a recent [JDK]() and [Sbt]().
+* To use this software library, you should first install a recent [JDK](http://www.oracle.com/technetwork/java/javase/downloads) and [Sbt](http://www.scala-sbt.org/).
 * Run `sbt` from an empty/temp directory
 * At the `sbt` prompt, enter:
 ```scala
@@ -32,7 +32,7 @@ plotTs(ts)
 
 ![Lotka-Volterra trajectory](LV-trajectory.png)
 
-To get the most out of this library, you should already be familiar with the R package [smfsb]() associated with the (2nd or) 3rd edition of the textbook [Stochastic modelling for systems biology](../smfsb/), and have a basic familiarity with [Scala]() and [Breeze](). For those new to Scala, my course on [Scala for statistical computing](../scala-course/) is a good place to start.
+To get the most out of this library, you should already be familiar with the R package [smfsb](https://cran.r-project.org/package=smfsb) associated with the (2nd or) 3rd edition of the textbook [Stochastic modelling for systems biology](../smfsb/), and have a basic familiarity with [Scala](https://www.scala-lang.org/) and [Breeze](https://github.com/scalanlp/breeze). For those new to Scala, my course on [Scala for statistical computing](../scala-course/) is a good place to start.
 
 ## Examples
 
