@@ -21,7 +21,7 @@ object ArAbcSmc {
   import Sim.simTs
   import Mll.sample
 
-  val rawData = Source.fromFile("AR-noise10.txt").getLines.toList
+  val rawData = Source.fromFile("../AR-noise10.txt").getLines.toList
   val data = rawData.map(_.split(",")).map(
     r => (r.head.toDouble, r.tail.map(_.toDouble))
   ).map(

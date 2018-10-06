@@ -20,7 +20,7 @@ object ArAbc {
   import Abc._
   import Sim.simTs
 
-  val rawData = Source.fromFile("AR-noise10.txt").getLines.toList
+  val rawData = Source.fromFile("../AR-noise10.txt").getLines.toList
   val data = rawData.map(_.split(",")).map(
     r => (r.head.toDouble, r.tail.map(_.toDouble))
   ).map(
