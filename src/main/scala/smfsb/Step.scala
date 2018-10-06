@@ -35,8 +35,9 @@ object Step {
 
   def myPoisson(mean: Double): Int = if (mean < 200.0) {
     // should cope better with large means...
-    Poisson(mean).sample
+    Poisson(mean).draw//.sample
   } else {
+    println("Gaussian approx to Poisson")
     abs(round(Gaussian(mean, math.sqrt(mean)).draw)).toInt
   }
 
