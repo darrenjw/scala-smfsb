@@ -38,7 +38,7 @@ object LvPmmh {
   }
 
   def runModel(its: Int): Unit = {
-    val rawData = Source.fromFile("LVpreyNoise10.txt").getLines
+    val rawData = Source.fromFile("../LVpreyNoise10.txt").getLines
     val data = ((0 to 30 by 2).toList zip rawData.toList) map { x => (x._1.toDouble, DenseVector(x._2.toDouble)) }
     val mll = pfMllP(160, simPrior, 0.0, stepLv, obsLik, data)
     val s = new PrintWriter(new File("LVPN10-PPmmh100k.csv"))
@@ -50,7 +50,7 @@ object LvPmmh {
   }
 
   def runModelPts(its: Int): Unit = {
-    val rawData = Source.fromFile("LVpreyNoise10.txt").getLines
+    val rawData = Source.fromFile("../LVpreyNoise10.txt").getLines
     val data = ((0 to 30 by 2).toList zip rawData.toList) map { x => (x._1.toDouble, DenseVector(x._2.toDouble)) }
     val mll = pfMllP(160, simPrior, 0.0, stepLvPts, obsLik, data)
     val s = new PrintWriter(new File("LVPN10-PPmmh100k-Pts.csv"))

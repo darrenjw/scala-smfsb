@@ -70,7 +70,7 @@ object Step {
           val sdt = Math.sqrt(adt)
           val h = n.h(th)(x, t0)
           val dw = DenseVector(Gaussian(0.0, sdt).sample(v).toArray)
-          val dx = Sto * ((h * adt) + (sqrt(h) :* dw))
+          val dx = Sto * ((h * adt) + (sqrt(h) *:* dw))
           val nx = x + dx.toDenseVector
           val tnx = abs(nx)
           go(tnx, t0 + adt, deltat - adt)

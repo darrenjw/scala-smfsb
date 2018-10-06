@@ -19,7 +19,7 @@ object LvAbc {
   import Abc._
   import Sim.simTs
 
-  val rawData = Source.fromFile("LVpreyNoise10.txt").getLines.toList.map(_.toDouble)
+  val rawData = Source.fromFile("../LVpreyNoise10.txt").getLines.toList.map(_.toDouble)
 
   def lvModel(th: LvParameter): Ts[IntState] = simTs(DenseVector(50, 100), 0.0, 30.0, 2.0, stepLvPts(th))
 
