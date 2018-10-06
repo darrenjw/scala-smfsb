@@ -3,7 +3,7 @@
 ### Scala library for biochemical network simulation, associated with the 3rd edition of the textbook Stochastic Modelling for Systems Biology
 
 
-# This library is currently under development - it should be ready by the end of September 2018
+# This library is currently under development - it should be ready by the end of October 2018
 
 
 * The current *stable* version of this library is COMING SOON!
