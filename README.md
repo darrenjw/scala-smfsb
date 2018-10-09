@@ -38,9 +38,11 @@ plotTs(ts)
 
 To get the most out of this library, you should already be familiar with the R package [smfsb](https://cran.r-project.org/package=smfsb) associated with the (2nd or) 3rd edition of the textbook [Stochastic modelling for systems biology](https://github.com/darrenjw/smfsb/), and have a basic familiarity with [Scala](https://www.scala-lang.org/) and [Breeze](https://github.com/scalanlp/breeze). For those new to Scala, my course on [Scala for statistical computing](https://github.com/darrenjw/scala-course/blob/master/SelfStudyGuide.md) is a good place to start.
 
-## Examples
+## Documentation
 
-There are more interesting examples in the [examples directory](examples/). To run them, download or clone the repo, and do `sbt run` from *inside* the examples directory.
+* [Tutorial](docs/Tutorial.md) - walk through of basic functionality
+* There are more interesting examples in the [examples directory](examples/). To run them, download or clone the repo, and do `sbt run` from *inside* the examples directory.
+* [Latest API docs](https://darrenjw.github.io/scala-smfsb/api/smfsb/index.html)
 
 ## Using the library in your own Scala projects
 
