@@ -33,15 +33,6 @@ object Types {
   }
 
 
-  // Parameter type class
-  trait Parameter[T] extends CsvRow[T] {
-    def perturb(value: T): T
-  }
-  implicit class ParameterSyntax[T](value: T) {
-    def perturb(implicit inst: Parameter[T]): T = inst.perturb(value)
-  }
-  // No implementations - leave to be model-specific...
-
   // State type class, with implementations for Ints and Doubles
   trait State[S] extends CsvRow[S] {
   }
