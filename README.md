@@ -6,8 +6,8 @@
 # This library is currently under development - it should be ready by Friday 9th November 2018
 
 
-* The current *stable* version of this library is COMING SOON!
-* The current unstable *snapshot* release of this library is "0.1-SNAPSHOT"
+* The current *stable* version of this library is **COMING SOON!**
+* The current unstable *snapshot* release of this library is "0.2-SNAPSHOT"
 
 Binaries are published to Sonatype, cross-built for Scala 2.11.x and 2.12.x.
 
@@ -17,20 +17,21 @@ Binaries are published to Sonatype, cross-built for Scala 2.11.x and 2.12.x.
 * Run `sbt` from an empty/temp directory
 * At the `sbt` prompt, enter:
 ```scala
-set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.1-SNAPSHOT"
-set libraryDependencies += "org.scalanlp" %% "breeze-viz" % "0.13"
+set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.2-SNAPSHOT"
+set resolvers += "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
+set libraryDependencies += "org.scalanlp" %% "breeze-viz" % "0.13.2"
 set scalaVersion := "2.12.6"
 console
 ```
 * You should now have a Scala REPL with a dependency on this library. At the Scala REPL, enter the following:
 ```scala
-import smfsb.SpnExamples._
-import smfsb.Sim._
+import smfsb._
+import smfsb.Types._
 import breeze.linalg._
-
-val step = stepLv(lvparam)
-val ts = simTs(DenseVector(50, 40), 0.0, 20.0, 0.1, step)
-plotTs(ts)
+val model = SpnModels.lv[IntState]()
+val step = Step.gillespie(model)
+val ts = Sim.ts(DenseVector(50, 40), 0.0, 20.0, 0.1, step)
+Sim.plotTs(ts)
 ```
 * This should simulate a trajectory from a Lotka-Volterra model and plot the result in a window on the console which looks a little bit like the following:
 
@@ -48,7 +49,7 @@ To get the most out of this library, you should already be familiar with the R p
 
 Just add:
 ```scala
-"com.github.darrenjw" %% "scala-smfsb" % "0.1-SNAPSHOT"
+"com.github.darrenjw" %% "scala-smfsb" % "0.2-SNAPSHOT"
 ```
 to your Sbt dependencies.
 
