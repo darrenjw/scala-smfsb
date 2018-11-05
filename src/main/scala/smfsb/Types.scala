@@ -12,7 +12,6 @@ object Types {
   import breeze.linalg._
 
   // Hard-coded types:
-
   type Time = Double
   type Ts[S] = List[(Time, S)]
   type LogLik = Double
@@ -32,7 +31,6 @@ object Types {
     def toDvd(implicit inst: CsvRow[T]): DenseVector[Double] = inst.toDvd(value)
   }
 
-
   // State type class, with implementations for Ints and Doubles
   trait State[S] extends CsvRow[S] {
   }
@@ -47,9 +45,28 @@ object Types {
     def toDvd(s: DoubleState): DenseVector[Double] = s
   }
 
+  // SPN class - concrete for now
+  sealed trait Spn[S]{
+    def species: List[String]
+    def pre: DenseMatrix[Int]
+    def post: DenseMatrix[Int]
+    def h: (S, Time) => HazardVec
+  }
+  case class UnmarkedSpn[S: State](
+    species: List[String],
+    pre: DenseMatrix[Int],
+    post: DenseMatrix[Int],
+    h: (S, Time) => HazardVec
+  ) extends Spn[S]
+  case class MarkedSpn[S: State](
+    species: List[String],
+    m: S,
+    pre: DenseMatrix[Int],
+    post: DenseMatrix[Int],
+    h: (S, Time) => HazardVec
+  ) extends Spn[S]
 
   // Now type classes for inferential methods
-
   // Observation type class, with implementations for Ints and Doubles
   trait Observation[O] extends CsvRow[O] {
   }
@@ -70,8 +87,6 @@ object Types {
   implicit val tsdsDs = new DataSet[Ts[DoubleState]] {
   }
 
-
 }
 
 /* eof */
-

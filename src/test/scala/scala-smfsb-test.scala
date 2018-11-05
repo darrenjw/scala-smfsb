@@ -9,7 +9,6 @@ package smfsb
 
 import org.scalatest._
 import org.scalatest.junit._
-// import org.scalatest.prop._
 import org.junit.runner.RunWith
 
 import breeze.linalg._
@@ -22,39 +21,39 @@ class MyTestSuite extends FunSuite {
     assert(1 + 2 === 3)
   }
 
-  test("create and step lv model") {
-    import SpnExamples._
-    val step = stepLv(lvparam)
-    val output = step(DenseVector(50, 40), 0.0, 1.0)
+  test("create and step LV model") {
+    val model = SpnModels.lv[IntState]()
+    val step = Step.gillespie(model)
+    val output = step(DenseVector(50, 100), 0.0, 1.0)
     assert(output.length === 2)
   }
 
-  test("create and step id model") {
-    import SpnExamples._
-    val step = stepId(idparam)
+  test("create and step ID model") {
+    val model = SpnModels.id[IntState]()
+    val step = Step.gillespie(model)
     val output = step(DenseVector(0), 0.0, 1.0)
     assert(output.length === 1)
   }
 
-  test("simTs for lv model") {
-    import SpnExamples._
-    import Sim._
-    val step = stepLv(lvparam)
-    val ts = simTs(DenseVector(50, 40), 0.0, 20.0, 0.1, step)
-    //plotTs(ts)
+  test("simTs for LV model") {
+    val model = SpnModels.lv[IntState]()
+    val step = Step.gillespie(model)
+    val ts = Sim.ts(DenseVector(50, 40), 0.0, 20.0, 0.1, step)
+    // Sim.plotTs(ts)
     assert(ts.length === 201)
   }
 
-  test("simTs for mm model") {
-    import SpnExamples._
-    import Sim._
-    val step = stepMm(mmparam)
-    val ts = simTs(DenseVector(301, 120, 0, 0), 0.0, 100.0, 0.5, step)
-    //plotTs(ts)
+  test("simTs for MM model") {
+    val model = SpnModels.mm[IntState]()
+    val step = Step.gillespie(model)
+    val ts = Sim.ts(DenseVector(301, 120, 0, 0), 0.0, 100.0, 0.5, step)
+    // Sim.plotTs(ts)
     assert(ts.length === 201)
   }
 
-  test("simTs with pts for mm model") {
+/*
+
+  test("simTs with pts for MM model") {
     import SpnExamples._
     import Sim._
     val stepMmPts = Step.pts(mm, 0.1)
@@ -64,7 +63,7 @@ class MyTestSuite extends FunSuite {
     assert(ts.length === 201)
   }
 
-  test("simTs with CLE for lv model") {
+  test("simTs with CLE for LV model") {
     import SpnExamples._
     import Sim._
     val step = stepLvc(lvparam)
@@ -73,7 +72,7 @@ class MyTestSuite extends FunSuite {
     assert(ts.length === 201)
   }
 
-  test("simTs for ar model") {
+  test("simTs for AR model") {
     import SpnExamples._
     import Sim._
     val step = stepAr(arparam)
@@ -82,7 +81,7 @@ class MyTestSuite extends FunSuite {
     assert(ts.length === 1001)
   }
 
-  test("simTs with pts for ar model") {
+  test("simTs with pts for AR model") {
     import SpnExamples._
     import Sim._
     val stepAr = Step.pts(ar, 0.001)
@@ -92,7 +91,7 @@ class MyTestSuite extends FunSuite {
     assert(ts.length === 1001)
   }
 
-
+ */
 
 }
 
