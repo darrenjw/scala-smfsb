@@ -35,7 +35,7 @@ class MyTestSuite extends FunSuite {
     assert(output.length === 1)
   }
 
-  test("simTs for LV model") {
+  test("Sim.ts for LV model") {
     val model = SpnModels.lv[IntState]()
     val step = Step.gillespie(model)
     val ts = Sim.ts(DenseVector(50, 40), 0.0, 20.0, 0.1, step)
@@ -43,7 +43,7 @@ class MyTestSuite extends FunSuite {
     assert(ts.length === 201)
   }
 
-  test("simTs for MM model") {
+  test("Sim.ts for MM model") {
     val model = SpnModels.mm[IntState]()
     val step = Step.gillespie(model)
     val ts = Sim.ts(DenseVector(301, 120, 0, 0), 0.0, 100.0, 0.5, step)
@@ -51,7 +51,7 @@ class MyTestSuite extends FunSuite {
     assert(ts.length === 201)
   }
 
-  test("simTs with pts for MM model") {
+  test("Sim.ts with pts for MM model") {
     val model = SpnModels.mm[IntState]()
     val step = Step.pts(model, 0.1)
     val ts = Sim.ts(DenseVector(301, 120, 0, 0), 0.0, 100.0, 0.5, step)
@@ -59,7 +59,7 @@ class MyTestSuite extends FunSuite {
     assert(ts.length === 201)
   }
 
-  test("simTs with CLE for LV model") {
+  test("Sim.ts with CLE for LV model") {
     val model = SpnModels.lv[DoubleState]()
     val step = Step.cle(model, 0.01)
     val ts = Sim.ts(DenseVector(50.0, 40.0), 0.0, 20.0, 0.1, step)
@@ -67,7 +67,7 @@ class MyTestSuite extends FunSuite {
     assert(ts.length === 201)
   }
 
-  test("simTs for AR model") {
+  test("Sim.ts for AR model") {
     val model = SpnModels.ar[IntState]()
     val step = Step.gillespie(model)
     val ts = Sim.ts(DenseVector(10, 0, 0, 0, 0), 0.0, 500.0, 0.5, step)
@@ -75,7 +75,7 @@ class MyTestSuite extends FunSuite {
     assert(ts.length === 1001)
   }
 
-  test("simTs with pts for AR model") {
+  test("Sim.ts with pts for AR model") {
     val model = SpnModels.ar[IntState]()
     val step = Step.pts(model, 0.001)
     val ts = Sim.ts(DenseVector(10, 0, 0, 0, 0), 0.0, 500.0, 0.5, step)
