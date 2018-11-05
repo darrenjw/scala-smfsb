@@ -1,6 +1,6 @@
 name := "scala-smfsb"
 organization := "com.github.darrenjw"
-version := "0.1-SNAPSHOT"
+version := "0.2-SNAPSHOT"
 
 scalacOptions ++= Seq(
   "-unchecked", "-deprecation", "-feature"
