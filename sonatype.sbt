@@ -12,12 +12,12 @@ pomIncludeRepository := { _ => false }
 
 licenses := Seq("GPL2" -> url("https://opensource.org/licenses/GPL-3.0"))
 
-homepage := Some(url("https://github.com/darrenjw/scala-glm/blob/master/README.md"))
+homepage := Some(url("https://github.com/darrenjw/scala-smfsb/blob/master/README.md"))
 
 scmInfo := Some(
   ScmInfo(
-    url("https://github.com/darrenjw/scala-glm"),
-    "scm:git@github.com:darrenjw/scala-glm.git"
+    url("https://github.com/darrenjw/scala-smfsb"),
+    "scm:git@github.com:darrenjw/scala-smfsb.git"
   )
 )
 
