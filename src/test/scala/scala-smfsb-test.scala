@@ -46,9 +46,15 @@ class MyTestSuite extends FunSuite {
   test("Sim.ts for MM model") {
     val model = SpnModels.mm[IntState]()
     val step = Step.gillespie(model)
-    val ts = Sim.ts(DenseVector(301, 120, 0, 0), 0.0, 100.0, 0.5, step)
-    // Sim.plotTs(ts)
-    assert(ts.length === 201)
+    val ts = Sim.ts(DenseVector(301, 120, 0, 0), 0.0, 100.0, 1.0, step)
+    //Sim.plotTs(ts)
+    assert(ts.length === 101)
+    assert(ts(0)._1 == 0.0)
+    assert(ts(1)._1 == 1.0)
+    assert(ts(0)._2.data(0) == 301)
+    assert(ts(0)._2.data(1) == 120)
+    assert(ts(0)._2.data(2) == 0)
+    assert(ts(0)._2.data(3) == 0)
   }
 
   test("Sim.ts with pts for MM model") {
@@ -65,6 +71,10 @@ class MyTestSuite extends FunSuite {
     val ts = Sim.ts(DenseVector(50.0, 40.0), 0.0, 20.0, 0.1, step)
     //Sim.plotTs(ts)
     assert(ts.length === 201)
+    assert(ts(0)._1 == 0.0)
+    assert(ts(1)._1 == 0.1)
+    assert(ts(0)._2(0) == 50.0)
+    assert(ts(0)._2(1) == 40.0)
   }
 
   test("Sim.ts with Euler for MM model") {

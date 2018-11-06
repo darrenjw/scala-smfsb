@@ -35,7 +35,13 @@ object Sim {
     }
     go(List((t0, x0)), tt, dt, stepFun).reverse
   }
-  
+
+
+
+  // TODO: add in other simulation utilities...
+
+  // plot utilities
+
   def plotTs[S: State](ts: Ts[S]): Unit = {
     import breeze.plot._
     import breeze.linalg._
@@ -54,8 +60,6 @@ object Sim {
     val ls = ts map { t => t._1.toString + "," + t._2.toCsv + "\n" }
     ls.foldLeft("")(_ + _)
   }
-
-  // TODO: add in other simulation utilities...
 
 
 
