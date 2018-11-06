@@ -63,7 +63,15 @@ class MyTestSuite extends FunSuite {
     val model = SpnModels.lv[DoubleState]()
     val step = Step.cle(model, 0.01)
     val ts = Sim.ts(DenseVector(50.0, 40.0), 0.0, 20.0, 0.1, step)
-    // Sim.plotTs(ts)
+    //Sim.plotTs(ts)
+    assert(ts.length === 201)
+  }
+
+  test("Sim.ts with Euler for MM model") {
+    val model = SpnModels.mm[DoubleState]()
+    val step = Step.euler(model, 0.1)
+    val ts = Sim.ts(DenseVector(301.0, 120.0, 0.0, 0.0), 0.0, 100.0, 0.5, step)
+    //Sim.plotTs(ts)
     assert(ts.length === 201)
   }
 

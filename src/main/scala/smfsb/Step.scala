@@ -83,6 +83,26 @@ object Step {
     }
   }
 
+  def euler(n: Spn[DoubleState], dt: Double = 0.01): (DoubleState, Time, Time) => DoubleState = {
+    val Sto = ((n.post - n.pre) map { _ * 1.0 }).t
+    val v = Sto.cols
+    (x, t0, deltat) => {
+      @tailrec
+      def go(x: DoubleState, t0: Time, deltat: Time): DoubleState = {
+        if (deltat <= 0.0) x else {
+          val adt = if (dt > deltat) deltat else dt
+          val sdt = Math.sqrt(adt)
+          val h = n.h(x, t0)
+          val dx = Sto * (h * adt)
+          val nx = x + dx.toDenseVector
+          val tnx = abs(nx)
+          go(tnx, t0 + adt, deltat - adt)
+        }
+      }
+      go(x, t0, deltat)
+    }
+  }
+
 
 
 
