@@ -36,6 +36,33 @@ object Sim {
     go(List((t0, x0)), tt, dt, stepFun).reverse
   }
 
+  def times[S: State](
+    x0: S,
+    t0: Time,
+    timeList: List[Time],
+    stepFun: (S, Time, Time) => S
+  ): Ts[S] = {
+    @tailrec
+    def go(
+      list: Ts[S],
+      timeList: List[Time],
+      stepFun: (S, Time, Time) => S
+    ): Ts[S] = {
+      val (t0, x0) = list.head
+      timeList match {
+        case Nil => list
+        case (t :: ts) => {
+          val t1 = timeList.head
+          val x1 = stepFun(x0, t0, t1-t0)
+          go((t1, x1) :: list, timeList.tail, stepFun)
+        }
+      }
+    }
+    val t1=timeList.head
+    val x1=stepFun(x0,t0,t1-t0)
+    go(List((t1, x1)), timeList.tail, stepFun).reverse
+  }
+
 
 
   // TODO: add in other simulation utilities...
