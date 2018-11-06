@@ -65,10 +65,10 @@ class MyTestSuite extends FunSuite {
     assert(ts.length === 5)
     assert(ts(0)._1 === 0.0)
     assert(ts(1)._1 === 10.0)
-    assert(ts(0)._2.data(0) === 301)
-    assert(ts(0)._2.data(1) === 120)
-    assert(ts(0)._2.data(2) === 0)
-    assert(ts(0)._2.data(3) === 0)
+    assert(ts(0)._2(0) === 301)
+    assert(ts(0)._2(1) === 120)
+    assert(ts(0)._2(2) === 0)
+    assert(ts(0)._2(3) === 0)
   }
 
   test("Sim.times for MM model (offset start)") {
@@ -78,8 +78,18 @@ class MyTestSuite extends FunSuite {
     assert(ts.length === 5)
     assert(ts(0)._1 === 5.0)
     assert(ts(1)._1 === 10.0)
-    assert(ts(0)._2.data(0) < 301)
-    assert(ts(0)._2.data(3) > 0)
+    assert(ts(0)._2(0) < 301)
+    assert(ts(0)._2(3) > 0)
+  }
+
+  test("Sim.sample for MM model") {
+    val model = SpnModels.mm[IntState]()
+    val step = Step.gillespie(model)
+    val sim = Sim.sample(10, DenseVector(301, 120, 0, 0), 0.0, 10.0, step)
+    //println(sim)
+    assert(sim.length === 10)
+    assert(sim(0)(0) < 301)
+    assert(sim(0)(3) > 0)
   }
 
   test("Sim.ts with pts for MM model") {

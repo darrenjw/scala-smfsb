@@ -14,9 +14,9 @@ object Sim {
 
   def ts[S: State](
     x0: S,
-    t0: Time,
-    tt: Time,
-    dt: Time,
+    t0: Time = 0.0,
+    tt: Time = 100.0,
+    dt: Time = 0.1,
     stepFun: (S, Time, Time) => S
   ): Ts[S] = {
     @tailrec
@@ -38,7 +38,7 @@ object Sim {
 
   def times[S: State](
     x0: S,
-    t0: Time,
+    t0: Time = 0.0,
     timeList: List[Time],
     stepFun: (S, Time, Time) => S
   ): Ts[S] = {
@@ -63,29 +63,24 @@ object Sim {
     go(List((t1, x1)), timeList.tail, stepFun).reverse
   }
 
-  // TODO: FIX!
   def sample[S: State](
+    n: Int = 100,
     x0: S,
-    t0: Time,
-    tt: Time,
-    dt: Time,
+    t0: Time = 0.0,
+    deltat: Time,
     stepFun: (S, Time, Time) => S
-  ): Ts[S] = {
+  ): List[S] = {
     @tailrec
     def go(
-      list: Ts[S],
-      tt: Time,
-      dt: Time,
-      stepFun: (S, Time, Time) => S
-    ): Ts[S] = {
-      val (t0, x0) = list.head
-      if (t0 >= tt) list else {
-        val t1 = t0 + dt
-        val x1 = stepFun(x0, t0, dt)
-        go((t1, x1) :: list, tt, dt, stepFun)
+      list: List[S],
+      n: Int
+    ): List[S] = {
+      if (n <= 0) list else {
+        val x1 = stepFun(x0, t0, deltat)
+        go(x1 :: list, n-1)
       }
     }
-    go(List((t0, x0)), tt, dt, stepFun).reverse
+    go(Nil, n).reverse
   }
 
   // plot utilities
