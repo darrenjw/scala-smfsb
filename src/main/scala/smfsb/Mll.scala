@@ -21,6 +21,8 @@ object Mll {
     Multinomial(prob).sample(n).toVector
   }
 
+
+  // TODO: Make collection independent, supporting parallel execution - probably need to tweak the multinomial resampling
   def bpfUpdate[S, O](
     dataLik: (S,O) => LogLik, stepFun: (S, Time, Time) => S
   )(
