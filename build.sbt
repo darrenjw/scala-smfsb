@@ -3,7 +3,7 @@ organization := "com.github.darrenjw"
 version := "0.2-SNAPSHOT"
 
 scalacOptions ++= Seq(
-  "-unchecked", "-deprecation", "-feature"
+  "-unchecked", "-deprecation", "-feature", "-language:higherKinds"
 )
 
 libraryDependencies  ++= Seq(
@@ -21,7 +21,7 @@ scalaVersion := "2.12.6"
 crossScalaVersions := Seq("2.11.11","2.12.6")
 
 
-
+scalaVersion in ThisBuild := "2.12.6" // for ensime...
 
 
 // eof

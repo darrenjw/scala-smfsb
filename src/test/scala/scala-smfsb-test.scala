@@ -137,6 +137,31 @@ class MyTestSuite extends FunSuite {
   }
 
 
+  test("pfMll for LV model") {
+    import breeze.stats.distributions.Gaussian
+    val model = SpnModels.lv[IntState]()
+    val step = Step.gillespie(model)
+    val ts = Sim.ts(DenseVector(50, 40), 0.0, 20.0, 0.1, step)
+    // Sim.plotTs(ts)
+    assert(ts.length === 201)
+    val mll = Mll.pfMll(
+      (p: DenseVector[Double]) => collection.immutable.Vector.fill(100)(DenseVector(50,100)),
+      0.0,
+      (p: DenseVector[Double]) => Step.gillespie(SpnModels.lv[IntState](p)),
+      (p: DenseVector[Double]) => (s: IntState, o: IntState) => {
+        Gaussian(s(0), 2.0).logPdf(o(0))+Gaussian(s(1), 2.0).logPdf(o(1))
+      },
+      ts
+    )
+    val mll1 = mll(DenseVector(1.0,0.05,0.3))
+    println(mll1)
+    assert(mll1 < 0.0)
+  }
+
+
+
+
+
 }
 
 /* eof */
