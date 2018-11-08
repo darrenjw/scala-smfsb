@@ -154,7 +154,7 @@ class MyTestSuite extends FunSuite {
       ts
     )
     val mll1 = mll(DenseVector(1.0,0.005,0.6))
-    println(mll1)
+    //println(mll1)
     assert(mll1 < 0.0)
   }
 
@@ -181,10 +181,13 @@ class MyTestSuite extends FunSuite {
       (p: Double) => 1.0
     )
     val n = 10000
-    val out = s.drop(1000).take(n).toVector
+    val out = s.drop(0).take(n)
+    //println(out.take(20).toList)
+    Mcmc.summary(Mcmc.toDMD(out map (d => DenseVector(d)))(dvdObs))
     assert(out.length === n)
     assert(math.abs(out.sum / n) < 0.1)
   }
+
 
   test("toDMD") {
     val s = List(DenseVector(1,2,3),DenseVector(4,5,6)).toStream
