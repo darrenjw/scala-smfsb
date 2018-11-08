@@ -31,10 +31,21 @@ object Mcmc {
     init: P, logLik: P => LogLik, rprop: P => P,dprop: (P, P) => LogLik, dprior: P => LogLik
   ): Stream[P] = {
     val kernel = nextValue(logLik, rprop, dprop, dprior) _
-    Stream.iterate((init,Double.MinValue)){
-    case (p,ll) => kernel(p,ll)
+    Stream.iterate((init, Double.MinValue)){
+    case (p,ll) => kernel(p, ll)
     }.map(_._1)
   }
+
+  import breeze.linalg._
+  import breeze.numerics._
+  def toDMD[P: CsvRow](s: Stream[P]): DenseMatrix[Double] = {
+    val n = s.length
+    val p = s(0).toDvd.length
+    val m = new DenseMatrix[Double](n, p)
+    s.zipWithIndex.foreach{case (v, i) => m(i, ::) := v.toDvd.t} 
+    m
+  }
+
 
 }
 

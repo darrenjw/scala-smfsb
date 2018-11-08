@@ -180,11 +180,21 @@ class MyTestSuite extends FunSuite {
       (n: Double, o: Double) => 1.0,
       (p: Double) => 1.0
     )
-    val n = 5000
-    val out = s.drop(1000).take(n)
+    val n = 10000
+    val out = s.drop(1000).take(n).toVector
     assert(out.length === n)
     assert(math.abs(out.sum / n) < 0.1)
   }
+
+  test("toDMD") {
+    val s = List(DenseVector(1,2,3),DenseVector(4,5,6)).toStream
+    val m = Mcmc.toDMD(s)(dviObs)
+    assert(m.rows === 2)
+    assert(m.cols === 3)
+    assert(m === DenseMatrix((1.0,2.0,3.0),(4.0,5.0,6.0)))
+  }
+
+
 
 }
 
