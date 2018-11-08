@@ -87,6 +87,14 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="_root_">root</a></dd></dl></div>
     </li><li class="current-entities indented1">
                         <span class="separator"></span>
+                        <a class="object" href="Mcmc$.html" title=""></a>
+                        <a href="Mcmc$.html" title="">Mcmc</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
+                        <a class="object" href="Mll$.html" title=""></a>
+                        <a href="Mll$.html" title="">Mll</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
                         <a class="object" href="" title=""></a>
                         <a href="" title="">Sim</a>
                       </li><li class="current-entities indented1">
@@ -437,9 +445,9 @@
               
         </dd></dl></div>
     </li><li name="smfsb.Sim#plotTs" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="plotTs[S](ts:smfsb.Types.Ts[S])(implicitevidence$2:smfsb.Types.State[S]):Unit"></a><a id="plotTs[S](Ts[S])(State[S]):Unit"></a>
+      <a id="plotTs[S](ts:smfsb.Types.Ts[S])(implicitevidence$4:smfsb.Types.State[S]):Unit"></a><a id="plotTs[S](Ts[S])(State[S]):Unit"></a>
       <span class="permalink">
-      <a href="../smfsb/Sim$.html#plotTs[S](ts:smfsb.Types.Ts[S])(implicitevidence$2:smfsb.Types.State[S]):Unit" title="Permalink">
+      <a href="../smfsb/Sim$.html#plotTs[S](ts:smfsb.Types.Ts[S])(implicitevidence$4:smfsb.Types.State[S]):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -449,6 +457,22 @@
       </span>
       <span class="symbol">
         <span class="name">plotTs</span><span class="tparams">[<span name="S">S</span>]</span><span class="params">(<span name="ts">ts: <a href="Types$.html#Ts[S]=List[(smfsb.Types.Time,S)]" class="extmbr" name="smfsb.Types.Ts">Ts</a>[<span class="extype" name="smfsb.Sim.plotTs.S">S</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Types$$State.html" class="extype" name="smfsb.Types.State">State</a>[<span class="extype" name="smfsb.Sim.plotTs.S">S</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="smfsb.Sim#sample" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="sample[S](n:Int,x0:S,t0:smfsb.Types.Time,deltat:smfsb.Types.Time,stepFun:(S,smfsb.Types.Time,smfsb.Types.Time)=&gt;S)(implicitevidence$3:smfsb.Types.State[S]):List[S]"></a><a id="sample[S](Int,S,Time,Time,(S,Time,Time)⇒S)(State[S]):List[S]"></a>
+      <span class="permalink">
+      <a href="../smfsb/Sim$.html#sample[S](n:Int,x0:S,t0:smfsb.Types.Time,deltat:smfsb.Types.Time,stepFun:(S,smfsb.Types.Time,smfsb.Types.Time)=&gt;S)(implicitevidence$3:smfsb.Types.State[S]):List[S]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sample</span><span class="tparams">[<span name="S">S</span>]</span><span class="params">(<span name="n">n: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">100</span></span>, <span name="x0">x0: <span class="extype" name="smfsb.Sim.sample.S">S</span></span>, <span name="t0">t0: <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a> = <span class="symbol">0.0</span></span>, <span name="deltat">deltat: <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a></span>, <span name="stepFun">stepFun: (<span class="extype" name="smfsb.Sim.sample.S">S</span>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>) ⇒ <span class="extype" name="smfsb.Sim.sample.S">S</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Types$$State.html" class="extype" name="smfsb.Types.State">State</a>[<span class="extype" name="smfsb.Sim.sample.S">S</span>]</span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="smfsb.Sim.sample.S">S</span>]</span>
       </span>
       
       
@@ -468,10 +492,26 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="smfsb.Sim#toCsv" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="toCsv[S](ts:smfsb.Types.Ts[S])(implicitevidence$3:smfsb.Types.State[S]):String"></a><a id="toCsv[S](Ts[S])(State[S]):String"></a>
+    </li><li name="smfsb.Sim#times" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="times[S](x0:S,t0:smfsb.Types.Time,timeList:List[smfsb.Types.Time],stepFun:(S,smfsb.Types.Time,smfsb.Types.Time)=&gt;S)(implicitevidence$2:smfsb.Types.State[S]):smfsb.Types.Ts[S]"></a><a id="times[S](S,Time,List[Time],(S,Time,Time)⇒S)(State[S]):Ts[S]"></a>
       <span class="permalink">
-      <a href="../smfsb/Sim$.html#toCsv[S](ts:smfsb.Types.Ts[S])(implicitevidence$3:smfsb.Types.State[S]):String" title="Permalink">
+      <a href="../smfsb/Sim$.html#times[S](x0:S,t0:smfsb.Types.Time,timeList:List[smfsb.Types.Time],stepFun:(S,smfsb.Types.Time,smfsb.Types.Time)=&gt;S)(implicitevidence$2:smfsb.Types.State[S]):smfsb.Types.Ts[S]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">times</span><span class="tparams">[<span name="S">S</span>]</span><span class="params">(<span name="x0">x0: <span class="extype" name="smfsb.Sim.times.S">S</span></span>, <span name="t0">t0: <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a> = <span class="symbol">0.0</span></span>, <span name="timeList">timeList: <span class="extype" name="scala.List">List</span>[<a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>]</span>, <span name="stepFun">stepFun: (<span class="extype" name="smfsb.Sim.times.S">S</span>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>) ⇒ <span class="extype" name="smfsb.Sim.times.S">S</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Types$$State.html" class="extype" name="smfsb.Types.State">State</a>[<span class="extype" name="smfsb.Sim.times.S">S</span>]</span>)</span><span class="result">: <a href="Types$.html#Ts[S]=List[(smfsb.Types.Time,S)]" class="extmbr" name="smfsb.Types.Ts">Ts</a>[<span class="extype" name="smfsb.Sim.times.S">S</span>]</span>
+      </span>
+      
+      
+    </li><li name="smfsb.Sim#toCsv" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="toCsv[S](ts:smfsb.Types.Ts[S])(implicitevidence$5:smfsb.Types.State[S]):String"></a><a id="toCsv[S](Ts[S])(State[S]):String"></a>
+      <span class="permalink">
+      <a href="../smfsb/Sim$.html#toCsv[S](ts:smfsb.Types.Ts[S])(implicitevidence$5:smfsb.Types.State[S]):String" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -512,7 +552,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">ts</span><span class="tparams">[<span name="S">S</span>]</span><span class="params">(<span name="x0">x0: <span class="extype" name="smfsb.Sim.ts.S">S</span></span>, <span name="t0">t0: <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a></span>, <span name="tt">tt: <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a></span>, <span name="dt">dt: <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a></span>, <span name="stepFun">stepFun: (<span class="extype" name="smfsb.Sim.ts.S">S</span>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>) ⇒ <span class="extype" name="smfsb.Sim.ts.S">S</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Types$$State.html" class="extype" name="smfsb.Types.State">State</a>[<span class="extype" name="smfsb.Sim.ts.S">S</span>]</span>)</span><span class="result">: <a href="Types$.html#Ts[S]=List[(smfsb.Types.Time,S)]" class="extmbr" name="smfsb.Types.Ts">Ts</a>[<span class="extype" name="smfsb.Sim.ts.S">S</span>]</span>
+        <span class="name">ts</span><span class="tparams">[<span name="S">S</span>]</span><span class="params">(<span name="x0">x0: <span class="extype" name="smfsb.Sim.ts.S">S</span></span>, <span name="t0">t0: <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a> = <span class="symbol">0.0</span></span>, <span name="tt">tt: <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a> = <span class="symbol">100.0</span></span>, <span name="dt">dt: <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a> = <span class="symbol">0.1</span></span>, <span name="stepFun">stepFun: (<span class="extype" name="smfsb.Sim.ts.S">S</span>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>) ⇒ <span class="extype" name="smfsb.Sim.ts.S">S</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Types$$State.html" class="extype" name="smfsb.Types.State">State</a>[<span class="extype" name="smfsb.Sim.ts.S">S</span>]</span>)</span><span class="result">: <a href="Types$.html#Ts[S]=List[(smfsb.Types.Time,S)]" class="extmbr" name="smfsb.Types.Ts">Ts</a>[<span class="extype" name="smfsb.Sim.ts.S">S</span>]</span>
       </span>
       
       
