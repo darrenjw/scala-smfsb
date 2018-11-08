@@ -47,7 +47,7 @@ object Mcmc {
   }
 
   // TODO: Trace plots, ACFs, summary stats, etc.
-  def summary(m: DenseMatrix[Double]): Unit = {
+  def summary(m: DenseMatrix[Double], plt: Boolean = true): Unit = {
     import breeze.plot._
     //println(m)
     val n = m.rows
@@ -55,13 +55,14 @@ object Mcmc {
     println(n,v)
     val mean = sum(m(::,*)) * (1.0/n)
     println(mean.t)
-    val f = Figure("MCMC Diagnostic plots")
-      (0 until v).foreach(i => {
-        val p = f.subplot(v,1,i)
-        //println(m(::,i))
-        p += hist(m(::,i), 50)
-      })
-    f.saveas("McmcPlot.png")
+    if (plt) {
+      val f = Figure("MCMC Diagnostic plots")
+        (0 until v).foreach(i => {
+          val p = f.subplot(v,2,i)
+          p += hist(m(::,i), 50)
+        })
+      f.saveas("McmcPlot.png")
+    }
   }
 
   def summary[P: CsvRow](s: Stream[P]): Unit = {
