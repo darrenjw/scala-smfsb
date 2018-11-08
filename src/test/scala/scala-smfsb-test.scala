@@ -158,7 +158,19 @@ class MyTestSuite extends FunSuite {
     assert(mll1 < 0.0)
   }
 
+  test("nextValue (for MH-MCMC) on toy target") {
+    import breeze.stats.distributions._
+    val kernel = Mcmc.nextValue(
+      Gaussian(0.0,1.0).logPdf,
+      (o: Double) => o + Uniform(-0.1,0.1).draw,
+      (n: Double, o: Double) => 1.0,
+      (p: Double) => 1.0
+    ) _
+    val next = kernel(0.0,Double.MinValue)
+    assert (math.abs(next._1) < 1.0)
+    assert(next._2 > Double.MinValue)
 
+  }
 
 
 

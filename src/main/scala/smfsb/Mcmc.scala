@@ -2,6 +2,8 @@
 
 Mcmc.scala
 
+Functions relating to the construction and analysis of MCMC algorithms, especially MH algorithms for PMMH
+
  */
 
 package smfsb
@@ -20,11 +22,10 @@ object Mcmc {
     val (p,ll) = current
     val prop = rprop(p)
     val llprop = logLik(prop)
-    val a = llprop - ll + dprior(prop) - dprior(p) + dprop(p,prop) - dprop(prop,p)
+    val a = llprop - ll + dprior(prop) - dprior(p) + dprop(p, prop) - dprop(prop, p)
     if (math.log(Uniform(0.0,1.0).draw) < a)
       (prop, llprop) else (p, ll)
   }
-
 
 
 }
