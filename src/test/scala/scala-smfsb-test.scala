@@ -169,10 +169,22 @@ class MyTestSuite extends FunSuite {
     val next = kernel(0.0,Double.MinValue)
     assert (math.abs(next._1) < 1.0)
     assert(next._2 > Double.MinValue)
-
   }
 
-
+  test("mhStream on toy target") {
+    import breeze.stats.distributions._
+    val s = Mcmc.mhStream(
+      0.0,
+      Gaussian(0.0,1.0).logPdf,
+      (o: Double) => o + Uniform(-0.5,0.5).draw,
+      (n: Double, o: Double) => 1.0,
+      (p: Double) => 1.0
+    )
+    val n = 5000
+    val out = s.drop(1000).take(n)
+    assert(out.length === n)
+    assert(math.abs(out.sum / n) < 0.1)
+  }
 
 }
 

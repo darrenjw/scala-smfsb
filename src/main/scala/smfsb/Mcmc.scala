@@ -27,6 +27,14 @@ object Mcmc {
       (prop, llprop) else (p, ll)
   }
 
+  def mhStream[P](
+    init: P, logLik: P => LogLik, rprop: P => P,dprop: (P, P) => LogLik, dprior: P => LogLik
+  ): Stream[P] = {
+    val kernel = nextValue(logLik, rprop, dprop, dprior) _
+    Stream.iterate((init,Double.MinValue)){
+    case (p,ll) => kernel(p,ll)
+    }.map(_._1)
+  }
 
 }
 
