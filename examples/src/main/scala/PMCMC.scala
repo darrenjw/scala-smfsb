@@ -46,9 +46,11 @@ object PMCMC {
       data
     )
     // Sanity checks...
-    println(statePrior(5))
-    println(statePrior(5))
-    (1 to 5).foreach{i => println(mll(DenseVector(1.0, 0.005, 0.6)))}
+    //println(statePrior(5))
+    //println(statePrior(5))
+    //(1 to 5).foreach{i => println(mll(DenseVector(1.0, 0.005, 0.6)))}
+    //(1 to 5).foreach{i => println(mll(DenseVector(1.0, 0.01, 0.6)))}
+    //(1 to 5).foreach{i => println(mll(DenseVector(1.0, 0.005, 0.3)))}
     // now create an MCMC stream
     val s = Mcmc.mhStream(
       DenseVector(1.0, 0.005, 0.6),

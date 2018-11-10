@@ -68,6 +68,15 @@ object Types {
     h: (S, Time) => HazardVec
   ) extends Spn[S]
 
+
+  // Data set type class, for ABC methods
+  trait DataSet[D] {
+  }
+  implicit val tsisDs = new DataSet[Ts[IntState]] {
+  }
+  implicit val tsdsDs = new DataSet[Ts[DoubleState]] {
+  }
+
   // Now type classes for inferential methods
   // Observation type class, with implementations for Ints and Doubles
   trait Observation[O] extends CsvRow[O] {
@@ -80,15 +89,6 @@ object Types {
     def toCsv(s: DoubleState): String = (s.toArray map (_.toString)).mkString(",")
     def toDvd(s: DoubleState): DenseVector[Double] = s
   }
-
-  // Data set type class, for ABC methods
-  trait DataSet[D] {
-  }
-  implicit val tsisDs = new DataSet[Ts[IntState]] {
-  }
-  implicit val tsdsDs = new DataSet[Ts[DoubleState]] {
-  }
-
 
   // Add a .thin method to Stream
 

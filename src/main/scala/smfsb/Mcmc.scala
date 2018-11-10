@@ -54,9 +54,10 @@ object Mcmc {
     //println(m)
     val n = m.rows
     val v = m.cols
-    println(n,v)
+    println(""+n+" iterates and "+v+" variables")
     val mean = sum(m(::,*)) * (1.0/n)
-    println(mean.t)
+    println("Sample means:")
+    println(mean.t.toCsv(dvdState))
     if (plt) {
       val f = Figure("MCMC Diagnostic plots")
         (0 until v).foreach(i => {
