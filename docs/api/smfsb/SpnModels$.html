@@ -87,28 +87,28 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="_root_">root</a></dd></dl></div>
     </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="Mcmc$.html" title=""></a>
-                        <a href="Mcmc$.html" title="">Mcmc</a>
+                        <a class="object" href="Mcmc$.html" title="Functions for constucting generic Metropolis-Hastings MCMC algorithms, and associated utilities."></a>
+                        <a href="Mcmc$.html" title="Functions for constucting generic Metropolis-Hastings MCMC algorithms, and associated utilities.">Mcmc</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="Mll$.html" title=""></a>
-                        <a href="Mll$.html" title="">Mll</a>
+                        <a class="object" href="Mll$.html" title="Functions associated with particle filtering of Markov process models against time series data and the computation of marginal model likelihoods."></a>
+                        <a href="Mll$.html" title="Functions associated with particle filtering of Markov process models against time series data and the computation of marginal model likelihoods.">Mll</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="Sim$.html" title=""></a>
-                        <a href="Sim$.html" title="">Sim</a>
+                        <a class="object" href="Sim$.html" title="Functions for simulating data associated with a Markov process given an appropriate transition kernel."></a>
+                        <a href="Sim$.html" title="Functions for simulating data associated with a Markov process given an appropriate transition kernel.">Sim</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="" title=""></a>
-                        <a href="" title="">SpnModels</a>
+                        <a class="object" href="" title="Some example SPN models, each of which can be instantiated with either discrete or continous states."></a>
+                        <a href="" title="Some example SPN models, each of which can be instantiated with either discrete or continous states.">SpnModels</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="Step$.html" title=""></a>
-                        <a href="Step$.html" title="">Step</a>
+                        <a class="object" href="Step$.html" title="Functions which accept a Spn and return a function for simulating from the transition kernel of that model"></a>
+                        <a href="Step$.html" title="Functions which accept a Spn and return a function for simulating from the transition kernel of that model">Step</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="Types$.html" title=""></a>
-                        <a href="Types$.html" title="">Types</a>
+                        <a class="object" href="Types$.html" title="Object containing basic types used throughout the library."></a>
+                        <a href="Types$.html" title="Object containing basic types used throughout the library.">Types</a>
                       </li>
               </ul>
             </div>
@@ -137,7 +137,9 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Some example SPN models, each of which can be instantiated with either
+discrete or continous states.
+</p></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -242,7 +244,7 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="smfsb.SpnModels#ar" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="smfsb.SpnModels#ar" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ar[S](c:breeze.linalg.DenseVector[Double])(implicitevidence$4:smfsb.Types.State[S]):smfsb.Types.Spn[S]"></a><a id="ar[S](DenseVector[Double])(State[S]):Spn[S]"></a>
       <span class="permalink">
       <a href="../smfsb/SpnModels$.html#ar[S](c:breeze.linalg.DenseVector[Double])(implicitevidence$4:smfsb.Types.State[S]):smfsb.Types.Spn[S]" title="Permalink">
@@ -257,7 +259,9 @@
         <span class="name">ar</span><span class="tparams">[<span name="S">S</span>]</span><span class="params">(<span name="c">c: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Double">Double</span>] = <span class="defval" name="DenseVector(1.0, 10.0, 0.01, 10.0, 1.0, 1.0, 0.1, 0.01)">...</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Types$$State.html" class="extype" name="smfsb.Types.State">State</a>[<span class="extype" name="smfsb.SpnModels.ar.S">S</span>]</span>)</span><span class="result">: <a href="Types$$Spn.html" class="extype" name="smfsb.Types.Spn">Spn</a>[<span class="extype" name="smfsb.SpnModels.ar.S">S</span>]</span>
       </span>
       
-      
+      <p class="shortcomment cmt">A simple auto-regulatory network model
+</p><div class="fullcomment"><div class="comment cmt"><p>A simple auto-regulatory network model
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>An <code>Spn</code> object, which can be passed into a <code>Step</code> function, for example</p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
@@ -390,7 +394,7 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="smfsb.SpnModels#id" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="smfsb.SpnModels#id" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="id[S](p:breeze.linalg.DenseVector[Double])(implicitevidence$2:smfsb.Types.State[S]):smfsb.Types.Spn[S]"></a><a id="id[S](DenseVector[Double])(State[S]):Spn[S]"></a>
       <span class="permalink">
       <a href="../smfsb/SpnModels$.html#id[S](p:breeze.linalg.DenseVector[Double])(implicitevidence$2:smfsb.Types.State[S]):smfsb.Types.Spn[S]" title="Permalink">
@@ -405,7 +409,9 @@
         <span class="name">id</span><span class="tparams">[<span name="S">S</span>]</span><span class="params">(<span name="p">p: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Double">Double</span>] = <span class="symbol">DenseVector(1.0, 0.1)</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Types$$State.html" class="extype" name="smfsb.Types.State">State</a>[<span class="extype" name="smfsb.SpnModels.id.S">S</span>]</span>)</span><span class="result">: <a href="Types$$Spn.html" class="extype" name="smfsb.Types.Spn">Spn</a>[<span class="extype" name="smfsb.SpnModels.id.S">S</span>]</span>
       </span>
       
-      
+      <p class="shortcomment cmt">Imigration-death model
+</p><div class="fullcomment"><div class="comment cmt"><p>Imigration-death model
+</p></div><dl class="paramcmts block"><dt class="param">p</dt><dd class="cmt"><p>Vector of rates for the 2 reactions (imigration and death)</p></dd><dt>returns</dt><dd class="cmt"><p>An <code>Spn</code> object, which can be passed into a <code>Step</code> function, for example</p></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
@@ -422,7 +428,7 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="smfsb.SpnModels#lv" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="smfsb.SpnModels#lv" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="lv[S](p:breeze.linalg.DenseVector[Double])(implicitevidence$1:smfsb.Types.State[S]):smfsb.Types.Spn[S]"></a><a id="lv[S](DenseVector[Double])(State[S]):Spn[S]"></a>
       <span class="permalink">
       <a href="../smfsb/SpnModels$.html#lv[S](p:breeze.linalg.DenseVector[Double])(implicitevidence$1:smfsb.Types.State[S]):smfsb.Types.Spn[S]" title="Permalink">
@@ -437,8 +443,10 @@
         <span class="name">lv</span><span class="tparams">[<span name="S">S</span>]</span><span class="params">(<span name="p">p: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Double">Double</span>] = <span class="symbol">DenseVector(1.0, 0.005, 0.6)</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Types$$State.html" class="extype" name="smfsb.Types.State">State</a>[<span class="extype" name="smfsb.SpnModels.lv.S">S</span>]</span>)</span><span class="result">: <a href="Types$$Spn.html" class="extype" name="smfsb.Types.Spn">Spn</a>[<span class="extype" name="smfsb.SpnModels.lv.S">S</span>]</span>
       </span>
       
-      
-    </li><li name="smfsb.SpnModels#mm" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Lotka-Volterra model
+</p><div class="fullcomment"><div class="comment cmt"><p>Lotka-Volterra model
+</p></div><dl class="paramcmts block"><dt class="param">p</dt><dd class="cmt"><p>Vector of rates for the 3 reactions (prey reproduction, predator-prey interaction, predator death)</p></dd><dt>returns</dt><dd class="cmt"><p>An <code>Spn</code> object, which can be passed into a <code>Step</code> function, for example</p></dd></dl></div>
+    </li><li name="smfsb.SpnModels#mm" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="mm[S](p:breeze.linalg.DenseVector[Double])(implicitevidence$3:smfsb.Types.State[S]):smfsb.Types.Spn[S]"></a><a id="mm[S](DenseVector[Double])(State[S]):Spn[S]"></a>
       <span class="permalink">
       <a href="../smfsb/SpnModels$.html#mm[S](p:breeze.linalg.DenseVector[Double])(implicitevidence$3:smfsb.Types.State[S]):smfsb.Types.Spn[S]" title="Permalink">
@@ -453,7 +461,9 @@
         <span class="name">mm</span><span class="tparams">[<span name="S">S</span>]</span><span class="params">(<span name="p">p: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Double">Double</span>] = <span class="symbol">DenseVector(0.00166, 1e-04, 0.1)</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Types$$State.html" class="extype" name="smfsb.Types.State">State</a>[<span class="extype" name="smfsb.SpnModels.mm.S">S</span>]</span>)</span><span class="result">: <a href="Types$$Spn.html" class="extype" name="smfsb.Types.Spn">Spn</a>[<span class="extype" name="smfsb.SpnModels.mm.S">S</span>]</span>
       </span>
       
-      
+      <p class="shortcomment cmt">Michaelis-Menten enzyme kinetics model
+</p><div class="fullcomment"><div class="comment cmt"><p>Michaelis-Menten enzyme kinetics model
+</p></div><dl class="paramcmts block"><dt class="param">p</dt><dd class="cmt"><p>Vector of rates for the 3 reactions</p></dd><dt>returns</dt><dd class="cmt"><p>An <code>Spn</code> object, which can be passed into a <code>Step</code> function, for example</p></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">

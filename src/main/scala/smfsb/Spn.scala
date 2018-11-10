@@ -10,8 +10,19 @@ package smfsb
 import Types._
 import breeze.linalg._
 
+/**
+  * Some example SPN models, each of which can be instantiated with either 
+  * discrete or continous states.
+  */
 object SpnModels {
 
+  /**
+    * Lotka-Volterra model
+    * 
+    * @param p Vector of rates for the 3 reactions (prey reproduction, predator-prey interaction, predator death)
+    * 
+    * @return An `Spn` object, which can be passed into a `Step` function, for example
+    */
   def lv[S: State](p: DenseVector[Double] = DenseVector(1.0, 0.005, 0.6)): Spn[S] =
     UnmarkedSpn[S](
       List("x", "y"),
@@ -24,6 +35,13 @@ object SpnModels {
       )}
       )
 
+  /**
+    * Imigration-death model
+    * 
+    * @param p Vector of rates for the 2 reactions (imigration and death)
+    * 
+    * @return An `Spn` object, which can be passed into a `Step` function, for example
+    */
   def id[S: State](p: DenseVector[Double] = DenseVector(1.0, 0.1)): Spn[S] =
     UnmarkedSpn[S](
     List("X"),
@@ -35,6 +53,13 @@ object SpnModels {
       }
     )
 
+  /**
+    * Michaelis-Menten enzyme kinetics model
+    * 
+    * @param p Vector of rates for the 3 reactions
+    * 
+    * @return An `Spn` object, which can be passed into a `Step` function, for example
+    */
   def mm[S: State](p: DenseVector[Double] = DenseVector(0.00166, 1e-04, 0.1)): Spn[S] =
     UnmarkedSpn[S](
     List("S", "E", "SE", "P"),
@@ -46,6 +71,13 @@ object SpnModels {
       }
   )
 
+  /**
+    * A simple auto-regulatory network model
+    * 
+    * @param p Vector of rates for the 8 reactions
+    * 
+    * @return An `Spn` object, which can be passed into a `Step` function, for example
+    */
   def ar[S: State](c: DenseVector[Double] = DenseVector(1.0, 10.0, 0.01, 10.0, 1.0, 1.0, 0.1, 0.01)): Spn[S] =
     UnmarkedSpn[S](
     List("g.P2", "g", "r", "P", "P2"),

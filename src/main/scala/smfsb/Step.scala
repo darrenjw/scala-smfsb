@@ -13,8 +13,18 @@ import breeze.numerics._
 import breeze.stats.distributions._
 import Types._
 
+/**
+  * Functions which accept a `Spn` and return a function for simulating from the transition kernel of that model
+  */
 object Step {
 
+  /**
+    * The Gillespie algorithm, sometimes known as the direct method, or the stochastic simulation algorithm (SSA)
+    * @param n A `Spn[IntState]` model
+    * 
+    * @return A function with type signature `(x0: IntState, t0: Time, deltat: Time) => IntState`
+    * which will simulate the state of the system at time `t0+deltat` given initial state `x0` and intial time `t0`
+    */
   def gillespie(n: Spn[IntState]): (IntState, Time, Time) => IntState = {
     val Sto = (n.post - n.pre).t
     (x: IntState, t0, dt) => {
@@ -34,13 +44,22 @@ object Step {
     }
   }
 
-  def myPoisson(mean: Double): Int = if (mean < 250.0) {
+  private def myPoisson(mean: Double): Int = if (mean < 250.0) {
     // should cope better with large means...
     Poisson(mean).sample
   } else {
     abs(round(Gaussian(mean, math.sqrt(mean)).draw)).toInt
   }
 
+  /**
+    * A Poisson time-stepping algorithm. Like a tau-leaping algorithm, but with fixed step sizes.
+    * 
+    * @param n A `Spn[IntState]` model
+    * @param dt The internal time step of the algorithm. Not the same as the `deltat` of the returned transition kernel.
+    * 
+    * @return A function with type signature `(x0: IntState, t0: Time, deltat: Time) => IntState`
+    * which will simulate the state of the system at time `t0+deltat` given initial state `x0` and intial time `t0`
+    */
   def pts(n: Spn[IntState], dt: Double = 0.01): (IntState, Time, Time) => IntState = {
     val Sto = (n.post - n.pre).t
     val v = Sto.cols
@@ -61,6 +80,16 @@ object Step {
     }
   }
 
+
+  /**
+    * An Euler-Maruyama simulation of a CLE approximation to the provided `Spn`.
+    * 
+    * @param n A `Spn[DoubleState]` model (note that the state must be continous)
+    * @param dt The internal time step of the algorithm. Not the same as the `deltat` of the returned transition kernel.
+    * 
+    * @return A function with type signature `(x0: DoubleState, t0: Time, deltat: Time) => DoubleState`
+    * which will simulate the state of the system at time `t0+deltat` given initial state `x0` and intial time `t0`
+    */
   def cle(n: Spn[DoubleState], dt: Double = 0.01): (DoubleState, Time, Time) => DoubleState = {
     val Sto = ((n.post - n.pre) map { _ * 1.0 }).t
     val v = Sto.cols
@@ -83,6 +112,17 @@ object Step {
     }
   }
 
+  /**
+    * A simple Euler integration of the continuous deterministic approximation to the provided `Spn`.
+    * Euler methods are well-known to be very unstable, but the function can be useful for getting
+    * a basic idea of how the model behaves in the absence of noise.
+    * 
+    * @param n A `Spn[DoubleState]` model (note that the state must be continous)
+    * @param dt The internal time step of the algorithm. Not the same as the `deltat` of the returned transition kernel.
+    * 
+    * @return A function with type signature `(x0: DoubleState, t0: Time, deltat: Time) => DoubleState`
+    * which will simulate the state of the system at time `t0+deltat` given initial state `x0` and intial time `t0`
+    */
   def euler(n: Spn[DoubleState], dt: Double = 0.01): (DoubleState, Time, Time) => DoubleState = {
     val Sto = ((n.post - n.pre) map { _ * 1.0 }).t
     val v = Sto.cols

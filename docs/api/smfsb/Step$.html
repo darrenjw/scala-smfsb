@@ -87,28 +87,28 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="_root_">root</a></dd></dl></div>
     </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="Mcmc$.html" title=""></a>
-                        <a href="Mcmc$.html" title="">Mcmc</a>
+                        <a class="object" href="Mcmc$.html" title="Functions for constucting generic Metropolis-Hastings MCMC algorithms, and associated utilities."></a>
+                        <a href="Mcmc$.html" title="Functions for constucting generic Metropolis-Hastings MCMC algorithms, and associated utilities.">Mcmc</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="Mll$.html" title=""></a>
-                        <a href="Mll$.html" title="">Mll</a>
+                        <a class="object" href="Mll$.html" title="Functions associated with particle filtering of Markov process models against time series data and the computation of marginal model likelihoods."></a>
+                        <a href="Mll$.html" title="Functions associated with particle filtering of Markov process models against time series data and the computation of marginal model likelihoods.">Mll</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="Sim$.html" title=""></a>
-                        <a href="Sim$.html" title="">Sim</a>
+                        <a class="object" href="Sim$.html" title="Functions for simulating data associated with a Markov process given an appropriate transition kernel."></a>
+                        <a href="Sim$.html" title="Functions for simulating data associated with a Markov process given an appropriate transition kernel.">Sim</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="SpnModels$.html" title=""></a>
-                        <a href="SpnModels$.html" title="">SpnModels</a>
+                        <a class="object" href="SpnModels$.html" title="Some example SPN models, each of which can be instantiated with either discrete or continous states."></a>
+                        <a href="SpnModels$.html" title="Some example SPN models, each of which can be instantiated with either discrete or continous states.">SpnModels</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="" title=""></a>
-                        <a href="" title="">Step</a>
+                        <a class="object" href="" title="Functions which accept a Spn and return a function for simulating from the transition kernel of that model"></a>
+                        <a href="" title="Functions which accept a Spn and return a function for simulating from the transition kernel of that model">Step</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="Types$.html" title=""></a>
-                        <a href="Types$.html" title="">Types</a>
+                        <a class="object" href="Types$.html" title="Object containing basic types used throughout the library."></a>
+                        <a href="Types$.html" title="Object containing basic types used throughout the library.">Types</a>
                       </li>
               </ul>
             </div>
@@ -137,7 +137,8 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Functions which accept a <code>Spn</code> and return a function for simulating from the transition kernel of that model
+</p></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -258,7 +259,7 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="smfsb.Step#cle" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="smfsb.Step#cle" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="cle(n:smfsb.Types.Spn[smfsb.Types.DoubleState],dt:Double):(smfsb.Types.DoubleState,smfsb.Types.Time,smfsb.Types.Time)=&gt;smfsb.Types.DoubleState"></a><a id="cle(Spn[DoubleState],Double):(DoubleState,Time,Time)⇒DoubleState"></a>
       <span class="permalink">
       <a href="../smfsb/Step$.html#cle(n:smfsb.Types.Spn[smfsb.Types.DoubleState],dt:Double):(smfsb.Types.DoubleState,smfsb.Types.Time,smfsb.Types.Time)=&gt;smfsb.Types.DoubleState" title="Permalink">
@@ -273,7 +274,9 @@
         <span class="name">cle</span><span class="params">(<span name="n">n: <a href="Types$$Spn.html" class="extype" name="smfsb.Types.Spn">Spn</a>[<a href="Types$.html#DoubleState=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.Types.DoubleState">DoubleState</a>]</span>, <span name="dt">dt: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.01</span></span>)</span><span class="result">: (<a href="Types$.html#DoubleState=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.Types.DoubleState">DoubleState</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>) ⇒ <a href="Types$.html#DoubleState=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.Types.DoubleState">DoubleState</a></span>
       </span>
       
-      
+      <p class="shortcomment cmt">An Euler-Maruyama simulation of a CLE approximation to the provided <code>Spn</code>.</p><div class="fullcomment"><div class="comment cmt"><p>An Euler-Maruyama simulation of a CLE approximation to the provided <code>Spn</code>.
+</p></div><dl class="paramcmts block"><dt class="param">n</dt><dd class="cmt"><p>A <code>Spn[DoubleState]</code> model (note that the state must be continous)</p></dd><dt class="param">dt</dt><dd class="cmt"><p>The internal time step of the algorithm. Not the same as the <code>deltat</code> of the returned transition kernel.</p></dd><dt>returns</dt><dd class="cmt"><p>A function with type signature <code>(x0: DoubleState, t0: Time, deltat: Time) =&gt; DoubleState</code>
+which will simulate the state of the system at time <code>t0+deltat</code> given initial state <code>x0</code> and intial time <code>t0</code></p></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
       <span class="permalink">
@@ -330,7 +333,7 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="smfsb.Step#euler" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="smfsb.Step#euler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="euler(n:smfsb.Types.Spn[smfsb.Types.DoubleState],dt:Double):(smfsb.Types.DoubleState,smfsb.Types.Time,smfsb.Types.Time)=&gt;smfsb.Types.DoubleState"></a><a id="euler(Spn[DoubleState],Double):(DoubleState,Time,Time)⇒DoubleState"></a>
       <span class="permalink">
       <a href="../smfsb/Step$.html#euler(n:smfsb.Types.Spn[smfsb.Types.DoubleState],dt:Double):(smfsb.Types.DoubleState,smfsb.Types.Time,smfsb.Types.Time)=&gt;smfsb.Types.DoubleState" title="Permalink">
@@ -345,7 +348,11 @@
         <span class="name">euler</span><span class="params">(<span name="n">n: <a href="Types$$Spn.html" class="extype" name="smfsb.Types.Spn">Spn</a>[<a href="Types$.html#DoubleState=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.Types.DoubleState">DoubleState</a>]</span>, <span name="dt">dt: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.01</span></span>)</span><span class="result">: (<a href="Types$.html#DoubleState=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.Types.DoubleState">DoubleState</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>) ⇒ <a href="Types$.html#DoubleState=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.Types.DoubleState">DoubleState</a></span>
       </span>
       
-      
+      <p class="shortcomment cmt">A simple Euler integration of the continuous deterministic approximation to the provided <code>Spn</code>.</p><div class="fullcomment"><div class="comment cmt"><p>A simple Euler integration of the continuous deterministic approximation to the provided <code>Spn</code>.
+Euler methods are well-known to be very unstable, but the function can be useful for getting
+a basic idea of how the model behaves in the absence of noise.
+</p></div><dl class="paramcmts block"><dt class="param">n</dt><dd class="cmt"><p>A <code>Spn[DoubleState]</code> model (note that the state must be continous)</p></dd><dt class="param">dt</dt><dd class="cmt"><p>The internal time step of the algorithm. Not the same as the <code>deltat</code> of the returned transition kernel.</p></dd><dt>returns</dt><dd class="cmt"><p>A function with type signature <code>(x0: DoubleState, t0: Time, deltat: Time) =&gt; DoubleState</code>
+which will simulate the state of the system at time <code>t0+deltat</code> given initial state <code>x0</code> and intial time <code>t0</code></p></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
@@ -387,7 +394,7 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="smfsb.Step#gillespie" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="smfsb.Step#gillespie" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="gillespie(n:smfsb.Types.Spn[smfsb.Types.IntState]):(smfsb.Types.IntState,smfsb.Types.Time,smfsb.Types.Time)=&gt;smfsb.Types.IntState"></a><a id="gillespie(Spn[IntState]):(IntState,Time,Time)⇒IntState"></a>
       <span class="permalink">
       <a href="../smfsb/Step$.html#gillespie(n:smfsb.Types.Spn[smfsb.Types.IntState]):(smfsb.Types.IntState,smfsb.Types.Time,smfsb.Types.Time)=&gt;smfsb.Types.IntState" title="Permalink">
@@ -402,7 +409,8 @@
         <span class="name">gillespie</span><span class="params">(<span name="n">n: <a href="Types$$Spn.html" class="extype" name="smfsb.Types.Spn">Spn</a>[<a href="Types$.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.Types.IntState">IntState</a>]</span>)</span><span class="result">: (<a href="Types$.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.Types.IntState">IntState</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>) ⇒ <a href="Types$.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.Types.IntState">IntState</a></span>
       </span>
       
-      
+      <p class="shortcomment cmt">The Gillespie algorithm, sometimes known as the direct method, or the stochastic simulation algorithm (SSA)</p><div class="fullcomment"><div class="comment cmt"><p>The Gillespie algorithm, sometimes known as the direct method, or the stochastic simulation algorithm (SSA)</p></div><dl class="paramcmts block"><dt class="param">n</dt><dd class="cmt"><p>A <code>Spn[IntState]</code> model</p></dd><dt>returns</dt><dd class="cmt"><p>A function with type signature <code>(x0: IntState, t0: Time, deltat: Time) =&gt; IntState</code>
+which will simulate the state of the system at time <code>t0+deltat</code> given initial state <code>x0</code> and intial time <code>t0</code></p></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
@@ -438,22 +446,6 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="smfsb.Step#myPoisson" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="myPoisson(mean:Double):Int"></a><a id="myPoisson(Double):Int"></a>
-      <span class="permalink">
-      <a href="../smfsb/Step$.html#myPoisson(mean:Double):Int" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">myPoisson</span><span class="params">(<span name="mean">mean: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
-      </span>
-      
-      
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -508,7 +500,7 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="smfsb.Step#pts" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="smfsb.Step#pts" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="pts(n:smfsb.Types.Spn[smfsb.Types.IntState],dt:Double):(smfsb.Types.IntState,smfsb.Types.Time,smfsb.Types.Time)=&gt;smfsb.Types.IntState"></a><a id="pts(Spn[IntState],Double):(IntState,Time,Time)⇒IntState"></a>
       <span class="permalink">
       <a href="../smfsb/Step$.html#pts(n:smfsb.Types.Spn[smfsb.Types.IntState],dt:Double):(smfsb.Types.IntState,smfsb.Types.Time,smfsb.Types.Time)=&gt;smfsb.Types.IntState" title="Permalink">
@@ -523,7 +515,9 @@
         <span class="name">pts</span><span class="params">(<span name="n">n: <a href="Types$$Spn.html" class="extype" name="smfsb.Types.Spn">Spn</a>[<a href="Types$.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.Types.IntState">IntState</a>]</span>, <span name="dt">dt: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.01</span></span>)</span><span class="result">: (<a href="Types$.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.Types.IntState">IntState</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>) ⇒ <a href="Types$.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.Types.IntState">IntState</a></span>
       </span>
       
-      
+      <p class="shortcomment cmt">A Poisson time-stepping algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>A Poisson time-stepping algorithm. Like a tau-leaping algorithm, but with fixed step sizes.
+</p></div><dl class="paramcmts block"><dt class="param">n</dt><dd class="cmt"><p>A <code>Spn[IntState]</code> model</p></dd><dt class="param">dt</dt><dd class="cmt"><p>The internal time step of the algorithm. Not the same as the <code>deltat</code> of the returned transition kernel.</p></dd><dt>returns</dt><dd class="cmt"><p>A function with type signature <code>(x0: IntState, t0: Time, deltat: Time) =&gt; IntState</code>
+which will simulate the state of the system at time <code>t0+deltat</code> given initial state <code>x0</code> and intial time <code>t0</code></p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">

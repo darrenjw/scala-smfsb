@@ -87,28 +87,28 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="_root_">root</a></dd></dl></div>
     </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="Mcmc$.html" title=""></a>
-                        <a href="Mcmc$.html" title="">Mcmc</a>
+                        <a class="object" href="Mcmc$.html" title="Functions for constucting generic Metropolis-Hastings MCMC algorithms, and associated utilities."></a>
+                        <a href="Mcmc$.html" title="Functions for constucting generic Metropolis-Hastings MCMC algorithms, and associated utilities.">Mcmc</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="" title=""></a>
-                        <a href="" title="">Mll</a>
+                        <a class="object" href="" title="Functions associated with particle filtering of Markov process models against time series data and the computation of marginal model likelihoods."></a>
+                        <a href="" title="Functions associated with particle filtering of Markov process models against time series data and the computation of marginal model likelihoods.">Mll</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="Sim$.html" title=""></a>
-                        <a href="Sim$.html" title="">Sim</a>
+                        <a class="object" href="Sim$.html" title="Functions for simulating data associated with a Markov process given an appropriate transition kernel."></a>
+                        <a href="Sim$.html" title="Functions for simulating data associated with a Markov process given an appropriate transition kernel.">Sim</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="SpnModels$.html" title=""></a>
-                        <a href="SpnModels$.html" title="">SpnModels</a>
+                        <a class="object" href="SpnModels$.html" title="Some example SPN models, each of which can be instantiated with either discrete or continous states."></a>
+                        <a href="SpnModels$.html" title="Some example SPN models, each of which can be instantiated with either discrete or continous states.">SpnModels</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="Step$.html" title=""></a>
-                        <a href="Step$.html" title="">Step</a>
+                        <a class="object" href="Step$.html" title="Functions which accept a Spn and return a function for simulating from the transition kernel of that model"></a>
+                        <a href="Step$.html" title="Functions which accept a Spn and return a function for simulating from the transition kernel of that model">Step</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="Types$.html" title=""></a>
-                        <a href="Types$.html" title="">Types</a>
+                        <a class="object" href="Types$.html" title="Object containing basic types used throughout the library."></a>
+                        <a href="Types$.html" title="Object containing basic types used throughout the library.">Types</a>
                       </li>
               </ul>
             </div>
@@ -137,7 +137,8 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Functions associated with particle filtering of Markov process models against time series data and the computation of marginal model likelihoods.
+</p></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -258,7 +259,7 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="smfsb.Mll#bpf" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="smfsb.Mll#bpf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="bpf[S,O](x0:Vector[S],t0:smfsb.Types.Time,data:smfsb.Types.Ts[O],dataLik:(S,O)=&gt;smfsb.Types.LogLik,stepFun:(S,smfsb.Types.Time,smfsb.Types.Time)=&gt;S)(implicitevidence$1:smfsb.Types.State[S],implicitevidence$2:smfsb.Types.Observation[O]):(smfsb.Types.LogLik,smfsb.Types.Time,Vector[S])"></a><a id="bpf[S,O](Vector[S],Time,Ts[O],(S,O)⇒LogLik,(S,Time,Time)⇒S)(State[S],Observation[O]):(LogLik,Time,Vector[S])"></a>
       <span class="permalink">
       <a href="../smfsb/Mll$.html#bpf[S,O](x0:Vector[S],t0:smfsb.Types.Time,data:smfsb.Types.Ts[O],dataLik:(S,O)=&gt;smfsb.Types.LogLik,stepFun:(S,smfsb.Types.Time,smfsb.Types.Time)=&gt;S)(implicitevidence$1:smfsb.Types.State[S],implicitevidence$2:smfsb.Types.Observation[O]):(smfsb.Types.LogLik,smfsb.Types.Time,Vector[S])" title="Permalink">
@@ -273,23 +274,11 @@
         <span class="name">bpf</span><span class="tparams">[<span name="S">S</span>, <span name="O">O</span>]</span><span class="params">(<span name="x0">x0: <span class="extype" name="scala.Vector">Vector</span>[<span class="extype" name="smfsb.Mll.bpf.S">S</span>]</span>, <span name="t0">t0: <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a></span>, <span name="data">data: <a href="Types$.html#Ts[S]=List[(smfsb.Types.Time,S)]" class="extmbr" name="smfsb.Types.Ts">Ts</a>[<span class="extype" name="smfsb.Mll.bpf.O">O</span>]</span>, <span name="dataLik">dataLik: (<span class="extype" name="smfsb.Mll.bpf.S">S</span>, <span class="extype" name="smfsb.Mll.bpf.O">O</span>) ⇒ <a href="Types$.html#LogLik=Double" class="extmbr" name="smfsb.Types.LogLik">LogLik</a></span>, <span name="stepFun">stepFun: (<span class="extype" name="smfsb.Mll.bpf.S">S</span>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>) ⇒ <span class="extype" name="smfsb.Mll.bpf.S">S</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Types$$State.html" class="extype" name="smfsb.Types.State">State</a>[<span class="extype" name="smfsb.Mll.bpf.S">S</span>]</span>, <span name="arg1">arg1: <a href="Types$$Observation.html" class="extype" name="smfsb.Types.Observation">Observation</a>[<span class="extype" name="smfsb.Mll.bpf.O">O</span>]</span>)</span><span class="result">: (<a href="Types$.html#LogLik=Double" class="extmbr" name="smfsb.Types.LogLik">LogLik</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>, <span class="extype" name="scala.Vector">Vector</span>[<span class="extype" name="smfsb.Mll.bpf.S">S</span>])</span>
       </span>
       
-      
-    </li><li name="smfsb.Mll#bpfUpdate" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="bpfUpdate[S,O](dataLik:(S,O)=&gt;smfsb.Types.LogLik,stepFun:(S,smfsb.Types.Time,smfsb.Types.Time)=&gt;S)(x:Vector[S],t0:smfsb.Types.Time,t1:smfsb.Types.Time,o:O):(smfsb.Types.LogLik,Vector[S])"></a><a id="bpfUpdate[S,O]((S,O)⇒LogLik,(S,Time,Time)⇒S)(Vector[S],Time,Time,O):(LogLik,Vector[S])"></a>
-      <span class="permalink">
-      <a href="../smfsb/Mll$.html#bpfUpdate[S,O](dataLik:(S,O)=&gt;smfsb.Types.LogLik,stepFun:(S,smfsb.Types.Time,smfsb.Types.Time)=&gt;S)(x:Vector[S],t0:smfsb.Types.Time,t1:smfsb.Types.Time,o:O):(smfsb.Types.LogLik,Vector[S])" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">bpfUpdate</span><span class="tparams">[<span name="S">S</span>, <span name="O">O</span>]</span><span class="params">(<span name="dataLik">dataLik: (<span class="extype" name="smfsb.Mll.bpfUpdate.S">S</span>, <span class="extype" name="smfsb.Mll.bpfUpdate.O">O</span>) ⇒ <a href="Types$.html#LogLik=Double" class="extmbr" name="smfsb.Types.LogLik">LogLik</a></span>, <span name="stepFun">stepFun: (<span class="extype" name="smfsb.Mll.bpfUpdate.S">S</span>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>) ⇒ <span class="extype" name="smfsb.Mll.bpfUpdate.S">S</span></span>)</span><span class="params">(<span name="x">x: <span class="extype" name="scala.Vector">Vector</span>[<span class="extype" name="smfsb.Mll.bpfUpdate.S">S</span>]</span>, <span name="t0">t0: <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a></span>, <span name="t1">t1: <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a></span>, <span name="o">o: <span class="extype" name="smfsb.Mll.bpfUpdate.O">O</span></span>)</span><span class="result">: (<a href="Types$.html#LogLik=Double" class="extmbr" name="smfsb.Types.LogLik">LogLik</a>, <span class="extype" name="scala.Vector">Vector</span>[<span class="extype" name="smfsb.Mll.bpfUpdate.S">S</span>])</span>
-      </span>
-      
-      
+      <p class="shortcomment cmt">A simple bootstrap particle filter with multinomial resampling.</p><div class="fullcomment"><div class="comment cmt"><p>A simple bootstrap particle filter with multinomial resampling. Note that it
+supports time series of observations on irregular time grids. Note that this is
+the function which does most of the work for <code>pfMll</code>.
+</p></div><dl class="paramcmts block"><dt class="param">x0</dt><dd class="cmt"><p>A sample from the prior on the state at time <code>t0</code>. The size of the sample
+determines the number of particles used in the particle filter.</p></dd><dt class="param">t0</dt><dd class="cmt"><p>The time corresponding to the prior sample</p></dd><dt class="param">data</dt><dd class="cmt"><p>The observed data in the form of a time series</p></dd><dt class="param">dataLik</dt><dd class="cmt"><p>The log-likelihood of the observation model</p></dd><dt class="param">stepFun</dt><dd class="cmt"><p>The transition kernel of the underlying process</p></dd><dt>returns</dt><dd class="cmt"><p>A triple: the first element is the log of an unbiased estimate of the marginal likelihood of the model, the second is just the final time point, and the third is a sample from the posterior distribution of the final time point.</p></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
       <span class="permalink">
@@ -476,7 +465,7 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="smfsb.Mll#pfMll" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="smfsb.Mll#pfMll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="pfMll[P,S,O](simX0:P=&gt;Vector[S],t0:smfsb.Types.Time,stepFun:P=&gt;((S,smfsb.Types.Time,smfsb.Types.Time)=&gt;S),dataLik:P=&gt;((S,O)=&gt;smfsb.Types.LogLik),data:smfsb.Types.Ts[O])(implicitevidence$3:smfsb.Types.State[S],implicitevidence$4:smfsb.Types.Observation[O]):P=&gt;smfsb.Types.LogLik"></a><a id="pfMll[P,S,O]((P)⇒Vector[S],Time,(P)⇒(S,Time,Time)⇒S,(P)⇒(S,O)⇒LogLik,Ts[O])(State[S],Observation[O]):(P)⇒LogLik"></a>
       <span class="permalink">
       <a href="../smfsb/Mll$.html#pfMll[P,S,O](simX0:P=&gt;Vector[S],t0:smfsb.Types.Time,stepFun:P=&gt;((S,smfsb.Types.Time,smfsb.Types.Time)=&gt;S),dataLik:P=&gt;((S,O)=&gt;smfsb.Types.LogLik),data:smfsb.Types.Ts[O])(implicitevidence$3:smfsb.Types.State[S],implicitevidence$4:smfsb.Types.Observation[O]):P=&gt;smfsb.Types.LogLik" title="Permalink">
@@ -491,23 +480,8 @@
         <span class="name">pfMll</span><span class="tparams">[<span name="P">P</span>, <span name="S">S</span>, <span name="O">O</span>]</span><span class="params">(<span name="simX0">simX0: (<span class="extype" name="smfsb.Mll.pfMll.P">P</span>) ⇒ <span class="extype" name="scala.Vector">Vector</span>[<span class="extype" name="smfsb.Mll.pfMll.S">S</span>]</span>, <span name="t0">t0: <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a></span>, <span name="stepFun">stepFun: (<span class="extype" name="smfsb.Mll.pfMll.P">P</span>) ⇒ (<span class="extype" name="smfsb.Mll.pfMll.S">S</span>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>) ⇒ <span class="extype" name="smfsb.Mll.pfMll.S">S</span></span>, <span name="dataLik">dataLik: (<span class="extype" name="smfsb.Mll.pfMll.P">P</span>) ⇒ (<span class="extype" name="smfsb.Mll.pfMll.S">S</span>, <span class="extype" name="smfsb.Mll.pfMll.O">O</span>) ⇒ <a href="Types$.html#LogLik=Double" class="extmbr" name="smfsb.Types.LogLik">LogLik</a></span>, <span name="data">data: <a href="Types$.html#Ts[S]=List[(smfsb.Types.Time,S)]" class="extmbr" name="smfsb.Types.Ts">Ts</a>[<span class="extype" name="smfsb.Mll.pfMll.O">O</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Types$$State.html" class="extype" name="smfsb.Types.State">State</a>[<span class="extype" name="smfsb.Mll.pfMll.S">S</span>]</span>, <span name="arg1">arg1: <a href="Types$$Observation.html" class="extype" name="smfsb.Types.Observation">Observation</a>[<span class="extype" name="smfsb.Mll.pfMll.O">O</span>]</span>)</span><span class="result">: (<span class="extype" name="smfsb.Mll.pfMll.P">P</span>) ⇒ <a href="Types$.html#LogLik=Double" class="extmbr" name="smfsb.Types.LogLik">LogLik</a></span>
       </span>
       
-      
-    </li><li name="smfsb.Mll#sample" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="sample(n:Int,prob:breeze.linalg.DenseVector[Double]):Vector[Int]"></a><a id="sample(Int,DenseVector[Double]):Vector[Int]"></a>
-      <span class="permalink">
-      <a href="../smfsb/Mll$.html#sample(n:Int,prob:breeze.linalg.DenseVector[Double]):Vector[Int]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">sample</span><span class="params">(<span name="n">n: <span class="extype" name="scala.Int">Int</span></span>, <span name="prob">prob: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Double">Double</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Vector">Vector</span>[<span class="extype" name="scala.Int">Int</span>]</span>
-      </span>
-      
-      
+      <p class="shortcomment cmt">A function for evaluating marginal log-likelihoods of parametrised models.</p><div class="fullcomment"><div class="comment cmt"><p>A function for evaluating marginal log-likelihoods of parametrised models. It basically just threads a parameter value through the arguments required for <code>bpf</code>.
+</p></div><dl class="paramcmts block"><dt class="param">simX0</dt><dd class="cmt"><p>A function which when provided with a parameter value will return a sample from the prior on the intial state of a Markov process model. The size of the sample will determine the number of particles used in the particle filter.</p></dd><dt class="param">t0</dt><dd class="cmt"><p>The intial time corresponding to the prior sample</p></dd><dt class="param">stepFun</dt><dd class="cmt"><p>A function, which when provided with a parameter value, will return the transition kernel of a Markov process.</p></dd><dt class="param">dataLik</dt><dd class="cmt"><p>A function, which when provided with a parameter value, will return the log-likelihood of the observation model</p></dd><dt class="param">data</dt><dd class="cmt"><p>The observed data in the form of a time series</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">

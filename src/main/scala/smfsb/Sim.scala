@@ -10,8 +10,22 @@ package smfsb
 import Types._
 import annotation.tailrec
 
+/**
+  * Functions for simulating data associated with a Markov process given an appropriate transition kernel.
+  */
 object Sim {
 
+  /**
+    * Use a transition kernel to simulate states on a regular time grid
+    * 
+    * @param x0 Initial state
+    * @param t0 Initial time
+    * @param tt The terminal time
+    * @param dt The time step of the output time grid
+    * @param stepFun The transition kernel, such as output by one of the functions in `Sim`
+    * 
+    * @return A time series of simulated states corresponding to a single realisation of the underlying stochastic process
+    */
   def ts[S: State](
     x0: S,
     t0: Time = 0.0,
@@ -36,6 +50,16 @@ object Sim {
     go(List((t0, x0)), tt, dt, stepFun).reverse
   }
 
+  /**
+    * Use a transition kernel to simulate states on an irregular time grid
+    * 
+    * @param x0 Initial state
+    * @param t0 Initial time
+    * @param timeList A list of times where the state of the process is required
+    * @param stepFun The transition kernel, such as output by one of the functions in `Sim`
+    * 
+    * @return A time series of simulated states at the required times corresponding to a single realisation of the underlying stochastic process
+    */
   def times[S: State](
     x0: S,
     t0: Time = 0.0,
@@ -59,10 +83,21 @@ object Sim {
       }
     }
     val t1=timeList.head
-    val x1=stepFun(x0,t0,t1-t0)
+    val x1=stepFun(x0, t0, t1-t0)
     go(List((t1, x1)), timeList.tail, stepFun).reverse
   }
 
+  /**
+    * Simulate multiple independent realisations from a transition kernel
+    * 
+    * @param n The number of realisations required
+    * @param x0 The initial state
+    * @param t0 The intial time
+    * @param deltat The time interval over which to simulate the process
+    * @param stepFun The transition kernel to use
+    * 
+    * @return A `List` of realisations of the kernel at time `t0+deltat`
+    */
   def sample[S: State](
     n: Int = 100,
     x0: S,
@@ -83,8 +118,13 @@ object Sim {
     go(Nil, n).reverse
   }
 
-  // plot utilities
-
+  /**
+    * A function for producing a very simple plot of a time series, useful for a quick
+    * eye-balling of simulation output.
+    * Called purely for the side-effect of rendering a plot on the console.
+    * 
+    * @param ts A time series of `States`
+    */
   def plotTs[S: State](ts: Ts[S]): Unit = {
     import breeze.plot._
     import breeze.linalg._
@@ -99,6 +139,13 @@ object Sim {
     f.saveas("TsPlot.png")
   }
 
+  /**
+    * Utility for converting a time series to a CSV string
+    * 
+    * @param ts A time series of `States`
+    * 
+    * @return A CSV string
+    */
   def toCsv[S: State](ts: Ts[S]): String = {
     val ls = ts map { t => t._1.toString + "," + t._2.toCsv + "\n" }
     ls.foldLeft("")(_ + _)
