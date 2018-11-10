@@ -15,10 +15,12 @@ object Mcmc {
   import breeze.stats.distributions.Uniform
 
   def nextValue[P](
-    logLik: P => LogLik, rprop: P => P, dprop: (P, P) => LogLik, dprior: P => LogLik
+    logLik: P => LogLik, rprop: P => P, dprop: (P, P) => LogLik, dprior: P => LogLik, verb: Boolean = false
   )(
     current: (P, LogLik)
   ): (P, LogLik) = {
+    if (verb)
+      println(current)
     val (p,ll) = current
     val prop = rprop(p)
     val llprop = logLik(prop)
@@ -28,9 +30,9 @@ object Mcmc {
   }
 
   def mhStream[P](
-    init: P, logLik: P => LogLik, rprop: P => P,dprop: (P, P) => LogLik, dprior: P => LogLik
+    init: P, logLik: P => LogLik, rprop: P => P,dprop: (P, P) => LogLik, dprior: P => LogLik, verb: Boolean = false
   ): Stream[P] = {
-    val kernel = nextValue(logLik, rprop, dprop, dprior) _
+    val kernel = nextValue(logLik, rprop, dprop, dprior, verb) _
     Stream.iterate((init, Double.MinValue)){
     case (p,ll) => kernel(p, ll)
     }.map(_._1)

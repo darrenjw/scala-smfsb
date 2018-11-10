@@ -46,7 +46,7 @@ object Mll {
     data.foldLeft((0.0, t0, x0))((prev, obs) => {
       val (t, o) = obs
       val (oll, ot, xx) = prev
-      val (ll, nx) = updater(xx , ot , t-ot , o)
+      val (ll, nx) = updater(xx , ot , t , o)
       (oll+ll, t, nx)
     })
   }
