@@ -19,6 +19,8 @@ object Types {
   type HazardVec = DenseVector[Double]
 
 
+  // TODO: Clean up by switching to Simulacrum
+
   // Now type classes:
 
   // Serialisable to a CSV row (and numeric vector)...
@@ -86,6 +88,31 @@ object Types {
   }
   implicit val tsdsDs = new DataSet[Ts[DoubleState]] {
   }
+
+
+  // Add a .thin method to Stream
+
+  // First define a Thinnable typeclass
+  trait Thinnable[F[_]] {
+    def thin[T](f: F[T], th: Int): F[T]
+  }
+  implicit class ThinnableSyntax[T,F[T]](value: F[T]) {
+    def thin(th: Int)(implicit inst: Thinnable[F]): F[T] =
+      inst.thin(value,th)
+  }
+  // A thinnable instance for Stream
+  implicit val streamThinnable: Thinnable[Stream] =
+    new Thinnable[Stream] {
+      def thin[T](s: Stream[T],th: Int): Stream[T] = {
+        val ss = s.drop(th-1)
+        if (ss.isEmpty) Stream.empty else
+          ss.head #:: thin(ss.tail, th)
+      }
+    }
+
+
+
+
 
 }
 
