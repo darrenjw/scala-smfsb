@@ -176,7 +176,7 @@ class MyTestSuite extends FunSuite {
     val s = Mcmc.mhStream(
       0.0,
       Gaussian(0.0,1.0).logPdf,
-      (o: Double) => o + Uniform(-0.5,0.5).draw,
+      (o: Double) => o + Uniform(-1.5,1.5).draw,
       (n: Double, o: Double) => 1.0,
       (p: Double) => 1.0
     )
@@ -185,7 +185,7 @@ class MyTestSuite extends FunSuite {
     //println(out.take(20).toList)
     Mcmc.summary(Mcmc.toDMD(out map (d => DenseVector(d)))(dvdObs))
     assert(out.length === n)
-    assert(math.abs(out.sum / n) < 0.1)
+    assert(math.abs(out.sum / n) < 0.2)
   }
 
 
