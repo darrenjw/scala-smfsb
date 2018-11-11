@@ -1,10 +1,10 @@
 # scala-smfsb tutorial
 
-This tutorial document will walk through some basic features of the `scala-smfsb` library. Some basic familiarity with both Scala and the `smfsb` R package will be helpful, but is not strictly necessary.
+This tutorial document will walk through some basic features of the `scala-smfsb` library. Some familiarity with both Scala and the `smfsb` R package will be helpful, but is not strictly necessary.
 
 ## Setup
 
-To follow the tutorial, you need to have [Sbt](http://www.scala-sbt.org/) installed, and this in turn requires a recent [JDK](http://www.oracle.com/technetwork/java/javase/downloads). If you are new to Scala, you may find the [setup page](https://github.com/darrenjw/scala-course/blob/master/Setup.md) for my [Scala course](https://github.com/darrenjw/scala-course/blob/master/StartHere.md) to be useful.
+To follow the tutorial, you need to have [Sbt](http://www.scala-sbt.org/) installed, and this in turn requires a recent [JDK](http://www.oracle.com/technetwork/java/javase/downloads). If you are new to Scala, you may find the [setup page](https://github.com/darrenjw/scala-course/blob/master/Setup.md) for my [Scala course](https://github.com/darrenjw/scala-course/blob/master/StartHere.md) to be useful, but note that on many Linux systems it can be as simple as installing the packages `openjdk-8-jdk` and `sbt`.
 
 Once you have Sbt installed, you should be able to run it by entering `sbt` at your OS command line. You now need to use Sbt to create a Scala REPL with a dependency on the `scala-smfsb` library. There are many ways to do this, but if you are new to Scala, the simplest way is probably to start up Sbt from an _empty_ or temporary directory (which doesn't contain any Scala code), and then paste the following into the Sbt prompt:
 ```scala
