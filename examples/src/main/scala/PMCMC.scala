@@ -63,7 +63,7 @@ object PMCMC {
     val out = s.drop(burn).thin(thin).take(n)
     println("Starting PMMH run now...")
     out.zipWithIndex.foreach{println}
-    Mcmc.summary(out)(dvdState)
+    Mcmc.summary(out,true)(dvdState)
     println("Done.")
   }
 

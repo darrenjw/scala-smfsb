@@ -124,14 +124,18 @@ object Sim {
     * Called purely for the side-effect of rendering a plot on the console.
     * 
     * @param ts A time series of `States`
+    * @param title Optional figure title
     */
-  def plotTs[S: State](ts: Ts[S]): Unit = {
+  def plotTs[S: State](ts: Ts[S],title: String = ""): Unit = {
     import breeze.plot._
     import breeze.linalg._
     val times = DenseVector((ts map (_._1)).toArray)
     val idx = 0 until ts(0)._2.toDvd.length
     val states = ts map (_._2)
-    val f = Figure()
+    val f = title match {
+      case "" => Figure()
+      case ttl => Figure(ttl)
+    }
     val p = f.subplot(0)
     idx.foreach(i => p += plot(times, DenseVector((states map (_.toDvd.apply(i))).toArray)))
     p.xlabel = "Time"

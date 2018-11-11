@@ -446,9 +446,9 @@
               
         </dd></dl></div>
     </li><li name="smfsb.Sim#plotTs" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="plotTs[S](ts:smfsb.Types.Ts[S])(implicitevidence$4:smfsb.Types.State[S]):Unit"></a><a id="plotTs[S](Ts[S])(State[S]):Unit"></a>
+      <a id="plotTs[S](ts:smfsb.Types.Ts[S],title:String)(implicitevidence$4:smfsb.Types.State[S]):Unit"></a><a id="plotTs[S](Ts[S],String)(State[S]):Unit"></a>
       <span class="permalink">
-      <a href="../smfsb/Sim$.html#plotTs[S](ts:smfsb.Types.Ts[S])(implicitevidence$4:smfsb.Types.State[S]):Unit" title="Permalink">
+      <a href="../smfsb/Sim$.html#plotTs[S](ts:smfsb.Types.Ts[S],title:String)(implicitevidence$4:smfsb.Types.State[S]):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -457,14 +457,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">plotTs</span><span class="tparams">[<span name="S">S</span>]</span><span class="params">(<span name="ts">ts: <a href="Types$.html#Ts[S]=List[(smfsb.Types.Time,S)]" class="extmbr" name="smfsb.Types.Ts">Ts</a>[<span class="extype" name="smfsb.Sim.plotTs.S">S</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Types$$State.html" class="extype" name="smfsb.Types.State">State</a>[<span class="extype" name="smfsb.Sim.plotTs.S">S</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">plotTs</span><span class="tparams">[<span name="S">S</span>]</span><span class="params">(<span name="ts">ts: <a href="Types$.html#Ts[S]=List[(smfsb.Types.Time,S)]" class="extmbr" name="smfsb.Types.Ts">Ts</a>[<span class="extype" name="smfsb.Sim.plotTs.S">S</span>]</span>, <span name="title">title: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;&quot;</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Types$$State.html" class="extype" name="smfsb.Types.State">State</a>[<span class="extype" name="smfsb.Sim.plotTs.S">S</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <p class="shortcomment cmt">A function for producing a very simple plot of a time series, useful for a quick
 eye-balling of simulation output.</p><div class="fullcomment"><div class="comment cmt"><p>A function for producing a very simple plot of a time series, useful for a quick
 eye-balling of simulation output.
 Called purely for the side-effect of rendering a plot on the console.
-</p></div><dl class="paramcmts block"><dt class="param">ts</dt><dd class="cmt"><p>A time series of <code>States</code></p></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">ts</dt><dd class="cmt"><p>A time series of <code>States</code></p></dd><dt class="param">title</dt><dd class="cmt"><p>Optional figure title</p></dd></dl></div>
     </li><li name="smfsb.Sim#sample" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="sample[S](n:Int,x0:S,t0:smfsb.Types.Time,deltat:smfsb.Types.Time,stepFun:(S,smfsb.Types.Time,smfsb.Types.Time)=&gt;S)(implicitevidence$3:smfsb.Types.State[S]):List[S]"></a><a id="sample[S](Int,S,Time,Time,(S,Time,Time)⇒S)(State[S]):List[S]"></a>
       <span class="permalink">
