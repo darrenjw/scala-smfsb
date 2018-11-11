@@ -1,6 +1,6 @@
 # scala-smfsb tutorial
 
-This tutorial document will walk through some basic features of the `scala-smfsb` library. Some familiarity with both Scala and the `smfsb` R package will be helpful, but is not strictly necessary.
+This tutorial document will walk through some basic features of the `scala-smfsb` library. Some familiarity with both Scala and the `smfsb` R package will be helpful, but is not strictly necessary. Note that the library relies on the Scala [Breeze](https://github.com/scalanlp/breeze/blob/master/README.md) library for linear algebra and probability distributions, so some familiarity with that library can also be helpful.
 
 ## Setup
 

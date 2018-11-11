@@ -51,7 +51,10 @@ Just add:
 ```scala
 "com.github.darrenjw" %% "scala-smfsb" % "0.2"
 ```
-to your Sbt dependencies.
+to your Sbt dependencies. You might also need to add an explicit dependence on `breeze-viz`:
+```scala
+"org.scalanlp" %% "breeze-viz" % "0.13.2"
+```
 
 ### Snapshot:
 
