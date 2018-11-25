@@ -33,7 +33,8 @@ object Step {
         if (dt <= 0.0) x else {
           val h = n.h(x, t0)
           val h0 = sum(h)
-          val t = if (h0 < 1e-50) 1e99 else new Exponential(h0).draw
+          val t = if ((h0 < 1e-20)|(h0 > 1e6)) 1e99
+          else new Exponential(h0).draw
           if (t > dt) x else {
             val i = Multinomial(h).sample
             go(x + Sto(::, i), t0 + t, dt - t)

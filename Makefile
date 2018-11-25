@@ -13,7 +13,7 @@ todo:
 	grep "TODO:" src/main/scala/smfsb/*.scala
 
 edit:
-	emacs src/main/scala/smfsb/*.scala src/test/scala/*.scala &#examples/src/main/scala/*.scala &
+	emacs src/main/scala/smfsb/*.scala src/test/scala/*.scala examples/src/main/scala/*.scala &
 
 
 
