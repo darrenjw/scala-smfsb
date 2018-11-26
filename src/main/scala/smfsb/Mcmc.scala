@@ -114,7 +114,7 @@ object Mcmc {
     * @param s A *finite* stream of MCMC iterations.
     * @param plot Generate plots?
     */
-  def summary[P: CsvRow](s: Stream[P], plot: Boolean): Unit = {
+  def summary[P: CsvRow](s: GenSeq[P], plot: Boolean): Unit = {
     summary(toDMD(s), plot)
   }
 

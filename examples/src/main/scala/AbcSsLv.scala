@@ -11,7 +11,7 @@ import breeze.linalg._
 import breeze.numerics._
 import breeze.stats.distributions._
 
-object AbcLv {
+object AbcSsLv {
 
   // state prior
   def statePriorSample = DenseVector(Poisson(50.0).draw, Poisson(100.0).draw)
