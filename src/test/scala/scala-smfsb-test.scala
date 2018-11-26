@@ -183,7 +183,7 @@ class MyTestSuite extends FunSuite {
     val n = 10000
     val out = s.drop(0).take(n)
     //println(out.take(20).toList)
-    Mcmc.summary(Mcmc.toDMD(out map (d => DenseVector(d)))(dvdObs), plt=false)
+    Mcmc.summary(Mcmc.toDMD(out map (d => DenseVector(d))), plt=false)
     assert(out.length === n)
     assert(math.abs(out.sum / n) < 0.2)
   }
@@ -191,7 +191,7 @@ class MyTestSuite extends FunSuite {
 
   test("toDMD") {
     val s = List(DenseVector(1,2,3),DenseVector(4,5,6)).toStream
-    val m = Mcmc.toDMD(s)(dviObs)
+    val m = Mcmc.toDMD(s)
     assert(m.rows === 2)
     assert(m.cols === 3)
     assert(m === DenseMatrix((1.0,2.0,3.0),(4.0,5.0,6.0)))

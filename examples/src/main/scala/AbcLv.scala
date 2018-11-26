@@ -36,7 +36,7 @@ object AbcLv {
     import breeze.stats.DescriptiveStats._
     val cutoff = percentile(distances, fraction)
     val accepted = out filter (_._2 < cutoff)
-    Abc.summary(accepted)(dvdState)
+    Abc.summary(accepted)
     println("Done.")
   }
 
