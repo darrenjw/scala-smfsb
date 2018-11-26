@@ -81,14 +81,31 @@
         <span class="kind">package</span>
       </span>
       <span class="symbol">
-        <a title="" href="index.html"><span class="name">smfsb</span></a>
+        <a title="Object containing basic types used throughout the library." href="index.html"><span class="name">smfsb</span></a>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="_root_">root</a></dd></dl></div>
+      <p class="shortcomment cmt">Object containing basic types used throughout the library.</p><div class="fullcomment"><div class="comment cmt"><p>Object containing basic types used throughout the library.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="_root_">root</a></dd></dl></div>
     </li><li class="current-entities indented1">
                         <span class="separator"></span>
                         <a class="object" href="Abc$.html" title="Functions for parameter inference using ABC (and ABC-SMC) methods"></a>
                         <a href="Abc$.html" title="Functions for parameter inference using ABC (and ABC-SMC) methods">Abc</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
+                        <a class="trait" href="package$$CsvRow.html" title="Type class for vectors that can be rendered to a CSV string (and a Breeze DenseVector[Double]), extended by State"></a>
+                        <a href="package$$CsvRow.html" title="Type class for vectors that can be rendered to a CSV string (and a Breeze DenseVector[Double]), extended by State">CsvRow</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
+                        <a class="class" href="package$$CsvRowSyntax.html" title="Syntax for CsvRow"></a>
+                        <a href="package$$CsvRowSyntax.html" title="Syntax for CsvRow">CsvRowSyntax</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
+                        <a class="trait" href="package$$DataSet.html" title="Data set type class, for ABC methods"></a>
+                        <a href="package$$DataSet.html" title="Data set type class, for ABC methods">DataSet</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
+                        <a class="class" href="package$$MarkedSpn.html" title="Case class for SPNs that include an initial marking"></a>
+                        <a href="package$$MarkedSpn.html" title="Case class for SPNs that include an initial marking">MarkedSpn</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
                         <a class="object" href="Mcmc$.html" title="Functions for constucting generic Metropolis-Hastings MCMC algorithms, and associated utilities."></a>
@@ -103,16 +120,32 @@
                         <a href="Sim$.html" title="Functions for simulating data associated with a Markov process given an appropriate transition kernel.">Sim</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
+                        <a class="trait" href="package$$Spn.html" title="Main trait for stochastic Petri nets (SPNs)"></a>
+                        <a href="package$$Spn.html" title="Main trait for stochastic Petri nets (SPNs)">Spn</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
                         <a class="object" href="SpnModels$.html" title="Some example SPN models, each of which can be instantiated with either discrete or continous states."></a>
                         <a href="SpnModels$.html" title="Some example SPN models, each of which can be instantiated with either discrete or continous states.">SpnModels</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
+                        <a class="trait" href="package$$State.html" title="State type class, with implementations for Breeze DenseVector Ints and Doubles"></a>
+                        <a href="package$$State.html" title="State type class, with implementations for Breeze DenseVector Ints and Doubles">State</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
                         <a class="object" href="" title="Functions which accept a Spn and return a function for simulating from the transition kernel of that model"></a>
                         <a href="" title="Functions which accept a Spn and return a function for simulating from the transition kernel of that model">Step</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="Types$.html" title="Object containing basic types used throughout the library."></a>
-                        <a href="Types$.html" title="Object containing basic types used throughout the library.">Types</a>
+                        <a class="trait" href="package$$Thinnable.html" title="A type class for things which can be &quot;thinned&quot;, with an implementation for Stream."></a>
+                        <a href="package$$Thinnable.html" title="A type class for things which can be &quot;thinned&quot;, with an implementation for Stream.">Thinnable</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
+                        <a class="class" href="package$$ThinnableSyntax.html" title="Provision of the .thin syntax for Thinnable things"></a>
+                        <a href="package$$ThinnableSyntax.html" title="Provision of the .thin syntax for Thinnable things">ThinnableSyntax</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
+                        <a class="class" href="package$$UnmarkedSpn.html" title="Case class for SPNs without an initial marking"></a>
+                        <a href="package$$UnmarkedSpn.html" title="Case class for SPNs without an initial marking">UnmarkedSpn</a>
                       </li>
               </ul>
             </div>
@@ -264,9 +297,9 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="smfsb.Step#cle" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="cle(n:smfsb.Types.Spn[smfsb.Types.DoubleState],dt:Double):(smfsb.Types.DoubleState,smfsb.Types.Time,smfsb.Types.Time)=&gt;smfsb.Types.DoubleState"></a><a id="cle(Spn[DoubleState],Double):(DoubleState,Time,Time)⇒DoubleState"></a>
+      <a id="cle(n:smfsb.Spn[smfsb.DoubleState],dt:Double):(smfsb.DoubleState,smfsb.Time,smfsb.Time)=&gt;smfsb.DoubleState"></a><a id="cle(Spn[DoubleState],Double):(DoubleState,Time,Time)⇒DoubleState"></a>
       <span class="permalink">
-      <a href="../smfsb/Step$.html#cle(n:smfsb.Types.Spn[smfsb.Types.DoubleState],dt:Double):(smfsb.Types.DoubleState,smfsb.Types.Time,smfsb.Types.Time)=&gt;smfsb.Types.DoubleState" title="Permalink">
+      <a href="../smfsb/Step$.html#cle(n:smfsb.Spn[smfsb.DoubleState],dt:Double):(smfsb.DoubleState,smfsb.Time,smfsb.Time)=&gt;smfsb.DoubleState" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -275,7 +308,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">cle</span><span class="params">(<span name="n">n: <a href="Types$$Spn.html" class="extype" name="smfsb.Types.Spn">Spn</a>[<a href="Types$.html#DoubleState=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.Types.DoubleState">DoubleState</a>]</span>, <span name="dt">dt: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.01</span></span>)</span><span class="result">: (<a href="Types$.html#DoubleState=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.Types.DoubleState">DoubleState</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>) ⇒ <a href="Types$.html#DoubleState=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.Types.DoubleState">DoubleState</a></span>
+        <span class="name">cle</span><span class="params">(<span name="n">n: <a href="package$$Spn.html" class="extype" name="smfsb.Spn">Spn</a>[<a href="index.html#DoubleState=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.DoubleState">DoubleState</a>]</span>, <span name="dt">dt: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.01</span></span>)</span><span class="result">: (<a href="index.html#DoubleState=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.DoubleState">DoubleState</a>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>) ⇒ <a href="index.html#DoubleState=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.DoubleState">DoubleState</a></span>
       </span>
       
       <p class="shortcomment cmt">An Euler-Maruyama simulation of a CLE approximation to the provided <code>Spn</code>.</p><div class="fullcomment"><div class="comment cmt"><p>An Euler-Maruyama simulation of a CLE approximation to the provided <code>Spn</code>.
@@ -338,9 +371,9 @@ which will simulate the state of the system at time <code>t0+deltat</code> given
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="smfsb.Step#euler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="euler(n:smfsb.Types.Spn[smfsb.Types.DoubleState],dt:Double):(smfsb.Types.DoubleState,smfsb.Types.Time,smfsb.Types.Time)=&gt;smfsb.Types.DoubleState"></a><a id="euler(Spn[DoubleState],Double):(DoubleState,Time,Time)⇒DoubleState"></a>
+      <a id="euler(n:smfsb.Spn[smfsb.DoubleState],dt:Double):(smfsb.DoubleState,smfsb.Time,smfsb.Time)=&gt;smfsb.DoubleState"></a><a id="euler(Spn[DoubleState],Double):(DoubleState,Time,Time)⇒DoubleState"></a>
       <span class="permalink">
-      <a href="../smfsb/Step$.html#euler(n:smfsb.Types.Spn[smfsb.Types.DoubleState],dt:Double):(smfsb.Types.DoubleState,smfsb.Types.Time,smfsb.Types.Time)=&gt;smfsb.Types.DoubleState" title="Permalink">
+      <a href="../smfsb/Step$.html#euler(n:smfsb.Spn[smfsb.DoubleState],dt:Double):(smfsb.DoubleState,smfsb.Time,smfsb.Time)=&gt;smfsb.DoubleState" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -349,7 +382,7 @@ which will simulate the state of the system at time <code>t0+deltat</code> given
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">euler</span><span class="params">(<span name="n">n: <a href="Types$$Spn.html" class="extype" name="smfsb.Types.Spn">Spn</a>[<a href="Types$.html#DoubleState=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.Types.DoubleState">DoubleState</a>]</span>, <span name="dt">dt: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.01</span></span>)</span><span class="result">: (<a href="Types$.html#DoubleState=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.Types.DoubleState">DoubleState</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>) ⇒ <a href="Types$.html#DoubleState=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.Types.DoubleState">DoubleState</a></span>
+        <span class="name">euler</span><span class="params">(<span name="n">n: <a href="package$$Spn.html" class="extype" name="smfsb.Spn">Spn</a>[<a href="index.html#DoubleState=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.DoubleState">DoubleState</a>]</span>, <span name="dt">dt: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.01</span></span>)</span><span class="result">: (<a href="index.html#DoubleState=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.DoubleState">DoubleState</a>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>) ⇒ <a href="index.html#DoubleState=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.DoubleState">DoubleState</a></span>
       </span>
       
       <p class="shortcomment cmt">A simple Euler integration of the continuous deterministic approximation to the provided <code>Spn</code>.</p><div class="fullcomment"><div class="comment cmt"><p>A simple Euler integration of the continuous deterministic approximation to the provided <code>Spn</code>.
@@ -399,9 +432,9 @@ which will simulate the state of the system at time <code>t0+deltat</code> given
               
         </dd></dl></div>
     </li><li name="smfsb.Step#gillespie" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="gillespie(n:smfsb.Types.Spn[smfsb.Types.IntState]):(smfsb.Types.IntState,smfsb.Types.Time,smfsb.Types.Time)=&gt;smfsb.Types.IntState"></a><a id="gillespie(Spn[IntState]):(IntState,Time,Time)⇒IntState"></a>
+      <a id="gillespie(n:smfsb.Spn[smfsb.IntState]):(smfsb.IntState,smfsb.Time,smfsb.Time)=&gt;smfsb.IntState"></a><a id="gillespie(Spn[IntState]):(IntState,Time,Time)⇒IntState"></a>
       <span class="permalink">
-      <a href="../smfsb/Step$.html#gillespie(n:smfsb.Types.Spn[smfsb.Types.IntState]):(smfsb.Types.IntState,smfsb.Types.Time,smfsb.Types.Time)=&gt;smfsb.Types.IntState" title="Permalink">
+      <a href="../smfsb/Step$.html#gillespie(n:smfsb.Spn[smfsb.IntState]):(smfsb.IntState,smfsb.Time,smfsb.Time)=&gt;smfsb.IntState" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -410,7 +443,7 @@ which will simulate the state of the system at time <code>t0+deltat</code> given
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">gillespie</span><span class="params">(<span name="n">n: <a href="Types$$Spn.html" class="extype" name="smfsb.Types.Spn">Spn</a>[<a href="Types$.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.Types.IntState">IntState</a>]</span>)</span><span class="result">: (<a href="Types$.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.Types.IntState">IntState</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>) ⇒ <a href="Types$.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.Types.IntState">IntState</a></span>
+        <span class="name">gillespie</span><span class="params">(<span name="n">n: <a href="package$$Spn.html" class="extype" name="smfsb.Spn">Spn</a>[<a href="index.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.IntState">IntState</a>]</span>)</span><span class="result">: (<a href="index.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.IntState">IntState</a>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>) ⇒ <a href="index.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.IntState">IntState</a></span>
       </span>
       
       <p class="shortcomment cmt">The Gillespie algorithm, sometimes known as the direct method, or the stochastic simulation algorithm (SSA)</p><div class="fullcomment"><div class="comment cmt"><p>The Gillespie algorithm, sometimes known as the direct method, or the stochastic simulation algorithm (SSA)</p></div><dl class="paramcmts block"><dt class="param">n</dt><dd class="cmt"><p>A <code>Spn[IntState]</code> model</p></dd><dt>returns</dt><dd class="cmt"><p>A function with type signature <code>(x0: IntState, t0: Time, deltat: Time) =&gt; IntState</code>
@@ -505,9 +538,9 @@ which will simulate the state of the system at time <code>t0+deltat</code> given
               
         </dd></dl></div>
     </li><li name="smfsb.Step#pts" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="pts(n:smfsb.Types.Spn[smfsb.Types.IntState],dt:Double):(smfsb.Types.IntState,smfsb.Types.Time,smfsb.Types.Time)=&gt;smfsb.Types.IntState"></a><a id="pts(Spn[IntState],Double):(IntState,Time,Time)⇒IntState"></a>
+      <a id="pts(n:smfsb.Spn[smfsb.IntState],dt:Double):(smfsb.IntState,smfsb.Time,smfsb.Time)=&gt;smfsb.IntState"></a><a id="pts(Spn[IntState],Double):(IntState,Time,Time)⇒IntState"></a>
       <span class="permalink">
-      <a href="../smfsb/Step$.html#pts(n:smfsb.Types.Spn[smfsb.Types.IntState],dt:Double):(smfsb.Types.IntState,smfsb.Types.Time,smfsb.Types.Time)=&gt;smfsb.Types.IntState" title="Permalink">
+      <a href="../smfsb/Step$.html#pts(n:smfsb.Spn[smfsb.IntState],dt:Double):(smfsb.IntState,smfsb.Time,smfsb.Time)=&gt;smfsb.IntState" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -516,7 +549,7 @@ which will simulate the state of the system at time <code>t0+deltat</code> given
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">pts</span><span class="params">(<span name="n">n: <a href="Types$$Spn.html" class="extype" name="smfsb.Types.Spn">Spn</a>[<a href="Types$.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.Types.IntState">IntState</a>]</span>, <span name="dt">dt: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.01</span></span>)</span><span class="result">: (<a href="Types$.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.Types.IntState">IntState</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>, <a href="Types$.html#Time=Double" class="extmbr" name="smfsb.Types.Time">Time</a>) ⇒ <a href="Types$.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.Types.IntState">IntState</a></span>
+        <span class="name">pts</span><span class="params">(<span name="n">n: <a href="package$$Spn.html" class="extype" name="smfsb.Spn">Spn</a>[<a href="index.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.IntState">IntState</a>]</span>, <span name="dt">dt: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.01</span></span>)</span><span class="result">: (<a href="index.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.IntState">IntState</a>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>) ⇒ <a href="index.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.IntState">IntState</a></span>
       </span>
       
       <p class="shortcomment cmt">A Poisson time-stepping algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>A Poisson time-stepping algorithm. Like a tau-leaping algorithm, but with fixed step sizes.
