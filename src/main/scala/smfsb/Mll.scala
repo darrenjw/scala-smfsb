@@ -18,7 +18,6 @@ object Mll {
   import breeze.stats.distributions.Multinomial
   import spire.math._
   import spire.implicits._
-  import Types._
 
   // TODO: support alternative resampling methods, such as systematic
 

@@ -81,14 +81,31 @@
         <span class="kind">package</span>
       </span>
       <span class="symbol">
-        <a title="" href="index.html"><span class="name">smfsb</span></a>
+        <a title="Object containing basic types used throughout the library." href="index.html"><span class="name">smfsb</span></a>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="_root_">root</a></dd></dl></div>
+      <p class="shortcomment cmt">Object containing basic types used throughout the library.</p><div class="fullcomment"><div class="comment cmt"><p>Object containing basic types used throughout the library.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="_root_">root</a></dd></dl></div>
     </li><li class="current-entities indented1">
                         <span class="separator"></span>
                         <a class="object" href="Abc$.html" title="Functions for parameter inference using ABC (and ABC-SMC) methods"></a>
                         <a href="Abc$.html" title="Functions for parameter inference using ABC (and ABC-SMC) methods">Abc</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
+                        <a class="trait" href="package$$CsvRow.html" title="Type class for vectors that can be rendered to a CSV string (and a Breeze DenseVector[Double]), extended by State"></a>
+                        <a href="package$$CsvRow.html" title="Type class for vectors that can be rendered to a CSV string (and a Breeze DenseVector[Double]), extended by State">CsvRow</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
+                        <a class="class" href="package$$CsvRowSyntax.html" title="Syntax for CsvRow"></a>
+                        <a href="package$$CsvRowSyntax.html" title="Syntax for CsvRow">CsvRowSyntax</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
+                        <a class="trait" href="package$$DataSet.html" title="Data set type class, for ABC methods"></a>
+                        <a href="package$$DataSet.html" title="Data set type class, for ABC methods">DataSet</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
+                        <a class="class" href="package$$MarkedSpn.html" title="Case class for SPNs that include an initial marking"></a>
+                        <a href="package$$MarkedSpn.html" title="Case class for SPNs that include an initial marking">MarkedSpn</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
                         <a class="object" href="" title="Functions for constucting generic Metropolis-Hastings MCMC algorithms, and associated utilities."></a>
@@ -103,16 +120,32 @@
                         <a href="Sim$.html" title="Functions for simulating data associated with a Markov process given an appropriate transition kernel.">Sim</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
+                        <a class="trait" href="package$$Spn.html" title="Main trait for stochastic Petri nets (SPNs)"></a>
+                        <a href="package$$Spn.html" title="Main trait for stochastic Petri nets (SPNs)">Spn</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
                         <a class="object" href="SpnModels$.html" title="Some example SPN models, each of which can be instantiated with either discrete or continous states."></a>
                         <a href="SpnModels$.html" title="Some example SPN models, each of which can be instantiated with either discrete or continous states.">SpnModels</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
+                        <a class="trait" href="package$$State.html" title="State type class, with implementations for Breeze DenseVector Ints and Doubles"></a>
+                        <a href="package$$State.html" title="State type class, with implementations for Breeze DenseVector Ints and Doubles">State</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
                         <a class="object" href="Step$.html" title="Functions which accept a Spn and return a function for simulating from the transition kernel of that model"></a>
                         <a href="Step$.html" title="Functions which accept a Spn and return a function for simulating from the transition kernel of that model">Step</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="Types$.html" title="Object containing basic types used throughout the library."></a>
-                        <a href="Types$.html" title="Object containing basic types used throughout the library.">Types</a>
+                        <a class="trait" href="package$$Thinnable.html" title="A type class for things which can be &quot;thinned&quot;, with an implementation for Stream."></a>
+                        <a href="package$$Thinnable.html" title="A type class for things which can be &quot;thinned&quot;, with an implementation for Stream.">Thinnable</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
+                        <a class="class" href="package$$ThinnableSyntax.html" title="Provision of the .thin syntax for Thinnable things"></a>
+                        <a href="package$$ThinnableSyntax.html" title="Provision of the .thin syntax for Thinnable things">ThinnableSyntax</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
+                        <a class="class" href="package$$UnmarkedSpn.html" title="Case class for SPNs without an initial marking"></a>
+                        <a href="package$$UnmarkedSpn.html" title="Case class for SPNs without an initial marking">UnmarkedSpn</a>
                       </li>
               </ul>
             </div>
@@ -396,9 +429,9 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="smfsb.Mcmc#mhStream" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="mhStream[P](init:P,logLik:P=&gt;smfsb.Types.LogLik,rprop:P=&gt;P,dprop:(P,P)=&gt;smfsb.Types.LogLik,dprior:P=&gt;smfsb.Types.LogLik,verb:Boolean):Stream[P]"></a><a id="mhStream[P](P,(P)⇒LogLik,(P)⇒P,(P,P)⇒LogLik,(P)⇒LogLik,Boolean):Stream[P]"></a>
+      <a id="mhStream[P](init:P,logLik:P=&gt;smfsb.LogLik,rprop:P=&gt;P,dprop:(P,P)=&gt;smfsb.LogLik,dprior:P=&gt;smfsb.LogLik,verb:Boolean):Stream[P]"></a><a id="mhStream[P](P,(P)⇒LogLik,(P)⇒P,(P,P)⇒LogLik,(P)⇒LogLik,Boolean):Stream[P]"></a>
       <span class="permalink">
-      <a href="../smfsb/Mcmc$.html#mhStream[P](init:P,logLik:P=&gt;smfsb.Types.LogLik,rprop:P=&gt;P,dprop:(P,P)=&gt;smfsb.Types.LogLik,dprior:P=&gt;smfsb.Types.LogLik,verb:Boolean):Stream[P]" title="Permalink">
+      <a href="../smfsb/Mcmc$.html#mhStream[P](init:P,logLik:P=&gt;smfsb.LogLik,rprop:P=&gt;P,dprop:(P,P)=&gt;smfsb.LogLik,dprior:P=&gt;smfsb.LogLik,verb:Boolean):Stream[P]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -407,7 +440,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">mhStream</span><span class="tparams">[<span name="P">P</span>]</span><span class="params">(<span name="init">init: <span class="extype" name="smfsb.Mcmc.mhStream.P">P</span></span>, <span name="logLik">logLik: (<span class="extype" name="smfsb.Mcmc.mhStream.P">P</span>) ⇒ <a href="Types$.html#LogLik=Double" class="extmbr" name="smfsb.Types.LogLik">LogLik</a></span>, <span name="rprop">rprop: (<span class="extype" name="smfsb.Mcmc.mhStream.P">P</span>) ⇒ <span class="extype" name="smfsb.Mcmc.mhStream.P">P</span></span>, <span name="dprop">dprop: (<span class="extype" name="smfsb.Mcmc.mhStream.P">P</span>, <span class="extype" name="smfsb.Mcmc.mhStream.P">P</span>) ⇒ <a href="Types$.html#LogLik=Double" class="extmbr" name="smfsb.Types.LogLik">LogLik</a></span>, <span name="dprior">dprior: (<span class="extype" name="smfsb.Mcmc.mhStream.P">P</span>) ⇒ <a href="Types$.html#LogLik=Double" class="extmbr" name="smfsb.Types.LogLik">LogLik</a></span>, <span name="verb">verb: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="scala.Stream">Stream</span>[<span class="extype" name="smfsb.Mcmc.mhStream.P">P</span>]</span>
+        <span class="name">mhStream</span><span class="tparams">[<span name="P">P</span>]</span><span class="params">(<span name="init">init: <span class="extype" name="smfsb.Mcmc.mhStream.P">P</span></span>, <span name="logLik">logLik: (<span class="extype" name="smfsb.Mcmc.mhStream.P">P</span>) ⇒ <a href="index.html#LogLik=Double" class="extmbr" name="smfsb.LogLik">LogLik</a></span>, <span name="rprop">rprop: (<span class="extype" name="smfsb.Mcmc.mhStream.P">P</span>) ⇒ <span class="extype" name="smfsb.Mcmc.mhStream.P">P</span></span>, <span name="dprop">dprop: (<span class="extype" name="smfsb.Mcmc.mhStream.P">P</span>, <span class="extype" name="smfsb.Mcmc.mhStream.P">P</span>) ⇒ <a href="index.html#LogLik=Double" class="extmbr" name="smfsb.LogLik">LogLik</a></span>, <span name="dprior">dprior: (<span class="extype" name="smfsb.Mcmc.mhStream.P">P</span>) ⇒ <a href="index.html#LogLik=Double" class="extmbr" name="smfsb.LogLik">LogLik</a></span>, <span name="verb">verb: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="scala.Stream">Stream</span>[<span class="extype" name="smfsb.Mcmc.mhStream.P">P</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Function to construct a generic Metropolis-Hastings MCMC algorithm for Bayesian inference.</p><div class="fullcomment"><div class="comment cmt"><p>Function to construct a generic Metropolis-Hastings MCMC algorithm for Bayesian inference. Note that this algorithm avoids re-computation of the log-likelihood associated with the current state, and is therefore suitable for use with the log of an unbiased estimate of likelihood for the constuction of pseudo-marginal &quot;exact approximate&quot; MCMC algorithms.
@@ -429,9 +462,9 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="smfsb.Mcmc#nextValue" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="nextValue[P](logLik:P=&gt;smfsb.Types.LogLik,rprop:P=&gt;P,dprop:(P,P)=&gt;smfsb.Types.LogLik,dprior:P=&gt;smfsb.Types.LogLik,verb:Boolean)(current:(P,smfsb.Types.LogLik)):(P,smfsb.Types.LogLik)"></a><a id="nextValue[P]((P)⇒LogLik,(P)⇒P,(P,P)⇒LogLik,(P)⇒LogLik,Boolean)((P,LogLik)):(P,LogLik)"></a>
+      <a id="nextValue[P](logLik:P=&gt;smfsb.LogLik,rprop:P=&gt;P,dprop:(P,P)=&gt;smfsb.LogLik,dprior:P=&gt;smfsb.LogLik,verb:Boolean)(current:(P,smfsb.LogLik)):(P,smfsb.LogLik)"></a><a id="nextValue[P]((P)⇒LogLik,(P)⇒P,(P,P)⇒LogLik,(P)⇒LogLik,Boolean)((P,LogLik)):(P,LogLik)"></a>
       <span class="permalink">
-      <a href="../smfsb/Mcmc$.html#nextValue[P](logLik:P=&gt;smfsb.Types.LogLik,rprop:P=&gt;P,dprop:(P,P)=&gt;smfsb.Types.LogLik,dprior:P=&gt;smfsb.Types.LogLik,verb:Boolean)(current:(P,smfsb.Types.LogLik)):(P,smfsb.Types.LogLik)" title="Permalink">
+      <a href="../smfsb/Mcmc$.html#nextValue[P](logLik:P=&gt;smfsb.LogLik,rprop:P=&gt;P,dprop:(P,P)=&gt;smfsb.LogLik,dprior:P=&gt;smfsb.LogLik,verb:Boolean)(current:(P,smfsb.LogLik)):(P,smfsb.LogLik)" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -440,7 +473,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">nextValue</span><span class="tparams">[<span name="P">P</span>]</span><span class="params">(<span name="logLik">logLik: (<span class="extype" name="smfsb.Mcmc.nextValue.P">P</span>) ⇒ <a href="Types$.html#LogLik=Double" class="extmbr" name="smfsb.Types.LogLik">LogLik</a></span>, <span name="rprop">rprop: (<span class="extype" name="smfsb.Mcmc.nextValue.P">P</span>) ⇒ <span class="extype" name="smfsb.Mcmc.nextValue.P">P</span></span>, <span name="dprop">dprop: (<span class="extype" name="smfsb.Mcmc.nextValue.P">P</span>, <span class="extype" name="smfsb.Mcmc.nextValue.P">P</span>) ⇒ <a href="Types$.html#LogLik=Double" class="extmbr" name="smfsb.Types.LogLik">LogLik</a></span>, <span name="dprior">dprior: (<span class="extype" name="smfsb.Mcmc.nextValue.P">P</span>) ⇒ <a href="Types$.html#LogLik=Double" class="extmbr" name="smfsb.Types.LogLik">LogLik</a></span>, <span name="verb">verb: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span name="current">current: (<span class="extype" name="smfsb.Mcmc.nextValue.P">P</span>, <a href="Types$.html#LogLik=Double" class="extmbr" name="smfsb.Types.LogLik">LogLik</a>)</span>)</span><span class="result">: (<span class="extype" name="smfsb.Mcmc.nextValue.P">P</span>, <a href="Types$.html#LogLik=Double" class="extmbr" name="smfsb.Types.LogLik">LogLik</a>)</span>
+        <span class="name">nextValue</span><span class="tparams">[<span name="P">P</span>]</span><span class="params">(<span name="logLik">logLik: (<span class="extype" name="smfsb.Mcmc.nextValue.P">P</span>) ⇒ <a href="index.html#LogLik=Double" class="extmbr" name="smfsb.LogLik">LogLik</a></span>, <span name="rprop">rprop: (<span class="extype" name="smfsb.Mcmc.nextValue.P">P</span>) ⇒ <span class="extype" name="smfsb.Mcmc.nextValue.P">P</span></span>, <span name="dprop">dprop: (<span class="extype" name="smfsb.Mcmc.nextValue.P">P</span>, <span class="extype" name="smfsb.Mcmc.nextValue.P">P</span>) ⇒ <a href="index.html#LogLik=Double" class="extmbr" name="smfsb.LogLik">LogLik</a></span>, <span name="dprior">dprior: (<span class="extype" name="smfsb.Mcmc.nextValue.P">P</span>) ⇒ <a href="index.html#LogLik=Double" class="extmbr" name="smfsb.LogLik">LogLik</a></span>, <span name="verb">verb: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span name="current">current: (<span class="extype" name="smfsb.Mcmc.nextValue.P">P</span>, <a href="index.html#LogLik=Double" class="extmbr" name="smfsb.LogLik">LogLik</a>)</span>)</span><span class="result">: (<span class="extype" name="smfsb.Mcmc.nextValue.P">P</span>, <a href="index.html#LogLik=Double" class="extmbr" name="smfsb.LogLik">LogLik</a>)</span>
       </span>
       
       <p class="shortcomment cmt">Function for executing one step of a MH algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>Function for executing one step of a MH algorithm. Called by <code>mhStream</code>.
@@ -484,9 +517,9 @@
               
         </dd></dl></div>
     </li><li name="smfsb.Mcmc#summary" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="summary[P](s:Stream[P],plot:Boolean)(implicitevidence$2:smfsb.Types.CsvRow[P]):Unit"></a><a id="summary[P](Stream[P],Boolean)(CsvRow[P]):Unit"></a>
+      <a id="summary[P](s:Stream[P],plot:Boolean)(implicitevidence$2:smfsb.CsvRow[P]):Unit"></a><a id="summary[P](Stream[P],Boolean)(CsvRow[P]):Unit"></a>
       <span class="permalink">
-      <a href="../smfsb/Mcmc$.html#summary[P](s:Stream[P],plot:Boolean)(implicitevidence$2:smfsb.Types.CsvRow[P]):Unit" title="Permalink">
+      <a href="../smfsb/Mcmc$.html#summary[P](s:Stream[P],plot:Boolean)(implicitevidence$2:smfsb.CsvRow[P]):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -495,7 +528,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">summary</span><span class="tparams">[<span name="P">P</span>]</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Stream">Stream</span>[<span class="extype" name="smfsb.Mcmc.summary.P">P</span>]</span>, <span name="plot">plot: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Types$$CsvRow.html" class="extype" name="smfsb.Types.CsvRow">CsvRow</a>[<span class="extype" name="smfsb.Mcmc.summary.P">P</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">summary</span><span class="tparams">[<span name="P">P</span>]</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Stream">Stream</span>[<span class="extype" name="smfsb.Mcmc.summary.P">P</span>]</span>, <span name="plot">plot: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="package$$CsvRow.html" class="extype" name="smfsb.CsvRow">CsvRow</a>[<span class="extype" name="smfsb.Mcmc.summary.P">P</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <p class="shortcomment cmt">Wrapper around the other <code>summary</code> function which takes a <code>Stream</code>
@@ -536,9 +569,9 @@ Called purely for the side-effect of generating output on the console.
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="smfsb.Mcmc#toDMD" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="toDMD[P](s:scala.collection.GenSeq[P])(implicitevidence$1:smfsb.Types.CsvRow[P]):breeze.linalg.DenseMatrix[Double]"></a><a id="toDMD[P](GenSeq[P])(CsvRow[P]):DenseMatrix[Double]"></a>
+      <a id="toDMD[P](s:scala.collection.GenSeq[P])(implicitevidence$1:smfsb.CsvRow[P]):breeze.linalg.DenseMatrix[Double]"></a><a id="toDMD[P](GenSeq[P])(CsvRow[P]):DenseMatrix[Double]"></a>
       <span class="permalink">
-      <a href="../smfsb/Mcmc$.html#toDMD[P](s:scala.collection.GenSeq[P])(implicitevidence$1:smfsb.Types.CsvRow[P]):breeze.linalg.DenseMatrix[Double]" title="Permalink">
+      <a href="../smfsb/Mcmc$.html#toDMD[P](s:scala.collection.GenSeq[P])(implicitevidence$1:smfsb.CsvRow[P]):breeze.linalg.DenseMatrix[Double]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -547,7 +580,7 @@ Called purely for the side-effect of generating output on the console.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">toDMD</span><span class="tparams">[<span name="P">P</span>]</span><span class="params">(<span name="s">s: <span class="extype" name="scala.collection.GenSeq">GenSeq</span>[<span class="extype" name="smfsb.Mcmc.toDMD.P">P</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Types$$CsvRow.html" class="extype" name="smfsb.Types.CsvRow">CsvRow</a>[<span class="extype" name="smfsb.Mcmc.toDMD.P">P</span>]</span>)</span><span class="result">: <span class="extype" name="breeze.linalg.DenseMatrix">DenseMatrix</span>[<span class="extype" name="scala.Double">Double</span>]</span>
+        <span class="name">toDMD</span><span class="tparams">[<span name="P">P</span>]</span><span class="params">(<span name="s">s: <span class="extype" name="scala.collection.GenSeq">GenSeq</span>[<span class="extype" name="smfsb.Mcmc.toDMD.P">P</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="package$$CsvRow.html" class="extype" name="smfsb.CsvRow">CsvRow</a>[<span class="extype" name="smfsb.Mcmc.toDMD.P">P</span>]</span>)</span><span class="result">: <span class="extype" name="breeze.linalg.DenseMatrix">DenseMatrix</span>[<span class="extype" name="scala.Double">Double</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Utility function to convert a *finite* <code>Stream</code> (or other collection) to a Breeze <code>DenseMatrix[Double]</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Utility function to convert a *finite* <code>Stream</code> (or other collection) to a Breeze <code>DenseMatrix[Double]</code>.

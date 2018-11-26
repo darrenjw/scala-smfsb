@@ -13,7 +13,6 @@ object Tutorial {
     println("Start")
 
     import smfsb._
-    import smfsb.Types._
     import breeze.linalg._
     import breeze.numerics._
 

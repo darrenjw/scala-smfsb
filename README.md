@@ -24,7 +24,6 @@ console
 * You should now have a Scala REPL with a dependency on this library. At the Scala REPL, enter the following:
 ```scala
 import smfsb._
-import smfsb.Types._
 import breeze.linalg._
 val model = SpnModels.lv[IntState]()
 val step = Step.gillespie(model)

@@ -7,7 +7,6 @@ Simulation utilities
 
 package smfsb
 
-import Types._
 import annotation.tailrec
 
 /**

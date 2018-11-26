@@ -6,7 +6,6 @@ Inference for the parameters of a Lotka-Volterra model using ABC
  */
 
 import smfsb._
-import Types._
 import scala.io.Source
 import breeze.linalg._
 import breeze.numerics._

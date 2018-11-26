@@ -8,8 +8,6 @@ Functions relating to the construction and analysis of MCMC algorithms, especial
 
 package smfsb
 
-import Types._
-
 /**
   * Functions for constucting generic Metropolis-Hastings MCMC algorithms, and associated utilities. Can be used in conjunction with an unbiased estimate of marginal model likelihood for constructing pseudo-marginal MCMC algorithms, such as PMMH pMCMC.
   */

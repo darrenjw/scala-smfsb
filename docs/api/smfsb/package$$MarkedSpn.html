@@ -104,16 +104,16 @@
                         <a href="package$$DataSet.html" title="Data set type class, for ABC methods">DataSet</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="class" href="package$$MarkedSpn.html" title="Case class for SPNs that include an initial marking"></a>
-                        <a href="package$$MarkedSpn.html" title="Case class for SPNs that include an initial marking">MarkedSpn</a>
+                        <a class="class" href="" title="Case class for SPNs that include an initial marking"></a>
+                        <a href="" title="Case class for SPNs that include an initial marking">MarkedSpn</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
                         <a class="object" href="Mcmc$.html" title="Functions for constucting generic Metropolis-Hastings MCMC algorithms, and associated utilities."></a>
                         <a href="Mcmc$.html" title="Functions for constucting generic Metropolis-Hastings MCMC algorithms, and associated utilities.">Mcmc</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="object" href="" title="Functions associated with particle filtering of Markov process models against time series data and the computation of marginal model likelihoods."></a>
-                        <a href="" title="Functions associated with particle filtering of Markov process models against time series data and the computation of marginal model likelihoods.">Mll</a>
+                        <a class="object" href="Mll$.html" title="Functions associated with particle filtering of Markov process models against time series data and the computation of marginal model likelihoods."></a>
+                        <a href="Mll$.html" title="Functions associated with particle filtering of Markov process models against time series data and the computation of marginal model likelihoods.">Mll</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
                         <a class="object" href="Sim$.html" title="Functions for simulating data associated with a Markov process given an appropriate transition kernel."></a>
@@ -151,12 +151,12 @@
             </div>
           </div>
           <div id="content">
-            <body class="object value">
+            <body class="class type">
       <div id="definition">
-        <div class="big-circle object">o</div>
+        <div class="big-circle class">c</div>
         <p id="owner"><a href="index.html" class="extype" name="smfsb">smfsb</a></p>
-        <h1>Mll<span class="permalink">
-      <a href="../smfsb/Mll$.html" title="Permalink">
+        <h1>MarkedSpn<span class="permalink">
+      <a href="../smfsb/package$$MarkedSpn.html" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span></h1>
@@ -166,20 +166,20 @@
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">object</span>
+        <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">Mll</span>
+        <span class="name">MarkedSpn</span><span class="tparams">[<span name="S">S</span>]</span><span class="params">(<span name="species">species: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="m">m: <span class="extype" name="smfsb.MarkedSpn.S">S</span></span>, <span name="pre">pre: <span class="extype" name="breeze.linalg.DenseMatrix">DenseMatrix</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="post">post: <span class="extype" name="breeze.linalg.DenseMatrix">DenseMatrix</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="h">h: (<span class="extype" name="smfsb.MarkedSpn.S">S</span>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>) ⇒ <a href="index.html#HazardVec=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.HazardVec">HazardVec</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$2">evidence$2: <a href="package$$State.html" class="extype" name="smfsb.State">State</a>[<span class="extype" name="smfsb.MarkedSpn.S">S</span>]</span>)</span><span class="result"> extends <a href="package$$Spn.html" class="extype" name="smfsb.Spn">Spn</a>[<span class="extype" name="smfsb.MarkedSpn.S">S</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Functions associated with particle filtering of Markov process models against time series data and the computation of marginal model likelihoods.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Case class for SPNs that include an initial marking
 </p></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="package$$Spn.html" class="extype" name="smfsb.Spn">Spn</a>[<span class="extype" name="smfsb.MarkedSpn.S">S</span>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -205,7 +205,7 @@
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="smfsb.Mll"><span>Mll</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="smfsb.MarkedSpn"><span>MarkedSpn</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="smfsb.Spn"><span>Spn</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -223,7 +223,26 @@
 
       <div id="template">
         <div id="allMembers">
-        
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="smfsb.MarkedSpn#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(species:List[String],m:S,pre:breeze.linalg.DenseMatrix[Int],post:breeze.linalg.DenseMatrix[Int],h:(S,smfsb.package.Time)=&gt;smfsb.package.HazardVec)(implicitevidence$2:smfsb.package.State[S]):smfsb.package.MarkedSpn[S]"></a><a id="&lt;init&gt;:MarkedSpn[S]"></a>
+      <span class="permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#&lt;init&gt;(species:List[String],m:S,pre:breeze.linalg.DenseMatrix[Int],post:breeze.linalg.DenseMatrix[Int],h:(S,smfsb.package.Time)=&gt;smfsb.package.HazardVec)(implicitevidence$2:smfsb.package.State[S]):smfsb.package.MarkedSpn[S]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">MarkedSpn</span><span class="params">(<span name="species">species: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="m">m: <span class="extype" name="smfsb.MarkedSpn.S">S</span></span>, <span name="pre">pre: <span class="extype" name="breeze.linalg.DenseMatrix">DenseMatrix</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="post">post: <span class="extype" name="breeze.linalg.DenseMatrix">DenseMatrix</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="h">h: (<span class="extype" name="smfsb.MarkedSpn.S">S</span>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>) ⇒ <a href="index.html#HazardVec=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.HazardVec">HazardVec</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="package$$State.html" class="extype" name="smfsb.State">State</a>[<span class="extype" name="smfsb.MarkedSpn.S">S</span>]</span>)</span>
+      </span>
+      
+      
+    </li></ol>
+            </div>
 
         
 
@@ -235,7 +254,7 @@
                 <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../smfsb/Mll$.html#!=(x$1:Any):Boolean" title="Permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#!=(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -251,7 +270,7 @@
     </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <span class="permalink">
-      <a href="../smfsb/Mll$.html###():Int" title="Permalink">
+      <a href="../smfsb/package$$MarkedSpn.html###():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -267,7 +286,7 @@
     </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../smfsb/Mll$.html#==(x$1:Any):Boolean" title="Permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#==(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -283,7 +302,7 @@
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
-      <a href="../smfsb/Mll$.html#asInstanceOf[T0]:T0" title="Permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#asInstanceOf[T0]:T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -296,30 +315,10 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="smfsb.Mll#bpf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="bpf[S,O](x0:Vector[S],t0:smfsb.Time,data:smfsb.Ts[O],dataLik:(S,O)=&gt;smfsb.LogLik,stepFun:(S,smfsb.Time,smfsb.Time)=&gt;S)(implicitevidence$1:smfsb.State[S]):(smfsb.LogLik,smfsb.Time,Vector[S])"></a><a id="bpf[S,O](Vector[S],Time,Ts[O],(S,O)⇒LogLik,(S,Time,Time)⇒S)(State[S]):(LogLik,Time,Vector[S])"></a>
-      <span class="permalink">
-      <a href="../smfsb/Mll$.html#bpf[S,O](x0:Vector[S],t0:smfsb.Time,data:smfsb.Ts[O],dataLik:(S,O)=&gt;smfsb.LogLik,stepFun:(S,smfsb.Time,smfsb.Time)=&gt;S)(implicitevidence$1:smfsb.State[S]):(smfsb.LogLik,smfsb.Time,Vector[S])" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">bpf</span><span class="tparams">[<span name="S">S</span>, <span name="O">O</span>]</span><span class="params">(<span name="x0">x0: <span class="extype" name="scala.Vector">Vector</span>[<span class="extype" name="smfsb.Mll.bpf.S">S</span>]</span>, <span name="t0">t0: <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a></span>, <span name="data">data: <a href="index.html#Ts[S]=List[(smfsb.package.Time,S)]" class="extmbr" name="smfsb.Ts">Ts</a>[<span class="extype" name="smfsb.Mll.bpf.O">O</span>]</span>, <span name="dataLik">dataLik: (<span class="extype" name="smfsb.Mll.bpf.S">S</span>, <span class="extype" name="smfsb.Mll.bpf.O">O</span>) ⇒ <a href="index.html#LogLik=Double" class="extmbr" name="smfsb.LogLik">LogLik</a></span>, <span name="stepFun">stepFun: (<span class="extype" name="smfsb.Mll.bpf.S">S</span>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>) ⇒ <span class="extype" name="smfsb.Mll.bpf.S">S</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="package$$State.html" class="extype" name="smfsb.State">State</a>[<span class="extype" name="smfsb.Mll.bpf.S">S</span>]</span>)</span><span class="result">: (<a href="index.html#LogLik=Double" class="extmbr" name="smfsb.LogLik">LogLik</a>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>, <span class="extype" name="scala.Vector">Vector</span>[<span class="extype" name="smfsb.Mll.bpf.S">S</span>])</span>
-      </span>
-      
-      <p class="shortcomment cmt">A simple bootstrap particle filter with multinomial resampling.</p><div class="fullcomment"><div class="comment cmt"><p>A simple bootstrap particle filter with multinomial resampling. Note that it
-supports time series of observations on irregular time grids. Note that this is
-the function which does most of the work for <code>pfMll</code>.
-</p></div><dl class="paramcmts block"><dt class="param">x0</dt><dd class="cmt"><p>A sample from the prior on the state at time <code>t0</code>. The size of the sample
-determines the number of particles used in the particle filter.</p></dd><dt class="param">t0</dt><dd class="cmt"><p>The time corresponding to the prior sample</p></dd><dt class="param">data</dt><dd class="cmt"><p>The observed data in the form of a time series</p></dd><dt class="param">dataLik</dt><dd class="cmt"><p>The log-likelihood of the observation model</p></dd><dt class="param">stepFun</dt><dd class="cmt"><p>The transition kernel of the underlying process</p></dd><dt>returns</dt><dd class="cmt"><p>A triple: the first element is the log of an unbiased estimate of the marginal likelihood of the model, the second is just the final time point, and the third is a sample from the posterior distribution of the final time point.</p></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
       <span class="permalink">
-      <a href="../smfsb/Mll$.html#clone():Object" title="Permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#clone():Object" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -343,7 +342,7 @@ determines the number of particles used in the particle filter.</p></dd><dt clas
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../smfsb/Mll$.html#eq(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#eq(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -356,26 +355,10 @@ determines the number of particles used in the particle filter.</p></dd><dt clas
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#equals" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="equals(x$1:Any):Boolean"></a><a id="equals(Any):Boolean"></a>
-      <span class="permalink">
-      <a href="../smfsb/Mll$.html#equals(x$1:Any):Boolean" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
-      <a href="../smfsb/Mll$.html#finalize():Unit" title="Permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#finalize():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -397,7 +380,7 @@ determines the number of particles used in the particle filter.</p></dd><dt clas
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
-      <a href="../smfsb/Mll$.html#getClass():Class[_]" title="Permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#getClass():Class[_]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -413,29 +396,26 @@ determines the number of particles used in the particle filter.</p></dd><dt clas
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="hashCode():Int"></a>
+    </li><li name="smfsb.MarkedSpn#h" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="h:(S,smfsb.package.Time)=&gt;smfsb.package.HazardVec"></a><a id="h:(S,Time)⇒HazardVec"></a>
       <span class="permalink">
-      <a href="../smfsb/Mll$.html#hashCode():Int" title="Permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#h:(S,smfsb.package.Time)=&gt;smfsb.package.HazardVec" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+        <span class="name">h</span><span class="result">: (<span class="extype" name="smfsb.MarkedSpn.S">S</span>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>) ⇒ <a href="index.html#HazardVec=breeze.linalg.DenseVector[Double]" class="extmbr" name="smfsb.HazardVec">HazardVec</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
-                <span class="name">@native</span><span class="args">()</span>
-              
-        </dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="smfsb.MarkedSpn">MarkedSpn</a> → <a href="package$$Spn.html" class="extype" name="smfsb.Spn">Spn</a></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
-      <a href="../smfsb/Mll$.html#isInstanceOf[T0]:Boolean" title="Permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#isInstanceOf[T0]:Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -448,10 +428,26 @@ determines the number of particles used in the particle filter.</p></dd><dt clas
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="smfsb.MarkedSpn#m" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="m:S"></a>
+      <span class="permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#m:S" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">m</span><span class="result">: <span class="extype" name="smfsb.MarkedSpn.S">S</span></span>
+      </span>
+      
+      
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../smfsb/Mll$.html#ne(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#ne(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -467,7 +463,7 @@ determines the number of particles used in the particle filter.</p></dd><dt clas
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">
-      <a href="../smfsb/Mll$.html#notify():Unit" title="Permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#notify():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -486,7 +482,7 @@ determines the number of particles used in the particle filter.</p></dd><dt clas
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
       <span class="permalink">
-      <a href="../smfsb/Mll$.html#notifyAll():Unit" title="Permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#notifyAll():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -502,27 +498,58 @@ determines the number of particles used in the particle filter.</p></dd><dt clas
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="smfsb.Mll#pfMll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="pfMll[P,S,O](simX0:P=&gt;Vector[S],t0:smfsb.Time,stepFun:P=&gt;((S,smfsb.Time,smfsb.Time)=&gt;S),dataLik:P=&gt;((S,O)=&gt;smfsb.LogLik),data:smfsb.Ts[O])(implicitevidence$2:smfsb.State[S]):P=&gt;smfsb.LogLik"></a><a id="pfMll[P,S,O]((P)⇒Vector[S],Time,(P)⇒(S,Time,Time)⇒S,(P)⇒(S,O)⇒LogLik,Ts[O])(State[S]):(P)⇒LogLik"></a>
+    </li><li name="smfsb.MarkedSpn#post" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="post:breeze.linalg.DenseMatrix[Int]"></a><a id="post:DenseMatrix[Int]"></a>
       <span class="permalink">
-      <a href="../smfsb/Mll$.html#pfMll[P,S,O](simX0:P=&gt;Vector[S],t0:smfsb.Time,stepFun:P=&gt;((S,smfsb.Time,smfsb.Time)=&gt;S),dataLik:P=&gt;((S,O)=&gt;smfsb.LogLik),data:smfsb.Ts[O])(implicitevidence$2:smfsb.State[S]):P=&gt;smfsb.LogLik" title="Permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#post:breeze.linalg.DenseMatrix[Int]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">pfMll</span><span class="tparams">[<span name="P">P</span>, <span name="S">S</span>, <span name="O">O</span>]</span><span class="params">(<span name="simX0">simX0: (<span class="extype" name="smfsb.Mll.pfMll.P">P</span>) ⇒ <span class="extype" name="scala.Vector">Vector</span>[<span class="extype" name="smfsb.Mll.pfMll.S">S</span>]</span>, <span name="t0">t0: <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a></span>, <span name="stepFun">stepFun: (<span class="extype" name="smfsb.Mll.pfMll.P">P</span>) ⇒ (<span class="extype" name="smfsb.Mll.pfMll.S">S</span>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>) ⇒ <span class="extype" name="smfsb.Mll.pfMll.S">S</span></span>, <span name="dataLik">dataLik: (<span class="extype" name="smfsb.Mll.pfMll.P">P</span>) ⇒ (<span class="extype" name="smfsb.Mll.pfMll.S">S</span>, <span class="extype" name="smfsb.Mll.pfMll.O">O</span>) ⇒ <a href="index.html#LogLik=Double" class="extmbr" name="smfsb.LogLik">LogLik</a></span>, <span name="data">data: <a href="index.html#Ts[S]=List[(smfsb.package.Time,S)]" class="extmbr" name="smfsb.Ts">Ts</a>[<span class="extype" name="smfsb.Mll.pfMll.O">O</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="package$$State.html" class="extype" name="smfsb.State">State</a>[<span class="extype" name="smfsb.Mll.pfMll.S">S</span>]</span>)</span><span class="result">: (<span class="extype" name="smfsb.Mll.pfMll.P">P</span>) ⇒ <a href="index.html#LogLik=Double" class="extmbr" name="smfsb.LogLik">LogLik</a></span>
+        <span class="name">post</span><span class="result">: <span class="extype" name="breeze.linalg.DenseMatrix">DenseMatrix</span>[<span class="extype" name="scala.Int">Int</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">A function for evaluating marginal log-likelihoods of parametrised models.</p><div class="fullcomment"><div class="comment cmt"><p>A function for evaluating marginal log-likelihoods of parametrised models. It basically just threads a parameter value through the arguments required for <code>bpf</code>.
-</p></div><dl class="paramcmts block"><dt class="param">simX0</dt><dd class="cmt"><p>A function which when provided with a parameter value will return a sample from the prior on the intial state of a Markov process model. The size of the sample will determine the number of particles used in the particle filter.</p></dd><dt class="param">t0</dt><dd class="cmt"><p>The intial time corresponding to the prior sample</p></dd><dt class="param">stepFun</dt><dd class="cmt"><p>A function, which when provided with a parameter value, will return the transition kernel of a Markov process.</p></dd><dt class="param">dataLik</dt><dd class="cmt"><p>A function, which when provided with a parameter value, will return the log-likelihood of the observation model</p></dd><dt class="param">data</dt><dd class="cmt"><p>The observed data in the form of a time series</p></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="smfsb.MarkedSpn">MarkedSpn</a> → <a href="package$$Spn.html" class="extype" name="smfsb.Spn">Spn</a></dd></dl></div>
+    </li><li name="smfsb.MarkedSpn#pre" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="pre:breeze.linalg.DenseMatrix[Int]"></a><a id="pre:DenseMatrix[Int]"></a>
+      <span class="permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#pre:breeze.linalg.DenseMatrix[Int]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">pre</span><span class="result">: <span class="extype" name="breeze.linalg.DenseMatrix">DenseMatrix</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="smfsb.MarkedSpn">MarkedSpn</a> → <a href="package$$Spn.html" class="extype" name="smfsb.Spn">Spn</a></dd></dl></div>
+    </li><li name="smfsb.MarkedSpn#species" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="species:List[String]"></a>
+      <span class="permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#species:List[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">species</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="smfsb.MarkedSpn">MarkedSpn</a> → <a href="package$$Spn.html" class="extype" name="smfsb.Spn">Spn</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
-      <a href="../smfsb/Mll$.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -535,26 +562,10 @@ determines the number of particles used in the particle filter.</p></dd><dt clas
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="toString():String"></a>
-      <span class="permalink">
-      <a href="../smfsb/Mll$.html#toString():String" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
-      <a href="../smfsb/Mll$.html#wait():Unit" title="Permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#wait():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -576,7 +587,7 @@ determines the number of particles used in the particle filter.</p></dd><dt clas
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
-      <a href="../smfsb/Mll$.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -598,7 +609,7 @@ determines the number of particles used in the particle filter.</p></dd><dt clas
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
       <span class="permalink">
-      <a href="../smfsb/Mll$.html#wait(x$1:Long):Unit" title="Permalink">
+      <a href="../smfsb/package$$MarkedSpn.html#wait(x$1:Long):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -629,7 +640,17 @@ determines the number of particles used in the particle filter.</p></dd><dt clas
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.Serializable">
+              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="scala.Product">
+              <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
+            </div><div class="parent" name="scala.Equals">
+              <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
+            </div><div class="parent" name="smfsb.Spn">
+              <h3>Inherited from <a href="package$$Spn.html" class="extype" name="smfsb.Spn">Spn</a>[<span class="extype" name="smfsb.MarkedSpn.S">S</span>]</h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
