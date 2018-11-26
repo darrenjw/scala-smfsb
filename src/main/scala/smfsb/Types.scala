@@ -138,30 +138,6 @@ object Types {
   implicit val tsdsDs = new DataSet[Ts[DoubleState]] {
   }
 
-  // Now type classes for inferential methods
-  // TODO: issues with ambiguous implicits - need to think about
-  /**
-    * Observation type class, with implementations for `Ints` and `Doubles`
-    */
-  trait Observation[O] extends CsvRow[O] {
-  }
-
-  /**
-    * Evidence that `IntState` belongs to the `Observation` type class
-    */
-  implicit val dviObs = new Observation[IntState] {
-    def toCsv(s: IntState): String = (s.toArray map (_.toString)).mkString(",")
-    def toDvd(s: IntState): DenseVector[Double] = s.map(_*1.0)
-  }
-
-  /**
-    * Evidence that `DoubleState` belongs to the `Observation` type class
-    */
-  implicit val dvdObs = new Observation[DoubleState] {
-    def toCsv(s: DoubleState): String = (s.toArray map (_.toString)).mkString(",")
-    def toDvd(s: DoubleState): DenseVector[Double] = s
-  }
-
   /**
     * A type class for things which can be "thinned", with an implementation for `Stream`.
     * Useful for MCMC algorithms.

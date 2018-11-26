@@ -57,7 +57,7 @@ object Mll {
     * 
     * @return A triple: the first element is the log of an unbiased estimate of the marginal likelihood of the model, the second is just the final time point, and the third is a sample from the posterior distribution of the final time point.
     */
-  def bpf[S: State, O: Observation](
+  def bpf[S: State, O](
     x0: Vector[S], t0: Time, data: Ts[O], dataLik: (S, O) => LogLik, stepFun: (S, Time, Time) => S
   ): (LogLik, Time, Vector[S]) = {
     val updater = bpfUpdate[S, O](dataLik, stepFun) _
@@ -78,7 +78,7 @@ object Mll {
     * @param dataLik A function, which when provided with a parameter value, will return the log-likelihood of the observation model
     * @param data The observed data in the form of a time series
     */
-  def pfMll[P, S: State, O: Observation](
+  def pfMll[P, S: State, O](
     simX0: P => Vector[S],
     t0: Time,
     stepFun: P => (S, Time, Time) => S,
