@@ -5,8 +5,8 @@
 
 **This library is now ready to use, but is still undergoing rapid development, with regular updates likely until the end of 2018, by which time it should have approximate feature parity with the R package `smfsb`**
 
-* The current *stable* version of this library is "0.2"
-* The current unstable *snapshot* release of this library is "0.3-SNAPSHOT"
+* The current *stable* version of this library is "0.3"
+* The current unstable *snapshot* release of this library is "0.4-SNAPSHOT"
 
 Binaries are published to Sonatype, cross-built for Scala 2.11.x and 2.12.x.
 
@@ -16,7 +16,7 @@ Binaries are published to Sonatype, cross-built for Scala 2.11.x and 2.12.x.
 * Run `sbt` from an empty/temp directory
 * At the `sbt` prompt, enter:
 ```scala
-set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.2"
+set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.3"
 set libraryDependencies += "org.scalanlp" %% "breeze-viz" % "0.13.2"
 set scalaVersion := "2.12.6"
 console
@@ -48,7 +48,7 @@ To get the most out of this library, it will be helpful if you are already famil
 
 Just add:
 ```scala
-"com.github.darrenjw" %% "scala-smfsb" % "0.2"
+"com.github.darrenjw" %% "scala-smfsb" % "0.3"
 ```
 to your Sbt dependencies. You might also need to add an explicit dependence on `breeze-viz`:
 ```scala
@@ -59,7 +59,7 @@ to your Sbt dependencies. You might also need to add an explicit dependence on `
 
 Just add something like:
 ```scala
-libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.3-SNAPSHOT"
+libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.4-SNAPSHOT"
 resolvers += "Sonatype Snapshots" at
     "https://oss.sonatype.org/content/repositories/snapshots/"
 ```
