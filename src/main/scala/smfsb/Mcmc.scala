@@ -58,14 +58,16 @@ object Mcmc {
 
   import breeze.linalg._
   import breeze.numerics._
+  import scala.collection.GenSeq
+
   /**
-    * Utility function to convert a *finite* `Stream` to a Breeze `DenseMatrix[Double]`.
+    * Utility function to convert a *finite* `Stream` (or other collection) to a Breeze `DenseMatrix[Double]`.
     * 
-    * @param s Input stream, which must be *finite*.
+    * @param s Input stream/collection, which must be *finite*.
     * 
     * @return A matrix with rows corresponding to iterations and columns corresponding to variables.
     */
-  def toDMD[P: CsvRow](s: Stream[P]): DenseMatrix[Double] = {
+  def toDMD[P: CsvRow](s: GenSeq[P]): DenseMatrix[Double] = {
     val n = s.length
     val p = s(0).toDvd.length
     val m = new DenseMatrix[Double](n, p)
@@ -73,7 +75,7 @@ object Mcmc {
     m
   }
 
-  // TODO: Trace plots, ACFs, summary stats, etc.
+  // TODO: ACFs, summary stats, etc.
   /**
     * Generate some basic diagnostics associated with an MCMC run.
     * Called purely for the side-effect of generating output on the console.

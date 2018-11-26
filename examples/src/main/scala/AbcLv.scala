@@ -31,7 +31,8 @@ object AbcLv {
   def main(args: Array[String]): Unit = {
     println("ABC rejection demo...")
     //val N = 100 // number of particles in the particle filter
-    val n = 200 // required number of iterations from the ABC algorithm
+    val n = 100000 // required number of iterations from the ABC algorithm
+    val fraction = 0.01 // fraction of accepted ABC samples
     //val thin = 5 // thinning
     //val burn = 10 // initial discarded MCMC iterations
     //val tune = 0.01 // tuning parameter of the MH proposal
@@ -47,9 +48,11 @@ object AbcLv {
     println("ABC run completed.")
     val distances = (out map (_._2)).seq
     import breeze.stats.DescriptiveStats._
-    val cutoff = percentile(distances, 0.1)
+    val cutoff = percentile(distances, fraction)
     val accepted = out filter (_._2 < cutoff)
-    println(accepted.length)
+    //println(accepted.length)
+    //Abc.summary(out)(dvdState)
+    Abc.summary(accepted)(dvdState)
     println("Done.")
   }
 
