@@ -20,11 +20,13 @@ object Step {
   /**
     * The Gillespie algorithm, sometimes known as the direct method, or the stochastic simulation algorithm (SSA)
     * @param n A `Spn[IntState]` model
+    * @param minH Threshold for treating hazard as zero
+    * @param maxH Threshold for terminating simulation early
     * 
     * @return A function with type signature `(x0: IntState, t0: Time, deltat: Time) => IntState`
     * which will simulate the state of the system at time `t0+deltat` given initial state `x0` and intial time `t0`
     */
-  def gillespie(n: Spn[IntState]): (IntState, Time, Time) => IntState = {
+  def gillespie(n: Spn[IntState], minH: Double = 1e-20, maxH: Double = 1e6): (IntState, Time, Time) => IntState = {
     val Sto = (n.post - n.pre).t
     (x: IntState, t0, dt) => {
       @tailrec
@@ -32,7 +34,7 @@ object Step {
         if (dt <= 0.0) x else {
           val h = n.h(x, t0)
           val h0 = sum(h)
-          val t = if ((h0 < 1e-20)|(h0 > 1e6)) 1e99
+          val t = if ((h0 < minH)|(h0 > maxH)) 1e99
           else new Exponential(h0).draw
           if (t > dt) x else {
             val i = Multinomial(h).sample
