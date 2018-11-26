@@ -1,17 +1,19 @@
 /*
-Types.scala
+package.scala
 
-Types and type classes used throughout the package
+Package object
+
+Mainly types and type classes used throughout the package
 
  */
 
-package smfsb
+// package smfsb
 
 
 /**
   * Object containing basic types used throughout the library.
   */
-object Types {
+package object smfsb {
 
   import breeze.linalg._
 
