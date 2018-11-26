@@ -20,7 +20,6 @@ The first time you run this it will take a little while to download and cache va
 It should be possible to type or copy-and-paste the commands below one-at-a-time into the Scala REPL. We need to start with a few imports.
 ```scala
 import smfsb._
-import smfsb.Types._
 import breeze.linalg._
 import breeze.numerics._
 ```
