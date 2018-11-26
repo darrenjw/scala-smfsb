@@ -7,7 +7,6 @@ Example SPN models
 
 package smfsb
 
-import Types._
 import breeze.linalg._
 
 /**

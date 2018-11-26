@@ -7,8 +7,6 @@ Functions for ABC and ABC-SMC
 
 package smfsb
 
-import Types._
-
 /**
   * Functions for parameter inference using ABC (and ABC-SMC) methods
   */

@@ -11,7 +11,6 @@ import annotation.tailrec
 import breeze.linalg._
 import breeze.numerics._
 import breeze.stats.distributions._
-import Types._
 
 /**
   * Functions which accept a `Spn` and return a function for simulating from the transition kernel of that model

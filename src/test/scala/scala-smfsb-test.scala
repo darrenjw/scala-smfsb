@@ -12,7 +12,6 @@ import org.scalatest.junit._
 import org.junit.runner.RunWith
 
 import breeze.linalg._
-import Types._
 
 @RunWith(classOf[JUnitRunner])
 class MyTestSuite extends FunSuite {
