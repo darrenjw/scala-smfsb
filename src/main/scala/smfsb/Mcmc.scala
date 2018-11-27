@@ -120,7 +120,7 @@ object Mcmc {
           p0.ylabel = "Value"
           p0.title = "Trace plot"
           val p1 = f.subplot(v, 3, 3*i+1)
-          p1 += plot(DenseVector((0 to lm).map(_.toDouble).toArray), acf(m(::, i).data, lm))
+          p1 += plot(DenseVector((0 to lm).map(_.toDouble).toArray), acf(m(::, i).toArray, lm))
           p1.xlabel = "Lag"
           p1.ylabel = "ACF"
           p1.title = "ACF"
