@@ -198,7 +198,7 @@ class MyTestSuite extends FunSuite {
   test("ACF") {
     val v = List(2,3,2,3,3,4,4,5,6,5,4,3,2,3,5)
     val acf = Mcmc.acf(v map (_.toDouble), 3)
-    println(acf)
+    //println(acf)
     assert(acf.length == 4)
     assert(math.abs(acf(0) - 1.0) < 1e-6)
   }
