@@ -187,7 +187,6 @@ class MyTestSuite extends FunSuite {
     assert(math.abs(out.sum / n) < 0.2)
   }
 
-
   test("toDMD") {
     val s = List(DenseVector(1,2,3),DenseVector(4,5,6)).toStream
     val m = Mcmc.toDMD(s)
@@ -196,7 +195,13 @@ class MyTestSuite extends FunSuite {
     assert(m === DenseMatrix((1.0,2.0,3.0),(4.0,5.0,6.0)))
   }
 
-
+  test("ACF") {
+    val v = List(2,3,2,3,3,4,4,5,6,5,4,3,2,3,5)
+    val acf = Mcmc.acf(v map (_.toDouble), 3)
+    println(acf)
+    assert(acf.length == 4)
+    assert(math.abs(acf(0) - 1.0) < 1e-6)
+  }
 
 }
 

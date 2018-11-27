@@ -13,24 +13,32 @@ import breeze.stats.distributions._
 
 object AbcSsLv {
 
-  // state prior
   def statePriorSample = DenseVector(Poisson(50.0).draw, Poisson(100.0).draw)
+
   def rprior = exp(DenseVector(Uniform(-3.0,3.0).draw,Uniform(-8.0,-2.0).draw,Uniform(-4.0,2.0).draw))
+
   def distance(real: DoubleState)(sim: DoubleState): Double =
     math.sqrt(sum((real-sim).map(x => x*x)))
+
   def ssd(ts: Ts[DoubleState]): DoubleState = {
     val v = DenseVector(ts.map(_._2(0)).toArray)
-    v // TODO: real summary stats!!!
+    import breeze.stats._
+    val m = meanAndVariance(v)
+    val acf = Mcmc.acf(v.data, 3)
+    DenseVector(m.mean, math.sqrt(m.variance), acf(1), acf(2), acf(3))
   }
+
   def ss(ts: Ts[IntState]): DoubleState = {
     ssd(ts.map{case (t,v) => (t,v.map(_.toDouble))})
   }
+
   // TODO: Calibrate summary stats
+
   def step(p: DoubleState) = Step.gillespie(SpnModels.lv[IntState](p), maxH=1e5)
 
   def main(args: Array[String]): Unit = {
     println("ABC rejection demo (with summary stats)...")
-    val n = 10000 // required number of iterations from the ABC algorithm
+    val n = 1000 // required number of iterations from the ABC algorithm
     val fraction = 0.01 // fraction of accepted ABC samples
     val rawData = Source.fromFile("LVpreyNoise10.txt").getLines
     val data = ((0 to 30 by 2).toList zip rawData.toList).map((x: (Int,String)) => (x._1.toDouble, DenseVector(x._2.toDouble)))
