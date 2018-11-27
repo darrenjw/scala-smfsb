@@ -2,7 +2,7 @@
 
 ### Directory containing runnable examples illustrating use of the scala-smfsb library
 
-Just doing `sbt run` from inside this directory should build and run the examples.
+Just doing `sbt run` from **this** directory should build and run the examples.
 
 ## Examples
 
