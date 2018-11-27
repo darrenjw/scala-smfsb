@@ -9,6 +9,7 @@ import smfsb._
 import scala.io.Source
 import breeze.linalg._
 import breeze.numerics._
+import breeze.stats._
 import breeze.stats.distributions._
 
 object AbcSsLv {
@@ -32,7 +33,6 @@ object AbcSsLv {
     ssd(ts.map{case (t,v) => (t,v.map(_.toDouble))})
   }
 
-  // TODO: Calibrate summary stats
 
   def step(p: DoubleState) = Step.gillespie(SpnModels.lv[IntState](p), maxH=1e5)
 
@@ -42,17 +42,25 @@ object AbcSsLv {
     val fraction = 0.01 // fraction of accepted ABC samples
     val rawData = Source.fromFile("LVpreyNoise10.txt").getLines
     val data = ((0 to 30 by 2).toList zip rawData.toList).map((x: (Int,String)) => (x._1.toDouble, DenseVector(x._2.toDouble)))
-    val dist = distance(ssd(data)) _
-    def rdist(p: DoubleState): Double = dist(ss(Sim.ts[IntState](statePriorSample,0.0,30.0,2.0,step(p))))
-    println("Starting ABC run now...")
+    def ss1(p: DoubleState): DoubleState = ss(Sim.ts[IntState](statePriorSample,0.0,30.0,2.0,step(p)))
+    println("Starting ABC pilot run...")
+    val out1 = Abc.run(100,rprior,ss1 _)
+    println("Pilot run completed.")
+    val outMat = Mcmc.toDMD(out1 map (_._2))
+    val sds = sqrt(variance(outMat(::, *))).t
+    def ss2(p: DoubleState): DoubleState = ss1(p) /:/ sds
+    /*
+    def 
+    println("Starting main ABC run...")
     val out = Abc.run(n,rprior,rdist _)
-    println("ABC run completed.")
+    println("Main ABC run completed.")
     val distances = (out map (_._2)).seq
     import breeze.stats.DescriptiveStats._
     val cutoff = percentile(distances, fraction)
     val accepted = out filter (_._2 < cutoff)
     val laccepted = accepted map (x => log(x._1))
     Mcmc.summary(laccepted,true)
+     */
     println("Done.")
   }
 

@@ -29,7 +29,7 @@ object Abc {
     * @return The collection of generated parameters together with their
     * simulated distances from a target data set
     */
-  def run[P](n: Int, rprior: => P, dist: P => Double): GenSeq[(P, Double)] = {
+  def run[P, D](n: Int, rprior: => P, dist: P => D): GenSeq[(P, D)] = {
     (1 to n).par.map(i => {
       val p = rprior
       (p,dist(p))
@@ -44,7 +44,7 @@ object Abc {
     * @param output Collection of runs (and distances) such as generated
     * from `run`
     */
-  def summary[P: CsvRow](output: GenSeq[(P, Double)]): Unit = {
+  def summary[P: CsvRow, D](output: GenSeq[(P, D)]): Unit = {
     Mcmc.summary(Mcmc.toDMD(output map (_._1)))
   }
 
