@@ -27,14 +27,13 @@ object PMCMC {
   def main(args: Array[String]): Unit = {
     println("PMCMC demo...")
     val N = 100 // number of particles in the particle filter
-    val n = 2000 // required number of iterations from the PMMH algorithm
+    val n = 5000 // required number of iterations from the PMMH algorithm
     val thin = 5 // thinning
     val burn = 10 // initial discarded MCMC iterations
     val tune = 0.01 // tuning parameter of the MH proposal
     // first read in the observational data
     val rawData = Source.fromFile("LVpreyNoise10.txt").getLines
     val data = ((0 to 30 by 2).toList zip rawData.toList).map((x: (Int,String)) => (x._1.toDouble, DenseVector(x._2.toDouble)))
-    //println(data)
     //Sim.plotTs(data)
     // now create the inferential model
     val mll = Mll.pfMll[DenseVector[Double],IntState,DoubleState](
@@ -44,12 +43,6 @@ object PMCMC {
       obsLik,
       data
     )
-    // Sanity checks...
-    //println(statePrior(5))
-    //println(statePrior(5))
-    //(1 to 5).foreach{i => println(mll(DenseVector(1.0, 0.005, 0.6)))}
-    //(1 to 5).foreach{i => println(mll(DenseVector(1.0, 0.01, 0.6)))}
-    //(1 to 5).foreach{i => println(mll(DenseVector(1.0, 0.005, 0.3)))}
     // now create an MCMC stream
     val s = Mcmc.mhStream(
       DenseVector(1.0, 0.005, 0.6),

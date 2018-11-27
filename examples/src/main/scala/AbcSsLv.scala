@@ -33,12 +33,11 @@ object AbcSsLv {
     ssds(ts.map{case (t,v) => (t,v.map(_.toDouble))})
   }
 
-
   def step(p: DoubleState) = Step.gillespie(SpnModels.lv[IntState](p), maxH=1e5)
 
   def main(args: Array[String]): Unit = {
     println("ABC rejection demo (with summary stats)...")
-    val n = 10000 // required number of iterations from the ABC algorithm
+    val n = 100000 // required number of iterations from the ABC algorithm
     val fraction = 0.01 // fraction of accepted ABC samples
     val rawData = Source.fromFile("LVpreyNoise10.txt").getLines
     val data = ((0 to 30 by 2).toList zip rawData.toList).map((x: (Int,String)) => (x._1.toDouble, DenseVector(x._2.toDouble)))
