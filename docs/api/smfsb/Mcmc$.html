@@ -280,6 +280,24 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="smfsb.Mcmc#acf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="acf(x:Seq[Double],lm:Int):breeze.linalg.DenseVector[Double]"></a><a id="acf(Seq[Double],Int):DenseVector[Double]"></a>
+      <span class="permalink">
+      <a href="../smfsb/Mcmc$.html#acf(x:Seq[Double],lm:Int):breeze.linalg.DenseVector[Double]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">acf</span><span class="params">(<span name="x">x: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Double">Double</span>]</span>, <span name="lm">lm: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Double">Double</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Autocorrelation function
+</p><div class="fullcomment"><div class="comment cmt"><p>Autocorrelation function
+</p></div><dl class="paramcmts block"><dt class="param">x</dt><dd class="cmt"><p>Input data</p></dd><dt class="param">lm</dt><dd class="cmt"><p>Maximum lag required</p></dd><dt>returns</dt><dd class="cmt"><p>A vector of autocorrelations</p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
@@ -517,9 +535,9 @@
               
         </dd></dl></div>
     </li><li name="smfsb.Mcmc#summary" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="summary[P](s:Stream[P],plot:Boolean)(implicitevidence$2:smfsb.CsvRow[P]):Unit"></a><a id="summary[P](Stream[P],Boolean)(CsvRow[P]):Unit"></a>
+      <a id="summary[P](s:scala.collection.GenSeq[P],plot:Boolean)(implicitevidence$2:smfsb.CsvRow[P]):Unit"></a><a id="summary[P](GenSeq[P],Boolean)(CsvRow[P]):Unit"></a>
       <span class="permalink">
-      <a href="../smfsb/Mcmc$.html#summary[P](s:Stream[P],plot:Boolean)(implicitevidence$2:smfsb.CsvRow[P]):Unit" title="Permalink">
+      <a href="../smfsb/Mcmc$.html#summary[P](s:scala.collection.GenSeq[P],plot:Boolean)(implicitevidence$2:smfsb.CsvRow[P]):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -528,16 +546,16 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">summary</span><span class="tparams">[<span name="P">P</span>]</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Stream">Stream</span>[<span class="extype" name="smfsb.Mcmc.summary.P">P</span>]</span>, <span name="plot">plot: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="package$$CsvRow.html" class="extype" name="smfsb.CsvRow">CsvRow</a>[<span class="extype" name="smfsb.Mcmc.summary.P">P</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">summary</span><span class="tparams">[<span name="P">P</span>]</span><span class="params">(<span name="s">s: <span class="extype" name="scala.collection.GenSeq">GenSeq</span>[<span class="extype" name="smfsb.Mcmc.summary.P">P</span>]</span>, <span name="plot">plot: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="package$$CsvRow.html" class="extype" name="smfsb.CsvRow">CsvRow</a>[<span class="extype" name="smfsb.Mcmc.summary.P">P</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <p class="shortcomment cmt">Wrapper around the other <code>summary</code> function which takes a <code>Stream</code>
 </p><div class="fullcomment"><div class="comment cmt"><p>Wrapper around the other <code>summary</code> function which takes a <code>Stream</code>
 </p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"><p>A *finite* stream of MCMC iterations.</p></dd><dt class="param">plot</dt><dd class="cmt"><p>Generate plots?</p></dd></dl></div>
     </li><li name="smfsb.Mcmc#summary" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="summary(m:breeze.linalg.DenseMatrix[Double],plt:Boolean):Unit"></a><a id="summary(DenseMatrix[Double],Boolean):Unit"></a>
+      <a id="summary(m:breeze.linalg.DenseMatrix[Double],plt:Boolean,lm:Int):Unit"></a><a id="summary(DenseMatrix[Double],Boolean,Int):Unit"></a>
       <span class="permalink">
-      <a href="../smfsb/Mcmc$.html#summary(m:breeze.linalg.DenseMatrix[Double],plt:Boolean):Unit" title="Permalink">
+      <a href="../smfsb/Mcmc$.html#summary(m:breeze.linalg.DenseMatrix[Double],plt:Boolean,lm:Int):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -546,12 +564,12 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">summary</span><span class="params">(<span name="m">m: <span class="extype" name="breeze.linalg.DenseMatrix">DenseMatrix</span>[<span class="extype" name="scala.Double">Double</span>]</span>, <span name="plt">plt: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">summary</span><span class="params">(<span name="m">m: <span class="extype" name="breeze.linalg.DenseMatrix">DenseMatrix</span>[<span class="extype" name="scala.Double">Double</span>]</span>, <span name="plt">plt: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="lm">lm: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">50</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <p class="shortcomment cmt">Generate some basic diagnostics associated with an MCMC run.</p><div class="fullcomment"><div class="comment cmt"><p>Generate some basic diagnostics associated with an MCMC run.
 Called purely for the side-effect of generating output on the console.
-</p></div><dl class="paramcmts block"><dt class="param">m</dt><dd class="cmt"><p>A matrix, such as generated by <code>toDMD</code> containing MCMC output</p></dd><dt class="param">plt</dt><dd class="cmt"><p>Generate plots?</p></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">m</dt><dd class="cmt"><p>A matrix, such as generated by <code>toDMD</code> containing MCMC output</p></dd><dt class="param">plt</dt><dd class="cmt"><p>Generate plots?</p></dd><dt class="param">lm</dt><dd class="cmt"><p>Max lag for ACF plot</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">

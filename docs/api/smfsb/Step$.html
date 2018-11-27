@@ -432,9 +432,9 @@ which will simulate the state of the system at time <code>t0+deltat</code> given
               
         </dd></dl></div>
     </li><li name="smfsb.Step#gillespie" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="gillespie(n:smfsb.Spn[smfsb.IntState]):(smfsb.IntState,smfsb.Time,smfsb.Time)=&gt;smfsb.IntState"></a><a id="gillespie(Spn[IntState]):(IntState,Time,Time)⇒IntState"></a>
+      <a id="gillespie(n:smfsb.Spn[smfsb.IntState],minH:Double,maxH:Double):(smfsb.IntState,smfsb.Time,smfsb.Time)=&gt;smfsb.IntState"></a><a id="gillespie(Spn[IntState],Double,Double):(IntState,Time,Time)⇒IntState"></a>
       <span class="permalink">
-      <a href="../smfsb/Step$.html#gillespie(n:smfsb.Spn[smfsb.IntState]):(smfsb.IntState,smfsb.Time,smfsb.Time)=&gt;smfsb.IntState" title="Permalink">
+      <a href="../smfsb/Step$.html#gillespie(n:smfsb.Spn[smfsb.IntState],minH:Double,maxH:Double):(smfsb.IntState,smfsb.Time,smfsb.Time)=&gt;smfsb.IntState" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -443,10 +443,10 @@ which will simulate the state of the system at time <code>t0+deltat</code> given
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">gillespie</span><span class="params">(<span name="n">n: <a href="package$$Spn.html" class="extype" name="smfsb.Spn">Spn</a>[<a href="index.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.IntState">IntState</a>]</span>)</span><span class="result">: (<a href="index.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.IntState">IntState</a>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>) ⇒ <a href="index.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.IntState">IntState</a></span>
+        <span class="name">gillespie</span><span class="params">(<span name="n">n: <a href="package$$Spn.html" class="extype" name="smfsb.Spn">Spn</a>[<a href="index.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.IntState">IntState</a>]</span>, <span name="minH">minH: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">1e-20</span></span>, <span name="maxH">maxH: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">1e6</span></span>)</span><span class="result">: (<a href="index.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.IntState">IntState</a>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>, <a href="index.html#Time=Double" class="extmbr" name="smfsb.Time">Time</a>) ⇒ <a href="index.html#IntState=breeze.linalg.DenseVector[Int]" class="extmbr" name="smfsb.IntState">IntState</a></span>
       </span>
       
-      <p class="shortcomment cmt">The Gillespie algorithm, sometimes known as the direct method, or the stochastic simulation algorithm (SSA)</p><div class="fullcomment"><div class="comment cmt"><p>The Gillespie algorithm, sometimes known as the direct method, or the stochastic simulation algorithm (SSA)</p></div><dl class="paramcmts block"><dt class="param">n</dt><dd class="cmt"><p>A <code>Spn[IntState]</code> model</p></dd><dt>returns</dt><dd class="cmt"><p>A function with type signature <code>(x0: IntState, t0: Time, deltat: Time) =&gt; IntState</code>
+      <p class="shortcomment cmt">The Gillespie algorithm, sometimes known as the direct method, or the stochastic simulation algorithm (SSA)</p><div class="fullcomment"><div class="comment cmt"><p>The Gillespie algorithm, sometimes known as the direct method, or the stochastic simulation algorithm (SSA)</p></div><dl class="paramcmts block"><dt class="param">n</dt><dd class="cmt"><p>A <code>Spn[IntState]</code> model</p></dd><dt class="param">minH</dt><dd class="cmt"><p>Threshold for treating hazard as zero</p></dd><dt class="param">maxH</dt><dd class="cmt"><p>Threshold for terminating simulation early</p></dd><dt>returns</dt><dd class="cmt"><p>A function with type signature <code>(x0: IntState, t0: Time, deltat: Time) =&gt; IntState</code>
 which will simulate the state of the system at time <code>t0+deltat</code> given initial state <code>x0</code> and intial time <code>t0</code></p></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
