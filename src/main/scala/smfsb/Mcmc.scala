@@ -114,17 +114,17 @@ object Mcmc {
     if (plt) {
       val f = Figure("MCMC Diagnostic plots")
         (0 until v).foreach(i => {
-          val p0 = f.subplot(v, 3, 2*i)
+          val p0 = f.subplot(v, 3, 3*i)
           p0 += plot(DenseVector((1 to n).map(_.toDouble).toArray), m(::, i))
           p0.xlabel = "Iteration"
           p0.ylabel = "Value"
           p0.title = "Trace plot"
-          val p1 = f.subplot(v, 3, 2*i+1)
+          val p1 = f.subplot(v, 3, 3*i+1)
           p1 += plot(DenseVector((0 to lm).map(_.toDouble).toArray), acf(m(::, i).data, lm))
           p1.xlabel = "Lag"
           p1.ylabel = "ACF"
           p1.title = "ACF"
-          val p2 = f.subplot(v, 3, 2*i+2)
+          val p2 = f.subplot(v, 3, 3*i+2)
           p2 += hist(m(::,i), 50)
           p2.xlabel = "Value"
           p2.title = "Marginal density"

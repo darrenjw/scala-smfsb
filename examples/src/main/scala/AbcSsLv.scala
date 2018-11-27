@@ -21,7 +21,7 @@ object AbcSsLv {
   def distance(real: DoubleState)(sim: DoubleState): Double =
     math.sqrt(sum((real-sim).map(x => x*x)))
 
-  def ssd(ts: Ts[DoubleState]): DoubleState = {
+  def ssds(ts: Ts[DoubleState]): DoubleState = {
     val v = DenseVector(ts.map(_._2(0)).toArray)
     import breeze.stats._
     val m = meanAndVariance(v)
@@ -30,7 +30,7 @@ object AbcSsLv {
   }
 
   def ss(ts: Ts[IntState]): DoubleState = {
-    ssd(ts.map{case (t,v) => (t,v.map(_.toDouble))})
+    ssds(ts.map{case (t,v) => (t,v.map(_.toDouble))})
   }
 
 
@@ -38,19 +38,21 @@ object AbcSsLv {
 
   def main(args: Array[String]): Unit = {
     println("ABC rejection demo (with summary stats)...")
-    val n = 1000 // required number of iterations from the ABC algorithm
+    val n = 10000 // required number of iterations from the ABC algorithm
     val fraction = 0.01 // fraction of accepted ABC samples
     val rawData = Source.fromFile("LVpreyNoise10.txt").getLines
     val data = ((0 to 30 by 2).toList zip rawData.toList).map((x: (Int,String)) => (x._1.toDouble, DenseVector(x._2.toDouble)))
     def ss1(p: DoubleState): DoubleState = ss(Sim.ts[IntState](statePriorSample,0.0,30.0,2.0,step(p)))
     println("Starting ABC pilot run...")
-    val out1 = Abc.run(100,rprior,ss1 _)
+    val out1 = Abc.run(1500,rprior,ss1 _)
     println("Pilot run completed.")
     val outMat = Mcmc.toDMD(out1 map (_._2))
     val sds = sqrt(variance(outMat(::, *))).t
-    def ss2(p: DoubleState): DoubleState = ss1(p) /:/ sds
-    /*
-    def 
+    println(sds)
+    def ss2(ts: Ts[IntState]): DoubleState = ss(ts) /:/ sds
+    val ssd = ssds(data) /:/ sds
+    val dist = distance(ssd) _
+    def rdist(p: DoubleState): Double = dist(ss2(Sim.ts[IntState](statePriorSample,0.0,30.0,2.0,step(p))))
     println("Starting main ABC run...")
     val out = Abc.run(n,rprior,rdist _)
     println("Main ABC run completed.")
@@ -60,7 +62,6 @@ object AbcSsLv {
     val accepted = out filter (_._2 < cutoff)
     val laccepted = accepted map (x => log(x._1))
     Mcmc.summary(laccepted,true)
-     */
     println("Done.")
   }
 
