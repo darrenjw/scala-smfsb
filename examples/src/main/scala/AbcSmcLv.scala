@@ -45,7 +45,7 @@ object AbcSmcLv {
   def step(p: DoubleState) = Step.gillespie(SpnModels.lv[IntState](exp(p)), maxH=1e5)
 
   def main(args: Array[String]): Unit = {
-    println("ABC rejection demo (with summary stats)...")
+    println("ABC-SMC demo (with summary stats)...")
     val N = 5000 // required number of iterations from the ABC-SMC algorithm
     val rawData = Source.fromFile("LVpreyNoise10.txt").getLines
     val data = ((0 to 30 by 2).toList zip rawData.toList).map((x: (Int,String)) => (x._1.toDouble, DenseVector(x._2.toDouble)))
