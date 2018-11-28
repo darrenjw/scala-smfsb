@@ -13,6 +13,9 @@ package smfsb
 object Abc {
 
   import scala.collection.GenSeq
+  import breeze.linalg._
+  import breeze.numerics._
+  import breeze.stats.DescriptiveStats._
 
   /**
     * Function for running ABC simulations in parallel on all cores. This
@@ -34,6 +37,59 @@ object Abc {
       val p = rprior
       (p,dist(p))
     })
+  }
+
+  private def abcSmcStep[P](
+    dprior: P => LogLik, priorSample: GenSeq[P],
+    priorLW: GenSeq[LogLik], rdist: P => Double,
+    rperturb: P => P, dperturb: (P,P) => LogLik,
+    factor: Int = 10
+  ): (GenSeq[P], GenSeq[LogLik]) = {
+    val n = priorSample.length
+    val mx = priorLW reduce (math.max(_,_))
+    val rw = priorLW map (w => math.exp(w - mx))
+    val priorIdx = Mll.sample(n*factor, DenseVector(rw.toArray))
+    val prior = (priorIdx map (priorSample(_))).par //TODO: replace with flatMap
+    val prop = prior map (rperturb)
+    val dist = prop map (rdist)
+    val qCut = percentile(dist.seq, 1.0/factor)
+    val newP = ((prop zip dist) filter (_._2 < qCut)) map (_._1)
+    val priorTup = priorSample zip priorLW
+    val lw = newP map ( th => {
+      val terms = priorTup map {case (p,w) => w * dperturb(th,p)}
+      val mt = terms reduce (math.max(_,_))
+      val denom = mt + math.log(
+        (terms map (t => math.exp(t-mt))).sum
+      )
+      dprior(th) - denom
+    })
+    val nmx = lw reduce (math.max(_,_))
+    val lwn = lw map (_ - nmx)
+    val swn = (lwn map (math.exp(_))).sum
+    val nlw = lwn map (w => math.log(math.exp(w)/swn))
+    (newP, nlw)
+  }
+
+  // TODO: ScalaDoc
+  def abcSmc[P](
+    N: Int, rprior: => P, dprior: P => LogLik, rdist: P => Double,
+    rperturb: P => P, dperturb: (P,P) => LogLik, factor: Int = 10,
+    steps: Int = 15, verb: Boolean = false
+  ): GenSeq[P] = {
+    val priorLW = collection.immutable.Vector.fill(N)(1.0/N).par
+    val priorSample = priorLW map (w => rprior)
+    @annotation.tailrec
+    def go(samp: GenSeq[P], lw: GenSeq[LogLik], n: Int): GenSeq[P] = {
+      if (n == 0) {
+        val idx = Mll.sample(N, DenseVector(lw.toArray)).par
+        idx map (samp(_))
+      } else {
+        if (verb) println(n)
+        val out = abcSmcStep(dprior, samp, lw, rdist, rperturb, dperturb, factor)
+        go(out._1, out._2, n-1)
+      }
+    }
+    go(priorSample, priorLW, steps)
   }
 
   /**

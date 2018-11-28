@@ -21,7 +21,8 @@ object Mll {
 
   // TODO: support alternative resampling methods, such as systematic
 
-  private def sample(n: Int, prob: DenseVector[Double]): Vector[Int] = {
+  // TODO: scaladoc
+  def sample(n: Int, prob: DenseVector[Double]): Vector[Int] = {
     Multinomial(prob).sample(n).toVector
   }
 
@@ -38,7 +39,7 @@ object Mll {
     val srw = rw.sum
     val l = rw.length
     val rows = sample(l, DenseVector(rw.toArray))
-    val rx = rows map { xp(_) }
+    val rx = rows map { xp(_) } // TODO: replace with flatMap
     (max + math.log(srw/l), rx)
   }
 

@@ -1,7 +1,7 @@
 /*
-AbcSsLv.scala
+AbcSmcLv.scala
 
-Inference for the parameters of a Lotka-Volterra model using ABC with summary statistics
+Inference for the parameters of a Lotka-Volterra model using ABC-SMC with summary statistics
 
  */
 
@@ -37,7 +37,7 @@ object AbcSmcLv {
 
   def main(args: Array[String]): Unit = {
     println("ABC rejection demo (with summary stats)...")
-    val n = 100000 // required number of iterations from the ABC algorithm
+    val n = 10000 // required number of iterations from the ABC algorithm
     val fraction = 0.01 // fraction of accepted ABC samples
     val rawData = Source.fromFile("LVpreyNoise10.txt").getLines
     val data = ((0 to 30 by 2).toList zip rawData.toList).map((x: (Int,String)) => (x._1.toDouble, DenseVector(x._2.toDouble)))
