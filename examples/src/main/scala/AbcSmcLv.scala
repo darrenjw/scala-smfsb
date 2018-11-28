@@ -39,7 +39,7 @@ object AbcSmcLv {
   }
 
   def ss(ts: Ts[IntState]): DoubleState = {
-    ssds(ts.map{case (t,v) => (t,v.map(_.toDouble))})
+    ssds(ts.map{case (t,v) => (t, v.map(_.toDouble))})
   }
 
   def step(p: DoubleState) = Step.gillespie(SpnModels.lv[IntState](exp(p)), maxH=1e5)

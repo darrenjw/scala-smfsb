@@ -39,6 +39,7 @@ object Abc {
     })
   }
 
+  // One step of an ABC-SMC algorithm - called by "smc"
   private def smcStep[P](
     dprior: P => LogLik, priorSample: GenSeq[P],
     priorLW: GenSeq[LogLik], rdist: P => Double,
@@ -70,7 +71,27 @@ object Abc {
     (newP, nlw)
   }
 
-  // TODO: ScalaDoc
+  /**
+    * Function for running an ABC-SMC algorithm in parallel on all
+    * available cores.
+    * 
+    * @param N Number of samples to be propagated forward at each sweep
+    * @param rprior Function for simulating from a prior on the parameters
+    * @param dprior Function returning the log-density of a parameter under
+    * the prior
+    * @param rdist Function which takes a parameter, runs a forward simultation, and then calculates a distance (as a scalar `Double`) from a target data set
+    * @param rperturb Function to perturb a parameter vector (perturbation
+    * kernel, in ABC-SMC speak)
+    * @param dperturb Function for evaluating the log-density of a perturbed
+    * parameter relative to an original parameter. In the case of a
+    * non-symmetric perturbation kernel, it is the new, perturbed value that is
+    * the first element of the tuple.
+    * @param factor The acceptance rate at each sweep is `1/factor`
+    * @param steps The number of sweeps of the ABC-SMC algorithm to perform
+    * @param verb Print progress to the console?
+    * 
+    * @return An equally weighted sample from the ABC-SMC parameter posterior, approximately of size `N`
+    */
   def smc[P](
     N: Int, rprior: => P, dprior: P => LogLik, rdist: P => Double,
     rperturb: P => P, dperturb: (P,P) => LogLik, factor: Int = 10,
@@ -80,11 +101,11 @@ object Abc {
     val priorSample = priorLW map (w => rprior)
     @annotation.tailrec
     def go(samp: GenSeq[P], lw: GenSeq[LogLik], n: Int): GenSeq[P] = {
+      if (verb) println(n)
       if (n == 0) {
         val idx = Mll.sample(N, exp(DenseVector(lw.toArray))).par
         idx map (samp(_))
       } else {
-        if (verb) println(n)
         val out = smcStep(dprior, samp, lw, rdist, rperturb, dperturb, factor)
         go(out._1, out._2, n-1)
       }
