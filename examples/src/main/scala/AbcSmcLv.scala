@@ -16,7 +16,16 @@ object AbcSmcLv {
 
   def statePriorSample = DenseVector(Poisson(50.0).draw, Poisson(100.0).draw)
 
-  def rprior = exp(DenseVector(Uniform(-3.0,3.0).draw,Uniform(-8.0,-2.0).draw,Uniform(-4.0,2.0).draw))
+  def rprior = DenseVector(Uniform(-3.0,3.0).draw,Uniform(-8.0,-2.0).draw,Uniform(-4.0,2.0).draw)
+
+  def dprior(p: DoubleState): LogLik = Uniform(-3.0,3.0).logPdf(p(0)) +
+    Uniform(-8.0,-2.0).logPdf(p(1)) + Uniform(-4.0,2.0).logPdf(p(2))
+
+  def rperturb(p: DoubleState): DoubleState = p +:+
+    DenseVector(Gaussian(0.0,0.5).sample(3).toArray)
+
+  def dperturb(pNew: DoubleState, pOld: DoubleState): Double =
+    sum((pNew -:- pOld).map(Gaussian(0.0,0.5).logPdf(_)))
 
   def distance(real: DoubleState)(sim: DoubleState): Double =
     math.sqrt(sum((real-sim).map(x => x*x)))
@@ -33,12 +42,11 @@ object AbcSmcLv {
     ssds(ts.map{case (t,v) => (t,v.map(_.toDouble))})
   }
 
-  def step(p: DoubleState) = Step.gillespie(SpnModels.lv[IntState](p), maxH=1e5)
+  def step(p: DoubleState) = Step.gillespie(SpnModels.lv[IntState](exp(p)), maxH=1e5)
 
   def main(args: Array[String]): Unit = {
     println("ABC rejection demo (with summary stats)...")
-    val n = 10000 // required number of iterations from the ABC algorithm
-    val fraction = 0.01 // fraction of accepted ABC samples
+    val N = 5000 // required number of iterations from the ABC-SMC algorithm
     val rawData = Source.fromFile("LVpreyNoise10.txt").getLines
     val data = ((0 to 30 by 2).toList zip rawData.toList).map((x: (Int,String)) => (x._1.toDouble, DenseVector(x._2.toDouble)))
     def ss1(p: DoubleState): DoubleState = ss(Sim.ts[IntState](statePriorSample,0.0,30.0,2.0,step(p)))
@@ -52,15 +60,12 @@ object AbcSmcLv {
     val ssd = ssds(data) /:/ sds
     val dist = distance(ssd) _
     def rdist(p: DoubleState): Double = dist(ss2(Sim.ts[IntState](statePriorSample,0.0,30.0,2.0,step(p))))
-    println("Starting main ABC run...")
-    val out = Abc.run(n,rprior,rdist _)
-    println("Main ABC run completed.")
-    val distances = (out map (_._2)).seq
-    import breeze.stats.DescriptiveStats._
-    val cutoff = percentile(distances, fraction)
-    val accepted = out filter (_._2 < cutoff)
-    val laccepted = accepted map (x => log(x._1))
-    Mcmc.summary(laccepted,true)
+    println("Starting main ABC-SMC run...")
+    val out = Abc.smc(N,rprior,dprior,rdist,rperturb,dperturb,5,8,true)
+    println("Main ABC-SMC run completed.")
+    Mcmc.summary(out,true)
+    val eout = out map (exp(_))
+    Mcmc.summary(eout,true)
     println("Done.")
   }
 

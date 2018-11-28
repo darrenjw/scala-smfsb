@@ -39,7 +39,7 @@ object Abc {
     })
   }
 
-  private def abcSmcStep[P](
+  private def smcStep[P](
     dprior: P => LogLik, priorSample: GenSeq[P],
     priorLW: GenSeq[LogLik], rdist: P => Double,
     rperturb: P => P, dperturb: (P,P) => LogLik,
@@ -56,7 +56,7 @@ object Abc {
     val newP = ((prop zip dist) filter (_._2 < qCut)) map (_._1)
     val priorTup = priorSample zip priorLW
     val lw = newP map ( th => {
-      val terms = priorTup map {case (p,w) => w * dperturb(th,p)}
+      val terms = priorTup map {case (p,w) => w + dperturb(th,p)}
       val mt = terms reduce (math.max(_,_))
       val denom = mt + math.log(
         (terms map (t => math.exp(t-mt))).sum
@@ -71,21 +71,21 @@ object Abc {
   }
 
   // TODO: ScalaDoc
-  def abcSmc[P](
+  def smc[P](
     N: Int, rprior: => P, dprior: P => LogLik, rdist: P => Double,
     rperturb: P => P, dperturb: (P,P) => LogLik, factor: Int = 10,
     steps: Int = 15, verb: Boolean = false
   ): GenSeq[P] = {
-    val priorLW = collection.immutable.Vector.fill(N)(1.0/N).par
+    val priorLW = collection.immutable.Vector.fill(N)(math.log(1.0/N)).par
     val priorSample = priorLW map (w => rprior)
     @annotation.tailrec
     def go(samp: GenSeq[P], lw: GenSeq[LogLik], n: Int): GenSeq[P] = {
       if (n == 0) {
-        val idx = Mll.sample(N, DenseVector(lw.toArray)).par
+        val idx = Mll.sample(N, exp(DenseVector(lw.toArray))).par
         idx map (samp(_))
       } else {
         if (verb) println(n)
-        val out = abcSmcStep(dprior, samp, lw, rdist, rperturb, dperturb, factor)
+        val out = smcStep(dprior, samp, lw, rdist, rperturb, dperturb, factor)
         go(out._1, out._2, n-1)
       }
     }
