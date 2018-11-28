@@ -483,9 +483,9 @@
               
         </dd></dl></div>
     </li><li name="smfsb.Abc#run" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="run[P](n:Int,rprior:=&gt;P,dist:P=&gt;Double):scala.collection.GenSeq[(P,Double)]"></a><a id="run[P](Int,⇒P,(P)⇒Double):GenSeq[(P,Double)]"></a>
+      <a id="run[P,D](n:Int,rprior:=&gt;P,dist:P=&gt;D):scala.collection.GenSeq[(P,D)]"></a><a id="run[P,D](Int,⇒P,(P)⇒D):GenSeq[(P,D)]"></a>
       <span class="permalink">
-      <a href="../smfsb/Abc$.html#run[P](n:Int,rprior:=&gt;P,dist:P=&gt;Double):scala.collection.GenSeq[(P,Double)]" title="Permalink">
+      <a href="../smfsb/Abc$.html#run[P,D](n:Int,rprior:=&gt;P,dist:P=&gt;D):scala.collection.GenSeq[(P,D)]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -494,7 +494,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">run</span><span class="tparams">[<span name="P">P</span>]</span><span class="params">(<span name="n">n: <span class="extype" name="scala.Int">Int</span></span>, <span name="rprior">rprior: ⇒ <span class="extype" name="smfsb.Abc.run.P">P</span></span>, <span name="dist">dist: (<span class="extype" name="smfsb.Abc.run.P">P</span>) ⇒ <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <span class="extype" name="scala.collection.GenSeq">GenSeq</span>[(<span class="extype" name="smfsb.Abc.run.P">P</span>, <span class="extype" name="scala.Double">Double</span>)]</span>
+        <span class="name">run</span><span class="tparams">[<span name="P">P</span>, <span name="D">D</span>]</span><span class="params">(<span name="n">n: <span class="extype" name="scala.Int">Int</span></span>, <span name="rprior">rprior: ⇒ <span class="extype" name="smfsb.Abc.run.P">P</span></span>, <span name="dist">dist: (<span class="extype" name="smfsb.Abc.run.P">P</span>) ⇒ <span class="extype" name="smfsb.Abc.run.D">D</span></span>)</span><span class="result">: <span class="extype" name="scala.collection.GenSeq">GenSeq</span>[(<span class="extype" name="smfsb.Abc.run.P">P</span>, <span class="extype" name="smfsb.Abc.run.D">D</span>)]</span>
       </span>
       
       <p class="shortcomment cmt">Function for running ABC simulations in parallel on all cores.</p><div class="fullcomment"><div class="comment cmt"><p>Function for running ABC simulations in parallel on all cores. This
@@ -505,10 +505,10 @@ from a prior</p></dd><dt class="param">dist</dt><dd class="cmt"><p>Function that
 forward simulation from the model, then computes distance of output from a
 target data set</p></dd><dt>returns</dt><dd class="cmt"><p>The collection of generated parameters together with their
 simulated distances from a target data set</p></dd></dl></div>
-    </li><li name="smfsb.Abc#summary" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="summary[P](output:scala.collection.GenSeq[(P,Double)])(implicitevidence$1:smfsb.CsvRow[P]):Unit"></a><a id="summary[P](GenSeq[(P,Double)])(CsvRow[P]):Unit"></a>
+    </li><li name="smfsb.Abc#smc" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="smc[P](N:Int,rprior:=&gt;P,dprior:P=&gt;smfsb.LogLik,rdist:P=&gt;Double,rperturb:P=&gt;P,dperturb:(P,P)=&gt;smfsb.LogLik,factor:Int,steps:Int,verb:Boolean):scala.collection.GenSeq[P]"></a><a id="smc[P](Int,⇒P,(P)⇒LogLik,(P)⇒Double,(P)⇒P,(P,P)⇒LogLik,Int,Int,Boolean):GenSeq[P]"></a>
       <span class="permalink">
-      <a href="../smfsb/Abc$.html#summary[P](output:scala.collection.GenSeq[(P,Double)])(implicitevidence$1:smfsb.CsvRow[P]):Unit" title="Permalink">
+      <a href="../smfsb/Abc$.html#smc[P](N:Int,rprior:=&gt;P,dprior:P=&gt;smfsb.LogLik,rdist:P=&gt;Double,rperturb:P=&gt;P,dperturb:(P,P)=&gt;smfsb.LogLik,factor:Int,steps:Int,verb:Boolean):scala.collection.GenSeq[P]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -517,7 +517,31 @@ simulated distances from a target data set</p></dd></dl></div>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">summary</span><span class="tparams">[<span name="P">P</span>]</span><span class="params">(<span name="output">output: <span class="extype" name="scala.collection.GenSeq">GenSeq</span>[(<span class="extype" name="smfsb.Abc.summary.P">P</span>, <span class="extype" name="scala.Double">Double</span>)]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="package$$CsvRow.html" class="extype" name="smfsb.CsvRow">CsvRow</a>[<span class="extype" name="smfsb.Abc.summary.P">P</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">smc</span><span class="tparams">[<span name="P">P</span>]</span><span class="params">(<span name="N">N: <span class="extype" name="scala.Int">Int</span></span>, <span name="rprior">rprior: ⇒ <span class="extype" name="smfsb.Abc.smc.P">P</span></span>, <span name="dprior">dprior: (<span class="extype" name="smfsb.Abc.smc.P">P</span>) ⇒ <a href="index.html#LogLik=Double" class="extmbr" name="smfsb.LogLik">LogLik</a></span>, <span name="rdist">rdist: (<span class="extype" name="smfsb.Abc.smc.P">P</span>) ⇒ <span class="extype" name="scala.Double">Double</span></span>, <span name="rperturb">rperturb: (<span class="extype" name="smfsb.Abc.smc.P">P</span>) ⇒ <span class="extype" name="smfsb.Abc.smc.P">P</span></span>, <span name="dperturb">dperturb: (<span class="extype" name="smfsb.Abc.smc.P">P</span>, <span class="extype" name="smfsb.Abc.smc.P">P</span>) ⇒ <a href="index.html#LogLik=Double" class="extmbr" name="smfsb.LogLik">LogLik</a></span>, <span name="factor">factor: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">10</span></span>, <span name="steps">steps: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">15</span></span>, <span name="verb">verb: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="scala.collection.GenSeq">GenSeq</span>[<span class="extype" name="smfsb.Abc.smc.P">P</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Function for running an ABC-SMC algorithm in parallel on all
+available cores.</p><div class="fullcomment"><div class="comment cmt"><p>Function for running an ABC-SMC algorithm in parallel on all
+available cores.
+</p></div><dl class="paramcmts block"><dt class="param">N</dt><dd class="cmt"><p>Number of samples to be propagated forward at each sweep</p></dd><dt class="param">rprior</dt><dd class="cmt"><p>Function for simulating from a prior on the parameters</p></dd><dt class="param">dprior</dt><dd class="cmt"><p>Function returning the log-density of a parameter under
+the prior</p></dd><dt class="param">rdist</dt><dd class="cmt"><p>Function which takes a parameter, runs a forward simultation, and then calculates a distance (as a scalar <code>Double</code>) from a target data set</p></dd><dt class="param">rperturb</dt><dd class="cmt"><p>Function to perturb a parameter vector (perturbation
+kernel, in ABC-SMC speak)</p></dd><dt class="param">dperturb</dt><dd class="cmt"><p>Function for evaluating the log-density of a perturbed
+parameter relative to an original parameter. In the case of a
+non-symmetric perturbation kernel, it is the new, perturbed value that is
+the first element of the tuple.</p></dd><dt class="param">factor</dt><dd class="cmt"><p>The acceptance rate at each sweep is <code>1/factor</code></p></dd><dt class="param">steps</dt><dd class="cmt"><p>The number of sweeps of the ABC-SMC algorithm to perform</p></dd><dt class="param">verb</dt><dd class="cmt"><p>Print progress to the console?</p></dd><dt>returns</dt><dd class="cmt"><p>An equally weighted sample from the ABC-SMC parameter posterior, approximately of size <code>N</code></p></dd></dl></div>
+    </li><li name="smfsb.Abc#summary" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="summary[P,D](output:scala.collection.GenSeq[(P,D)])(implicitevidence$1:smfsb.CsvRow[P]):Unit"></a><a id="summary[P,D](GenSeq[(P,D)])(CsvRow[P]):Unit"></a>
+      <span class="permalink">
+      <a href="../smfsb/Abc$.html#summary[P,D](output:scala.collection.GenSeq[(P,D)])(implicitevidence$1:smfsb.CsvRow[P]):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">summary</span><span class="tparams">[<span name="P">P</span>, <span name="D">D</span>]</span><span class="params">(<span name="output">output: <span class="extype" name="scala.collection.GenSeq">GenSeq</span>[(<span class="extype" name="smfsb.Abc.summary.P">P</span>, <span class="extype" name="smfsb.Abc.summary.D">D</span>)]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="package$$CsvRow.html" class="extype" name="smfsb.CsvRow">CsvRow</a>[<span class="extype" name="smfsb.Abc.summary.P">P</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <p class="shortcomment cmt">Generate some basic diagnostics associated with an ABC run.</p><div class="fullcomment"><div class="comment cmt"><p>Generate some basic diagnostics associated with an ABC run.

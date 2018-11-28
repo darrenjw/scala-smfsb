@@ -519,6 +519,22 @@ determines the number of particles used in the particle filter.</p></dd><dt clas
       
       <p class="shortcomment cmt">A function for evaluating marginal log-likelihoods of parametrised models.</p><div class="fullcomment"><div class="comment cmt"><p>A function for evaluating marginal log-likelihoods of parametrised models. It basically just threads a parameter value through the arguments required for <code>bpf</code>.
 </p></div><dl class="paramcmts block"><dt class="param">simX0</dt><dd class="cmt"><p>A function which when provided with a parameter value will return a sample from the prior on the intial state of a Markov process model. The size of the sample will determine the number of particles used in the particle filter.</p></dd><dt class="param">t0</dt><dd class="cmt"><p>The intial time corresponding to the prior sample</p></dd><dt class="param">stepFun</dt><dd class="cmt"><p>A function, which when provided with a parameter value, will return the transition kernel of a Markov process.</p></dd><dt class="param">dataLik</dt><dd class="cmt"><p>A function, which when provided with a parameter value, will return the log-likelihood of the observation model</p></dd><dt class="param">data</dt><dd class="cmt"><p>The observed data in the form of a time series</p></dd></dl></div>
+    </li><li name="smfsb.Mll#sample" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="sample(n:Int,prob:breeze.linalg.DenseVector[Double]):Vector[Int]"></a><a id="sample(Int,DenseVector[Double]):Vector[Int]"></a>
+      <span class="permalink">
+      <a href="../smfsb/Mll$.html#sample(n:Int,prob:breeze.linalg.DenseVector[Double]):Vector[Int]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sample</span><span class="params">(<span name="n">n: <span class="extype" name="scala.Int">Int</span></span>, <span name="prob">prob: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Double">Double</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Vector">Vector</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
