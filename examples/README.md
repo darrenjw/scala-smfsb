@@ -10,7 +10,7 @@ Just doing `sbt run` from **this** directory should build and run the examples.
 * [PMCMC](src/main/scala/PMCMC.scala) - Parameter estimation from data using a PMMH particle MCMC algorithm (applied to a LV model)
 * [AbcLv](src/main/scala/AbcLv.scala) - A naive rejection ABC algorithm for the LV model based on Euclidean distance between trajectories
 * [AbcSsLv](src/main/scala/AbcSsLv.scala) - A rejection ABC algorithm using summary statistics
-* [AbcSmcLv](src/main/scala/AbcSsLv.scala) - An ABC-SMC algorithm using summary statistics
+* [AbcSmcLv](src/main/scala/AbcSmcLv.scala) - An ABC-SMC algorithm using summary statistics
 
 
 
