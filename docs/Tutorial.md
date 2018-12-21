@@ -56,7 +56,7 @@ and an auto-regulatory genetic network model.
 ```scala
 val stepAR = Step.gillespie(SpnModels.ar[IntState]())
 val tsAR = Sim.ts(DenseVector(10, 0, 0, 0, 0), 0.0, 500.0, 0.5, stepAR)
-Sim.plotTs(tsAR, "Gillespie simulation of the ID model")
+Sim.plotTs(tsAR, "Gillespie simulation of the AR model")
 ```
 If you know the book and/or the R package, these models should all be familiar. We don't have to simulate data on a regular time grid.
 ```scala

@@ -39,7 +39,7 @@ object Tutorial {
 
     val stepAR = Step.gillespie(SpnModels.ar[IntState]())
     val tsAR = Sim.ts(DenseVector(10, 0, 0, 0, 0), 0.0, 500.0, 0.5, stepAR)
-    Sim.plotTs(tsAR, "Gillespie simulation of the ID model")
+    Sim.plotTs(tsAR, "Gillespie simulation of the AR model")
 
     // Simulate on an irregular time grid
     val tsi = Sim.times(DenseVector(50,100), 0.0, List(0.0,2.0,5.0,10.0,20.0), step)
