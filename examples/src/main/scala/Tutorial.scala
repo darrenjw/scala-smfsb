@@ -65,7 +65,65 @@ object Tutorial {
     val tsE = Sim.ts(DenseVector(50.0, 100.0), 0.0, 20.0, 0.05, stepE)
     Sim.plotTs(tsE, "Continuous-deterministic Euler simulation of the LV model")
 
-    // PMCMC-based parameter inference in other example
+    // Model building
+    val mylv0 = UnmarkedSpn[IntState](
+      List("x", "y"),
+      DenseMatrix((1, 0), (1, 1), (0, 1)),
+      DenseMatrix((2, 0), (0, 2), (0, 0)),
+      (x, t) => {
+        DenseVector(
+          x(0) * 1.0, x(0) * x(1) * 0.005, x(1) * 0.6
+        )}
+    )
+    val ts0 = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, Step.gillespie(mylv0))
+    Sim.plotTs(ts0, "Gillespie simulation of LV0")
+
+    def lvparam(p: DenseVector[Double] = DenseVector(1.0, 0.005, 0.6)): Spn[IntState] =
+    UnmarkedSpn[IntState](
+      List("x", "y"),
+      DenseMatrix((1, 0), (1, 1), (0, 1)),
+      DenseMatrix((2, 0), (0, 2), (0, 0)),
+      (x, t) => {
+        DenseVector(
+          x(0) * p(0), x(0) * x(1) * p(1), x(1) * p(2)
+        )}
+    )
+
+    val mylv1 = lvparam(DenseVector(1.0, 0.005, 0.6))
+    val tslv1 = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, Step.gillespie(mylv1))
+    Sim.plotTs(tslv1, "Gillespie simulation of LV1")
+
+    val mylv2 = lvparam(DenseVector(1.1, 0.01, 0.6))
+    val tslv2 = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, Step.gillespie(mylv2))
+    Sim.plotTs(tslv2, "Gillespie simulation of LV2")
+
+    lazy val mylv3: Spn[IntState] = lvparam() // compiler bug?!
+    //val tslv3 = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, Step.gillespie(mylv3))
+    //Sim.plotTs(tslv3, "Gillespie simulation of LV3")
+
+    def lv[S: State](p: DenseVector[Double] = DenseVector(1.0, 0.005, 0.6)): Spn[S] =
+    UnmarkedSpn[S](
+      List("x", "y"),
+      DenseMatrix((1, 0), (1, 1), (0, 1)),
+      DenseMatrix((2, 0), (0, 2), (0, 0)),
+      (x, t) => {
+        val xd = x.toDvd
+        DenseVector(
+          xd(0) * p(0), xd(0) * xd(1) * p(1), xd(1) * p(2)
+        )}
+    )
+
+    val lvDiscrete = lv[IntState]()
+    val tsDiscrete = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, Step.gillespie(lvDiscrete))
+    Sim.plotTs(tsDiscrete, "Gillespie simulation of lvDiscrete")
+
+    val lvDiscrete2 = lv[IntState](DenseVector(1.1, 0.01, 0.6))
+    val tsDiscrete2 = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, Step.gillespie(lvDiscrete2))
+    Sim.plotTs(tsDiscrete2, "Gillespie simulation of lvDiscrete2")
+
+    val lvCts = lv[DoubleState]()
+    val tsCts = Sim.ts(DenseVector(50.0, 100.0), 0.0, 20.0, 0.05, Step.cle(lvCts))
+    Sim.plotTs(tsCts, "Gillespie simulation of lvCts")
 
     println("End")
 // ***************************************************************
