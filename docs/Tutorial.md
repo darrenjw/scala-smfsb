@@ -107,11 +107,11 @@ val mylv0 = UnmarkedSpn[IntState](
   DenseMatrix((2, 0), (0, 2), (0, 0)),
   (x, t) => {
     DenseVector(
-      x(0) * 1.0, x(0) * x(1) * 0.005, x(1) * 0.6
+      x.data(0) * 1.0, x.data(0) * x.data(1) * 0.005, x.data(1) * 0.6
     )}
 )
 ```
-We create a fully parametrised model (without an initial marking), but providing a list of species names, a *Pre* and *Post* matrix, and a hazard vector, which in general may be a function of both the state, `x` and the current time, `t`. We can test that this works.
+We create a fully parametrised model (without an initial marking), but providing a list of species names, a *Pre* and *Post* matrix, and a hazard vector, which in general may be a function of both the state, `x` and the current time, `t`. Note that it should be OK to write, say, `x(0)`, rather than `x.data(0)`, but sometimes correct resolution of the indexing fails with `IntState` (but doesn't for `DoubleState`). We can test that this works.
 ```scala
 val ts0 = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, Step.gillespie(mylv0))
 Sim.plotTs(ts0, "Gillespie simulation of LV0")
@@ -125,7 +125,7 @@ def lvparam(p: DenseVector[Double] = DenseVector(1.0, 0.005, 0.6)): Spn[IntState
     DenseMatrix((2, 0), (0, 2), (0, 0)),
     (x, t) => {
       DenseVector(
-        x(0) * p(0), x(0) * x(1) * p(1), x(1) * p(2)
+        x.data(0) * p(0), x.data(0) * x.data(1) * p(1), x.data(1) * p(2)
       )}
   )
 ```
@@ -134,7 +134,7 @@ Using a method allows the inclusion of a default parameter vector, which can be 
 val mylv1 = lvparam(DenseVector(1.0, 0.005, 0.6))
 val tslv1 = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, Step.gillespie(mylv1))
 Sim.plotTs(tslv1, "Gillespie simulation of LV1")
-	
+
 val mylv2 = lvparam(DenseVector(1.1, 0.01, 0.6))
 val tslv2 = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, Step.gillespie(mylv2))
 Sim.plotTs(tslv2, "Gillespie simulation of LV2")
@@ -171,6 +171,7 @@ val lvCts = lv[DoubleState]()
 val tsCts = Sim.ts(DenseVector(50.0, 100.0), 0.0, 20.0, 0.05, Step.cle(lvCts))
 Sim.plotTs(tsCts, "Gillespie simulation of lvCts")
 ```
+This approach allows us to define models that can be used for both discrete and continuous stochastic (and deterministic) simulations, and is therefore the recommended approach in cases where both discrete and continuous simulation makes sense.
 
 ## Next steps
 
