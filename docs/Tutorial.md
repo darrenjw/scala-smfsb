@@ -23,7 +23,11 @@ import smfsb._
 import breeze.linalg._
 import breeze.numerics._
 ```
-We are now ready to go. Let's begin by instantiating a Lotka-Volterra model, simulating a single realisation of the process, and then plotting it.
+We are now ready to go. 
+
+### Simulating models
+
+Let's begin by instantiating a Lotka-Volterra model, simulating a single realisation of the process, and then plotting it.
 ```scala
 // Simulate LV with Gillespie
 val model = SpnModels.lv[IntState]()
@@ -91,6 +95,81 @@ If we want to ignore noise temporarily, there's also a simple continous determin
 val stepE = Step.euler(SpnModels.lv[DoubleState]())
 val tsE = Sim.ts(DenseVector(50.0, 100.0), 0.0, 20.0, 0.05, stepE)
 Sim.plotTs(tsE, "Continuous-deterministic Euler simulation of the LV model")
+```
+
+### Defining models
+
+There are a few built-in models, as seen above. But quite quickly you are likely to want to define your own. This is also very straightforward, using the constructor of the `UnmarkedSpn` class. Let's just pretend that the Lotka-Volterra model is not included in the library, and think about how we could define it from scratch. The simplest approach would be something like the following.
+```scala
+val mylv0 = UnmarkedSpn[IntState](
+  List("x", "y"),
+  DenseMatrix((1, 0), (1, 1), (0, 1)),
+  DenseMatrix((2, 0), (0, 2), (0, 0)),
+  (x, t) => {
+    DenseVector(
+      x(0) * 1.0, x(0) * x(1) * 0.005, x(1) * 0.6
+    )}
+)
+```
+We create a fully parametrised model (without an initial marking), but providing a list of species names, a *Pre* and *Post* matrix, and a hazard vector, which in general may be a function of both the state, `x` and the current time, `t`. We can test that this works.
+```scala
+val ts0 = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, Step.gillespie(mylv0))
+Sim.plotTs(ts0, "Gillespie simulation of LV0")
+```
+One potential issue with this definition is that the rate constants within the hazard vector are hard-coded. We can easily get around that by creating a function (or method) that accepts a parameter vector (of some kind) and outputs a fully parameterised SPN.
+```scala
+def lvparam(p: DenseVector[Double] = DenseVector(1.0, 0.005, 0.6)): Spn[IntState] =
+  UnmarkedSpn[IntState](
+    List("x", "y"),
+    DenseMatrix((1, 0), (1, 1), (0, 1)),
+    DenseMatrix((2, 0), (0, 2), (0, 0)),
+    (x, t) => {
+      DenseVector(
+        x(0) * p(0), x(0) * x(1) * p(1), x(1) * p(2)
+      )}
+  )
+```
+Using a method allows the inclusion of a default parameter vector, which can be convenient. The follow code shows how we can use this.
+```scala
+val mylv1 = lvparam(DenseVector(1.0, 0.005, 0.6))
+val tslv1 = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, Step.gillespie(mylv1))
+Sim.plotTs(tslv1, "Gillespie simulation of LV1")
+	
+val mylv2 = lvparam(DenseVector(1.1, 0.01, 0.6))
+val tslv2 = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, Step.gillespie(mylv2))
+Sim.plotTs(tslv2, "Gillespie simulation of LV2")
+
+val mylv3: Spn[IntState] = lvparam()
+val tslv3 = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, Step.gillespie(mylv3))
+Sim.plotTs(tslv3, "Gillespie simulation of LV3")
+```
+So, this is how we can define a SPN with a discrete state, intended for discrete stochastic simulation. By instead parameterising with a `DoubleState`, we can create models intended for continuous simulation, for example, using `Step.cle`. However, very often we want to use the same model for both discrete and continuous stochastic simulation. We can do that too, by making our creation function allow any state belonging to the `State` type class. Again, for the Lotka-Volterra model, the definition of the built-in model is:
+```scala
+def lv[S: State](p: DenseVector[Double] = DenseVector(1.0, 0.005, 0.6)): Spn[S] =
+  UnmarkedSpn[S](
+    List("x", "y"),
+    DenseMatrix((1, 0), (1, 1), (0, 1)),
+    DenseMatrix((2, 0), (0, 2), (0, 0)),
+    (x, t) => {
+      val xd = x.toDvd
+      DenseVector(
+        xd(0) * p(0), xd(0) * xd(1) * p(1), xd(1) * p(2)
+      )}
+  )
+```
+Note the use of `.toDvd` to convert a state to a `DenseVector[Double]`, which is necessary since we do not require that all instances of the `State` type class are explicitly indexed. We can use this as we have already seen, by specifying the particular `State` to use for instantiation at call time.
+```scala
+val lvDiscrete = lv[IntState]()
+val tsDiscrete = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, Step.gillespie(lvDiscrete))
+Sim.plotTs(tsDiscrete, "Gillespie simulation of lvDiscrete")
+
+val lvDiscrete2 = lv[IntState](DenseVector(1.1, 0.01, 0.6))
+val tsDiscrete2 = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, Step.gillespie(lvDiscrete2))
+Sim.plotTs(tsDiscrete2, "Gillespie simulation of lvDiscrete2")
+
+val lvCts = lv[DoubleState]()
+val tsCts = Sim.ts(DenseVector(50.0, 100.0), 0.0, 20.0, 0.05, Step.cle(lvCts))
+Sim.plotTs(tsCts, "Gillespie simulation of lvCts")
 ```
 
 ## Next steps
