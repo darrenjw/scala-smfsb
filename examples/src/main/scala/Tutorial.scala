@@ -85,7 +85,7 @@ object Tutorial {
       DenseMatrix((2, 0), (0, 2), (0, 0)),
       (x, t) => {
         DenseVector(
-          x(0) * p(0), x(0) * x(1) * p(1), x(1) * p(2)
+          x.data(0) * p(0), x.data(0) * x.data(1) * p(1), x.data(1) * p(2)
         )}
     )
 
@@ -96,10 +96,6 @@ object Tutorial {
     val mylv2 = lvparam(DenseVector(1.1, 0.01, 0.6))
     val tslv2 = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, Step.gillespie(mylv2))
     Sim.plotTs(tslv2, "Gillespie simulation of LV2")
-
-    lazy val mylv3: Spn[IntState] = lvparam() // compiler bug?!
-    //val tslv3 = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, Step.gillespie(mylv3))
-    //Sim.plotTs(tslv3, "Gillespie simulation of LV3")
 
     def lv[S: State](p: DenseVector[Double] = DenseVector(1.0, 0.005, 0.6)): Spn[S] =
     UnmarkedSpn[S](
@@ -112,6 +108,12 @@ object Tutorial {
           xd(0) * p(0), xd(0) * xd(1) * p(1), xd(1) * p(2)
         )}
     )
+
+
+    val mylv3: Spn[IntState] = lvparam() // here due to compiler bug!
+    val tslv3 = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, Step.gillespie(mylv3))
+    Sim.plotTs(tslv3, "Gillespie simulation of LV3")
+
 
     val lvDiscrete = lv[IntState]()
     val tsDiscrete = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, Step.gillespie(lvDiscrete))
