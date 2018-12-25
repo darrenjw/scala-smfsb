@@ -203,6 +203,34 @@ class MyTestSuite extends FunSuite {
     assert(math.abs(acf(0) - 1.0) < 1e-6)
   }
 
+  test("create and step LV model in 1d") {
+    val model = SpnModels.lv[IntState]()
+    val step = Spatial.gillespie1d(model,DenseVector(0.1,0.1))
+    val x00 = DenseVector(0,0)
+    val x0 = DenseVector(50,100)
+    val xx00 = Array.fill(10)(x00)
+    val xx0 = xx00.updated(5,x0)
+    val output = step(xx0, 0.0, 1.0)
+    //println(output)
+    assert(output.length === 10)
+    assert(output(0).length === 2)
+  }
+
+  test("simulate a time series for the LV model in 1d") {
+    val model = SpnModels.lv[IntState]()
+    val step = Spatial.gillespie1d(model,DenseVector(0.1,0.1))
+    val x00 = DenseVector(0,0)
+    val x0 = DenseVector(50,100)
+    val xx00 = collection.immutable.Vector.fill(10)(x00)
+    val xx0 = xx00.updated(5,x0)
+    val output = Sim.ts(xx0, 0.0, 1.0, 0.1, step)
+    //println(output)
+    assert(output.length === 12)
+  }
+
+
+
+
 }
 
 /* eof */

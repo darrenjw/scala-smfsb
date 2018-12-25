@@ -26,6 +26,8 @@ object Spatial {
     maxH: Double = 1e6
   ): (GenSeq[IntState], Time, Time) => GenSeq[IntState] = {
     val Sto = (n.post - n.pre).t
+    val v = Sto.rows // number of species
+    assert(d.length == v)
       (x0: GenSeq[IntState], t0, dt) => {
       val nv = x0.length
       @tailrec
@@ -51,7 +53,7 @@ object Spatial {
                 if (j > 0)
                   x(j-1)(i) = x(j-1)(i) + 1
                 else
-                  x(nv)(i) = x(nv)(i) + 1
+                  x(nv-1)(i) = x(nv-1)(i) + 1
               } else {
                 // right
                 if (j < nv-1)
