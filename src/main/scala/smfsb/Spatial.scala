@@ -26,8 +26,8 @@ object Spatial {
     maxH: Double = 1e6
   ): (GenSeq[IntState], Time, Time) => GenSeq[IntState] = {
     val Sto = (n.post - n.pre).t
-    val v = Sto.rows // number of species
-    assert(d.length == v)
+    val u = Sto.rows // number of species
+    assert(d.length == u)
       (x0: GenSeq[IntState], t0, dt) => {
       val nv = x0.length
       @tailrec
@@ -66,7 +66,7 @@ object Spatial {
               // react
               val j = Multinomial(DenseVector(hrs.toArray)).sample // pick a box
               val i = Multinomial(hr(j)).sample // pick a reaction
-              go(x.updated(j,x(j) + Sto(::,i)), t0 + t, dt - t)
+              go(x.updated(j, x(j) + Sto(::,i)), t0 + t, dt - t)
             }
           }
         }
@@ -75,7 +75,21 @@ object Spatial {
     }
   }
 
-
+  def plotTs1d[S: State](ts: Ts[GenSeq[S]]): Unit = {
+    import breeze.plot._
+    val states = ts map (_._2)
+      (0 until states(0)(0).toDvd.length).foreach{ i =>
+        val f = Figure("Species "+i)
+        val p = f.subplot(0)
+        val speciesi = states map (statetime => statetime map (_.toDvd.data(i)))
+        val vec = speciesi map (statetime => new DenseMatrix(statetime.length,1,statetime.toArray))
+        val mat = vec.reduce((x,y) => DenseMatrix.horzcat(x,y))
+        p += image(mat)
+        p.xlabel = "Time"
+        p.ylabel = "Species count"
+        f.saveas("TsPlot1d.png")
+      }
+  }
 
 }
 

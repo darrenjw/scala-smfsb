@@ -217,15 +217,19 @@ class MyTestSuite extends FunSuite {
   }
 
   test("simulate a time series for the LV model in 1d") {
+    //val N = 20
+    //val T = 30.0
+    val N = 10
+    val T = 20.0
     val model = SpnModels.lv[IntState]()
-    val step = Spatial.gillespie1d(model,DenseVector(0.1,0.1))
+    val step = Spatial.gillespie1d(model,DenseVector(0.6,0.6))
     val x00 = DenseVector(0,0)
     val x0 = DenseVector(50,100)
-    val xx00 = collection.immutable.Vector.fill(10)(x00)
-    val xx0 = xx00.updated(5,x0)
-    val output = Sim.ts(xx0, 0.0, 1.0, 0.1, step)
-    //println(output)
-    assert(output.length === 12)
+    val xx00 = collection.immutable.Vector.fill(N)(x00)
+    val xx0 = xx00.updated(N/2,x0)
+    val output = Sim.ts(xx0, 0.0, T, 0.2, step)
+    Spatial.plotTs1d(output)
+    assert(output.length === (T/0.2).toInt + 2)
   }
 
 
