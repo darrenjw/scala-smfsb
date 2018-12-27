@@ -228,8 +228,9 @@ class MyTestSuite extends FunSuite {
     val xx00 = collection.immutable.Vector.fill(N)(x00)
     val xx0 = xx00.updated(N/2,x0)
     val output = Sim.ts(xx0, 0.0, T, 0.2, step)
-    Spatial.plotTs1d(output)
+    //Spatial.plotTs1d(output)
     assert(output.length === (T/0.2).toInt + 2)
+    assert(output(0)._2.length === N)
   }
 
 
