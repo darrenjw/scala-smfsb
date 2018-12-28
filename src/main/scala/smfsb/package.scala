@@ -173,29 +173,71 @@ package object smfsb {
   import collection.parallel.immutable.ParVector
 
   /**
-    * Pointed vector type (parallel implementation), used by the spatial simulation functions.
+    * Comonadic pointed vector type (parallel implementation), used by 
+    * the spatial simulation functions.
     */
   case class PVector[T](cur: Int, vec: ParVector[T]) {
-    def apply(x: Int): T = vec(x)
+    def apply(x: Int): T = vec(x) // TODO: bounds check?
     def map[S](f: T => S): PVector[S] = PVector(cur, vec map f)
     def updated(x: Int, value: T): PVector[T] =
-      PVector(cur, vec.updated(x,value))
+      PVector(cur, vec.updated(x, value)) // TODO: bounds check?
     def zip[S](y: PVector[S]): PVector[(T,S)] = PVector(cur, vec zip y.vec)
     val length: Int = vec.length
     def extract: T = vec(cur)
     def coflatMap[S](f: PVector[T] => S): PVector[S] =
       PVector(cur,
         (0 until vec.length).toVector.par.map(i =>
-          f(PVector(i,vec))))
+          f(PVector(i, vec))))
     def forward: PVector[T] = {
       val newc = if (cur < vec.length - 1) (cur + 1) else 0
-      PVector(newc,vec)
+      PVector(newc, vec)
     }
     def back: PVector[T] = {
       val newc = if (cur > 0) (cur - 1) else (vec.length - 1)
-      PVector(newc,vec)
+      PVector(newc, vec)
     }
   }
+
+  /**
+    * Comonadic pointed 2d image/matrix type (parallel implementation), used by 
+    * the spatial simulation functions.
+    */
+  case class PMatrix[T](x: Int, y: Int, r: Int, c: Int, data: ParVector[T]) {
+    assert(r*c == data.length)
+    def apply(x: Int, y: Int): T = data(x*r+y) // TODO: bounds check
+    def map[S](f: T => S): PMatrix[S] =
+      PMatrix(x, y, r, c, data map f)
+    def updated(x: Int, y: Int, value: T): PMatrix[T] =
+      PMatrix(x, y, r, c, data.updated(x*r+y, value)) // TODO: bounds check
+    def zip[S](m: PMatrix[S]): PMatrix[(T,S)] =
+      PMatrix(x, y, r, c, data zip m.data)
+    def extract: T = data(x*r+y)
+    def coflatMap[S](f: PMatrix[T] => S): PMatrix[S] =
+      PMatrix(x, y, r, c,
+        (0 until r*c).toVector.par.map(i => {
+          val xx = i / r
+          val yy = i % r
+          f(PMatrix(xx, yy, r, c, data))
+        }))
+    def up: PMatrix[T] = {
+      val newy = if (y > 0) (y - 1) else (r - 1)
+      PMatrix(x, newy, r, c, data)
+    }
+    def down: PMatrix[T] = {
+      val newy = if (y < r - 1) (y + 1) else 0
+      PMatrix(x, newy, r, c, data)
+    }
+    def left: PMatrix[T] = {
+      val newx = if (x > 0) (x - 1) else (c - 1)
+      PMatrix(newx, y, r, c, data)
+    }
+    def right: PMatrix[T] = {
+      val newx = if (x < c - 1) (x + 1) else 0
+      PMatrix(newx, y, r, c, data)
+    }
+  }
+
+
 
 
 

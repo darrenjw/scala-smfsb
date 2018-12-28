@@ -256,13 +256,33 @@ class MyTestSuite extends FunSuite {
     assert(vcf.back.extract === 4)
   }
 
+  test("PMatrix") {
+    val m = PMatrix(0, 0, 2, 3, (1 to 6).toVector.par)
+    assert(m.r*m.c === m.data.length)
+    assert(m(2,1) === 6)
+    assert(m.up.down === m)
+    assert(m.down.up === m)
+    assert(m.left.right === m)
+    assert(m.right.left === m)
+    assert(m.extract === 1)
+    assert(m.down.extract === 2)
+    assert(m.up.extract === 2)
+    assert(m.right.extract === 3)
+    assert(m.left.extract === 5)
+    val mcf = m.coflatMap(mc => mc.extract + mc.right.extract)
+    assert(mcf.extract === 4)
+    assert(mcf.right.extract === 8)
+    assert(mcf.down.extract === 6)
+    assert(mcf.left.extract === 6)
+  }
+
   test("create and step LV model in 1d with the CLE") {
     val model = SpnModels.lv[DoubleState]()
-    val step = Spatial.cle1d(model,DenseVector(0.1,0.1))
-    val x00 = DenseVector(0.0,0.0)
-    val x0 = DenseVector(50.0,100.0)
+    val step = Spatial.cle1d(model,DenseVector(0.1, 0.1))
+    val x00 = DenseVector(0.0, 0.0)
+    val x0 = DenseVector(50.0, 100.0)
     val xx00 = Array.fill(10)(x00)
-    val xx0 = xx00.updated(5,x0)
+    val xx0 = xx00.updated(5, x0)
     val output = step(xx0, 0.0, 1.0)
     //println(output)
     assert(output.length === 10)
@@ -273,13 +293,13 @@ class MyTestSuite extends FunSuite {
     val N = 25
     val T = 30.0
     val model = SpnModels.lv[DoubleState]()
-    val step = Spatial.cle1d(model,DenseVector(0.6,0.6))
-    val x00 = DenseVector(0.0,0.0)
-    val x0 = DenseVector(50.0,100.0)
+    val step = Spatial.cle1d(model, DenseVector(0.6, 0.6), 0.05)
+    val x00 = DenseVector(0.0, 0.0)
+    val x0 = DenseVector(50.0, 100.0)
     val xx00 = collection.immutable.Vector.fill(N)(x00)
-    val xx0 = xx00.updated(N/2,x0)
+    val xx0 = xx00.updated(N/2, x0)
     val output = Sim.ts(xx0, 0.0, T, 0.2, step)
-    Spatial.plotTs1d(output)
+    //Spatial.plotTs1d(output)
     assert(output.length === (T/0.2).toInt + 2)
     assert(output(0)._2.length === N)
   }

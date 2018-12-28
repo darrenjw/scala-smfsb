@@ -113,7 +113,7 @@ object Spatial {
           val x3 = x2 map (xx => {
             val hr = n.h(xx, t0)
             val dwt = DenseVector(Gaussian(0.0, sdt).sample(v).toArray)
-            val nx = xx + (Sto * (hr*dt + sqrt(hr) *:* dwt))
+            val nx = xx + Sto * (hr*dt + sqrt(hr) *:* dwt)
             abs(nx)
           })
           go(x3, t0 + dt, deltat - dt)
@@ -128,7 +128,7 @@ object Spatial {
     import breeze.plot._
     val states = ts map (_._2)
       (0 until states(0)(0).toDvd.length).foreach{ i =>
-        val f = Figure("Species "+i)
+        val f = Figure("Species " + i)
         val p = f.subplot(0)
         val speciesi = states map (statetime => statetime map (_.toDvd.data(i)))
         val vec = speciesi map (statetime => new DenseMatrix(statetime.length,1,statetime.toArray))
