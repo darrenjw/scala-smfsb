@@ -19,6 +19,7 @@ import breeze.stats.distributions._
 object Spatial {
 
   // TODO: Selective hazard recalculation, etc. Currently _very_ inefficient...
+  // TODO: doc for gillespie1d
   def gillespie1d(
     n: Spn[IntState],
     d: DoubleState,
@@ -75,6 +76,54 @@ object Spatial {
     }
   }
 
+
+  // TODO: doc for cle1d
+  def cle1d(
+    n: Spn[DoubleState],
+    d: DoubleState,
+    dt: Double = 0.01
+  ): (GenSeq[DoubleState], Time, Time) => GenSeq[DoubleState] = {
+    val Sto = ((n.post - n.pre).t) map (_.toDouble)
+    val u = Sto.rows // number of species
+    val v = Sto.cols // number of reactions
+    val sdt = math.sqrt(dt)
+    val sd = sqrt(d)
+    assert(d.length == u)
+    def laplacian(x: PVector[DoubleState]): DoubleState =
+      x.forward.extract + x.back.extract + x.extract*(-2.0)
+    def diffuse(x: PVector[DoubleState]): PVector[DoubleState] = {
+      val noise = x map (s => s map (si => Gaussian(0.0, sdt).draw))
+      val xn = x zip noise
+      xn coflatMap (xnc => {
+        val xc = xnc map (_._1)
+        val nc = xnc map (_._2)
+        val nx = xc.extract + (laplacian(xc) *:* (d*dt)) + sd *:* (
+          (sqrt(xc.extract + xc.forward.extract) *:* noise.extract) -
+            (sqrt(xc.extract + xc.back.extract) *:* noise.back.extract))
+        abs(nx) // TODO: switch to rectification?
+      })
+    }
+    // returned function closure
+      (x0: GenSeq[DoubleState], t0, deltat) => {
+      val nv = x0.length
+      @tailrec
+      def go(x: PVector[DoubleState], t0: Time, deltat: Time): GenSeq[DoubleState] = {
+        if (deltat <= 0.0) x.vec else {
+          val x2 = diffuse(x)
+          val x3 = x2 map (xx => {
+            val hr = n.h(xx, t0)
+            val dwt = DenseVector(Gaussian(0.0, sdt).sample(v).toArray)
+            val nx = xx + (Sto * (hr*dt + sqrt(hr) *:* dwt))
+            abs(nx)
+          })
+          go(x3, t0 + dt, deltat - dt)
+        }
+      }
+      go(PVector(0,x0.toVector.par), t0, deltat)
+    }
+  }
+
+
   def plotTs1d[S: State](ts: Ts[GenSeq[S]]): Unit = {
     import breeze.plot._
     val states = ts map (_._2)
@@ -86,7 +135,7 @@ object Spatial {
         val mat = vec.reduce((x,y) => DenseMatrix.horzcat(x,y))
         p += image(mat)
         p.xlabel = "Time"
-        p.ylabel = "Species count"
+        p.ylabel = "Space"
         f.saveas("TsPlot1d.png")
       }
   }

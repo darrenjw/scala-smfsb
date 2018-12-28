@@ -170,6 +170,36 @@ package object smfsb {
 
 
 
+  import collection.parallel.immutable.ParVector
+
+  /**
+    * Pointed vector type (parallel implementation), used by the spatial simulation functions.
+    */
+  case class PVector[T](cur: Int, vec: ParVector[T]) {
+    def apply(x: Int): T = vec(x)
+    def map[S](f: T => S): PVector[S] = PVector(cur, vec map f)
+    def updated(x: Int, value: T): PVector[T] =
+      PVector(cur, vec.updated(x,value))
+    def zip[S](y: PVector[S]): PVector[(T,S)] = PVector(cur, vec zip y.vec)
+    val length: Int = vec.length
+    def extract: T = vec(cur)
+    def coflatMap[S](f: PVector[T] => S): PVector[S] =
+      PVector(cur,
+        (0 until vec.length).toVector.par.map(i =>
+          f(PVector(i,vec))))
+    def forward: PVector[T] = {
+      val newc = if (cur < vec.length - 1) (cur + 1) else 0
+      PVector(newc,vec)
+    }
+    def back: PVector[T] = {
+      val newc = if (cur > 0) (cur - 1) else (vec.length - 1)
+      PVector(newc,vec)
+    }
+  }
+
+
+
+
 }
 
 /* eof */
