@@ -10,6 +10,7 @@ Just doing `sbt run` from **this** directory should build and run the examples.
 * [Gillespie1d](src/main/scala/Gillespie1d.scala) - 1d exact spatial Gillespie simulation
 * [Cle1d](src/main/scala/Cle1d.scala) - 1d spatial CLE simulation
 * [Gillespie2d](src/main/scala/Gillespie2d.scala) - 2d exact spatial Gillespie simulation
+* [Cle2d](src/main/scala/Cle2d.scala) - 2d spatial CLE simulation
 * [PMCMC](src/main/scala/PMCMC.scala) - Parameter estimation from data using a PMMH particle MCMC algorithm (applied to a LV model)
 * [AbcLv](src/main/scala/AbcLv.scala) - A naive rejection ABC algorithm for the LV model based on Euclidean distance between trajectories
 * [AbcSsLv](src/main/scala/AbcSsLv.scala) - A rejection ABC algorithm using summary statistics
