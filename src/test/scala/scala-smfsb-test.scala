@@ -11,7 +11,7 @@ import org.scalatest._
 import org.scalatest.junit._
 import org.junit.runner.RunWith
 
-import breeze.linalg._
+import breeze.linalg.{Vector => BVec, _}
 
 @RunWith(classOf[JUnitRunner])
 class MyTestSuite extends FunSuite {
@@ -144,7 +144,7 @@ class MyTestSuite extends FunSuite {
     // Sim.plotTs(ts)
     assert(ts.length === 21)
     val mll = Mll.pfMll(
-      (p: DenseVector[Double]) => collection.immutable.Vector.fill(100)(DenseVector(50,100)),
+      (p: DenseVector[Double]) => Vector.fill(100)(DenseVector(50,100)),
       0.0,
       (p: DenseVector[Double]) => Step.gillespie(SpnModels.lv[IntState](p)),
       (p: DenseVector[Double]) => (s: IntState, o: IntState) => {
@@ -202,6 +202,170 @@ class MyTestSuite extends FunSuite {
     assert(acf.length == 4)
     assert(math.abs(acf(0) - 1.0) < 1e-6)
   }
+
+  test("create and step LV model in 1d") {
+    val model = SpnModels.lv[IntState]()
+    val step = Spatial.gillespie1d(model,DenseVector(0.1,0.1))
+    val x00 = DenseVector(0,0)
+    val x0 = DenseVector(50,100)
+    val xx00 = Vector.fill(10)(x00)
+    val xx0 = xx00.updated(5,x0)
+    val output = step(xx0, 0.0, 1.0)
+    //println(output)
+    assert(output.length === 10)
+    assert(output(0).length === 2)
+  }
+
+  test("simulate a time series for the LV model in 1d") {
+    //val N = 20
+    //val T = 30.0
+    val N = 10
+    val T = 20.0
+    val model = SpnModels.lv[IntState]()
+    val step = Spatial.gillespie1d(model,DenseVector(0.6,0.6))
+    val x00 = DenseVector(0,0)
+    val x0 = DenseVector(50,100)
+    val xx00 = Vector.fill(N)(x00)
+    val xx0 = xx00.updated(N/2,x0)
+    val output = Sim.ts(xx0, 0.0, T, 0.2, step)
+    //Spatial.plotTs1d(output)
+    assert(output.length === (T/0.2).toInt + 2)
+    assert(output(0)._2.length === N)
+  }
+
+  test("PVector") {
+    val v = PVector(0,List(1,2,3).toVector.par)
+    assert(v.length === 3)
+    assert(v.cur === 0)
+    assert(v.extract === 1)
+    val vf = v.forward
+    assert(vf.length === 3)
+    assert(vf.cur === 1)
+    assert(vf.extract === 2)
+    val vb = v.back
+    assert(vb.length === 3)
+    assert(vb.cur === 2)
+    assert(vb.extract === 3)
+    val vbf = vb.forward
+    assert (vbf === v)
+    val vcf = v.coflatMap(vc => vc.extract + vc.forward.extract)
+    assert(vcf.length === 3)
+    assert(vcf.cur === 0)
+    assert(vcf.extract === 3)
+    assert(vcf.forward.extract === 5)
+    assert(vcf.back.extract === 4)
+  }
+
+  test("PMatrix") {
+    val m = PMatrix(0, 0, 2, 3, (1 to 6).toVector.par)
+    assert(m.r*m.c === m.data.length)
+    assert(m(2,1) === 6)
+    assert(m.up.down === m)
+    assert(m.down.up === m)
+    assert(m.left.right === m)
+    assert(m.right.left === m)
+    assert(m.extract === 1)
+    assert(m.down.extract === 2)
+    assert(m.up.extract === 2)
+    assert(m.right.extract === 3)
+    assert(m.left.extract === 5)
+    val mcf = m.coflatMap(mc => mc.extract + mc.right.extract)
+    assert(mcf.extract === 4)
+    assert(mcf.right.extract === 8)
+    assert(mcf.down.extract === 6)
+    assert(mcf.left.extract === 6)
+  }
+
+  test("PMatrix utilities") {
+    val bm = DenseMatrix((1,2,3),(4,5,6))
+    assert(bm.rows === 2)
+    assert(bm.cols === 3)
+    assert(bm(0,0) === 1)
+    assert(bm(0,1) === 2)
+    assert(bm(1,2) === 6)
+    val pm = PMatrix.fromBDM(bm)
+    assert(pm.r === 2)
+    assert(pm.c === 3)
+    assert(pm(0,0) === 1)
+    assert(pm(1,0) === 2)
+    assert(pm(2,1) === 6)
+    val bdmd = PMatrix.toBDM(pm map (_.toDouble))
+    assert(bdmd === bm.map(_.toDouble))
+  }
+
+  test("create and step LV model in 1d with the CLE") {
+    val model = SpnModels.lv[DoubleState]()
+    val step = Spatial.cle1d(model,DenseVector(0.1, 0.1))
+    val x00 = DenseVector(0.0, 0.0)
+    val x0 = DenseVector(50.0, 100.0)
+    val xx00 = Vector.fill(10)(x00)
+    val xx0 = xx00.updated(5, x0)
+    val output = step(xx0, 0.0, 1.0)
+    //println(output)
+    assert(output.length === 10)
+    assert(output(0).length === 2)
+  }
+
+  test("simulate a time series for the LV model in 1d with the CLE") {
+    val N = 25
+    val T = 30.0
+    val model = SpnModels.lv[DoubleState]()
+    val step = Spatial.cle1d(model, DenseVector(0.6, 0.6), 0.05)
+    val x00 = DenseVector(0.0, 0.0)
+    val x0 = DenseVector(50.0, 100.0)
+    val xx00 = Vector.fill(N)(x00)
+    val xx0 = xx00.updated(N/2, x0)
+    val output = Sim.ts(xx0, 0.0, T, 0.2, step)
+    //Spatial.plotTs1d(output)
+    assert(output.length === (T/0.2).toInt + 2)
+    assert(output(0)._2.length === N)
+  }
+
+  test("create and step LV model in 2d") {
+    val r = 5
+    val c = 7
+    val model = SpnModels.lv[IntState]()
+    val step = Spatial.gillespie2d(model, DenseVector(0.6,0.6))
+    val x00 = DenseVector(0, 0)
+    val x0 = DenseVector(50, 100)
+    val xx00 = PMatrix(r, c, Vector.fill(r*c)(x00))
+    val xx0 = xx00.updated(c/2, r/2, x0)
+    val output = step(xx0, 0.0, 1.0)
+    /*
+    println(output)
+    import breeze.plot._
+    val f = Figure("LV")
+    val p0 = f.subplot(2,1,0)
+    p0 += image(PMatrix.toBDM(output map (_(0).toDouble)))
+    val p1 = f.subplot(2,1,1)
+    p1 += image(PMatrix.toBDM(output map (_(1).toDouble)))
+    */
+    assert(output(0,0).length === 2)
+  }
+
+  test("create and step LV model in 2d with the CLE") {
+    val r = 20
+    val c = 30
+    val model = SpnModels.lv[DoubleState]()
+    val step = Spatial.cle2d(model, DenseVector(0.6,0.6), 0.05)
+    val x00 = DenseVector(0.0, 0.0)
+    val x0 = DenseVector(50.0, 100.0)
+    val xx00 = PMatrix(r, c, Vector.fill(r*c)(x00))
+    val xx0 = xx00.updated(c/2, r/2, x0)
+    val output = step(xx0, 0.0, 8.0)
+    println(output)
+    import breeze.plot._
+    val f = Figure("LV")
+    val p0 = f.subplot(2,1,0)
+    p0 += image(PMatrix.toBDM(output map (_(0))))
+    val p1 = f.subplot(2,1,1)
+    p1 += image(PMatrix.toBDM(output map (_(1))))
+    assert(output(0,0).length === 2)
+  }
+
+
+
+
 
 }
 

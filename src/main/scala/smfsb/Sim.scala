@@ -25,7 +25,7 @@ object Sim {
     * 
     * @return A time series of simulated states corresponding to a single realisation of the underlying stochastic process
     */
-  def ts[S: State](
+  def ts[S](
     x0: S,
     t0: Time = 0.0,
     tt: Time = 100.0,
