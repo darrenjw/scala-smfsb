@@ -204,11 +204,16 @@ package object smfsb {
     */
   case class PMatrix[T](x: Int, y: Int, r: Int, c: Int, data: ParVector[T]) {
     assert(r*c == data.length)
-    def apply(x: Int, y: Int): T = data(x*r+y) // TODO: bounds check
+    def apply(x: Int, y: Int): T = {
+      assert((x >= 0)&(x < c)&(y >= 0)&(y < r))
+      data(x*r+y)
+    }
     def map[S](f: T => S): PMatrix[S] =
       PMatrix(x, y, r, c, data map f)
-    def updated(x: Int, y: Int, value: T): PMatrix[T] =
-      PMatrix(x, y, r, c, data.updated(x*r+y, value)) // TODO: bounds check
+    def updated(x: Int, y: Int, value: T): PMatrix[T] = {
+      assert((x >= 0)&(x < c)&(y >= 0)&(y < r))
+      PMatrix(x, y, r, c, data.updated(x*r+y, value))
+    }
     def zip[S](m: PMatrix[S]): PMatrix[(T,S)] =
       PMatrix(x, y, r, c, data zip m.data)
     def extract: T = data(x*r+y)
@@ -237,6 +242,27 @@ package object smfsb {
     }
   }
 
+  import collection.GenSeq
+
+  case object PMatrix {
+    /**
+      * Constructor for `PMatrix` objects. Used for initialising 2d spatial simulations.
+      */
+    def apply[T](r: Int, c: Int, data: GenSeq[T]): PMatrix[T] = {
+      assert (r*c == data.length)
+      PMatrix(0,0,r,c,data.toVector.par)
+    }
+    /**
+      * Convert a PMatrix[Double] to a Breeze DenseMatrix
+      */
+    def toBDM(m: PMatrix[Double]): DenseMatrix[Double] =
+      new DenseMatrix(m.r, m.c, m.data.toArray)
+    /**
+      * Convert a Breeze DenseMatrix to a PMatrix
+      */
+    def fromBDM[T](m: DenseMatrix[T]): PMatrix[T] =
+      apply(m.rows, m.cols, m.data)
+  }
 
 
 

@@ -11,7 +11,7 @@ import org.scalatest._
 import org.scalatest.junit._
 import org.junit.runner.RunWith
 
-import breeze.linalg._
+import breeze.linalg.{Vector => BVec, _}
 
 @RunWith(classOf[JUnitRunner])
 class MyTestSuite extends FunSuite {
@@ -144,7 +144,7 @@ class MyTestSuite extends FunSuite {
     // Sim.plotTs(ts)
     assert(ts.length === 21)
     val mll = Mll.pfMll(
-      (p: DenseVector[Double]) => collection.immutable.Vector.fill(100)(DenseVector(50,100)),
+      (p: DenseVector[Double]) => Vector.fill(100)(DenseVector(50,100)),
       0.0,
       (p: DenseVector[Double]) => Step.gillespie(SpnModels.lv[IntState](p)),
       (p: DenseVector[Double]) => (s: IntState, o: IntState) => {
@@ -208,7 +208,7 @@ class MyTestSuite extends FunSuite {
     val step = Spatial.gillespie1d(model,DenseVector(0.1,0.1))
     val x00 = DenseVector(0,0)
     val x0 = DenseVector(50,100)
-    val xx00 = Array.fill(10)(x00)
+    val xx00 = Vector.fill(10)(x00)
     val xx0 = xx00.updated(5,x0)
     val output = step(xx0, 0.0, 1.0)
     //println(output)
@@ -225,7 +225,7 @@ class MyTestSuite extends FunSuite {
     val step = Spatial.gillespie1d(model,DenseVector(0.6,0.6))
     val x00 = DenseVector(0,0)
     val x0 = DenseVector(50,100)
-    val xx00 = collection.immutable.Vector.fill(N)(x00)
+    val xx00 = Vector.fill(N)(x00)
     val xx0 = xx00.updated(N/2,x0)
     val output = Sim.ts(xx0, 0.0, T, 0.2, step)
     //Spatial.plotTs1d(output)
@@ -276,12 +276,29 @@ class MyTestSuite extends FunSuite {
     assert(mcf.left.extract === 6)
   }
 
+  test("PMatrix utilities") {
+    val bm = DenseMatrix((1,2,3),(4,5,6))
+    assert(bm.rows === 2)
+    assert(bm.cols === 3)
+    assert(bm(0,0) === 1)
+    assert(bm(0,1) === 2)
+    assert(bm(1,2) === 6)
+    val pm = PMatrix.fromBDM(bm)
+    assert(pm.r === 2)
+    assert(pm.c === 3)
+    assert(pm(0,0) === 1)
+    assert(pm(1,0) === 2)
+    assert(pm(2,1) === 6)
+    val bdmd = PMatrix.toBDM(pm map (_.toDouble))
+    assert(bdmd === bm.map(_.toDouble))
+  }
+
   test("create and step LV model in 1d with the CLE") {
     val model = SpnModels.lv[DoubleState]()
     val step = Spatial.cle1d(model,DenseVector(0.1, 0.1))
     val x00 = DenseVector(0.0, 0.0)
     val x0 = DenseVector(50.0, 100.0)
-    val xx00 = Array.fill(10)(x00)
+    val xx00 = Vector.fill(10)(x00)
     val xx0 = xx00.updated(5, x0)
     val output = step(xx0, 0.0, 1.0)
     //println(output)
@@ -296,12 +313,54 @@ class MyTestSuite extends FunSuite {
     val step = Spatial.cle1d(model, DenseVector(0.6, 0.6), 0.05)
     val x00 = DenseVector(0.0, 0.0)
     val x0 = DenseVector(50.0, 100.0)
-    val xx00 = collection.immutable.Vector.fill(N)(x00)
+    val xx00 = Vector.fill(N)(x00)
     val xx0 = xx00.updated(N/2, x0)
     val output = Sim.ts(xx0, 0.0, T, 0.2, step)
     //Spatial.plotTs1d(output)
     assert(output.length === (T/0.2).toInt + 2)
     assert(output(0)._2.length === N)
+  }
+
+  test("create and step LV model in 2d") {
+    val r = 5
+    val c = 7
+    val model = SpnModels.lv[IntState]()
+    val step = Spatial.gillespie2d(model, DenseVector(0.6,0.6))
+    val x00 = DenseVector(0, 0)
+    val x0 = DenseVector(50, 100)
+    val xx00 = PMatrix(r, c, Vector.fill(r*c)(x00))
+    val xx0 = xx00.updated(c/2, r/2, x0)
+    val output = step(xx0, 0.0, 1.0)
+    /*
+    println(output)
+    import breeze.plot._
+    val f = Figure("LV")
+    val p0 = f.subplot(2,1,0)
+    p0 += image(PMatrix.toBDM(output map (_(0).toDouble)))
+    val p1 = f.subplot(2,1,1)
+    p1 += image(PMatrix.toBDM(output map (_(1).toDouble)))
+    */
+    assert(output(0,0).length === 2)
+  }
+
+  test("create and step LV model in 2d with the CLE") {
+    val r = 20
+    val c = 30
+    val model = SpnModels.lv[DoubleState]()
+    val step = Spatial.cle2d(model, DenseVector(0.6,0.6), 0.05)
+    val x00 = DenseVector(0.0, 0.0)
+    val x0 = DenseVector(50.0, 100.0)
+    val xx00 = PMatrix(r, c, Vector.fill(r*c)(x00))
+    val xx0 = xx00.updated(c/2, r/2, x0)
+    val output = step(xx0, 0.0, 8.0)
+    println(output)
+    import breeze.plot._
+    val f = Figure("LV")
+    val p0 = f.subplot(2,1,0)
+    p0 += image(PMatrix.toBDM(output map (_(0))))
+    val p1 = f.subplot(2,1,1)
+    p1 += image(PMatrix.toBDM(output map (_(1))))
+    assert(output(0,0).length === 2)
   }
 
 
