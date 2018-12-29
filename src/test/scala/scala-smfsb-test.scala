@@ -344,8 +344,8 @@ class MyTestSuite extends FunSuite {
   }
 
   test("create and step LV model in 2d with the CLE") {
-    val r = 20
-    val c = 30
+    val r = 10
+    val c = 15
     val model = SpnModels.lv[DoubleState]()
     val step = Spatial.cle2d(model, DenseVector(0.6,0.6), 0.05)
     val x00 = DenseVector(0.0, 0.0)
@@ -353,6 +353,7 @@ class MyTestSuite extends FunSuite {
     val xx00 = PMatrix(r, c, Vector.fill(r*c)(x00))
     val xx0 = xx00.updated(c/2, r/2, x0)
     val output = step(xx0, 0.0, 8.0)
+    /*
     println(output)
     import breeze.plot._
     val f = Figure("LV")
@@ -360,6 +361,7 @@ class MyTestSuite extends FunSuite {
     p0 += image(PMatrix.toBDM(output map (_(0))))
     val p1 = f.subplot(2,1,1)
     p1 += image(PMatrix.toBDM(output map (_(1))))
+     */
     assert(output(0,0).length === 2)
   }
 

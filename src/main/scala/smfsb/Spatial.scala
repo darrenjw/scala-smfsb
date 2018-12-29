@@ -19,7 +19,16 @@ import breeze.stats.distributions._
 object Spatial {
 
   // TODO: Selective hazard recalculation, etc. Currently _very_ inefficient...
-  // TODO: doc for gillespie1d
+  /**
+    * The 1d spatial Gillespie algorithm
+    * @param n A `Spn[IntState]` model for simulation
+    * @param d A vector of diffusion coefficients - one for each species
+    * @param minH Threshold for treating hazard as zero
+    * @param maxH Threshold for terminating simulation early
+    * 
+    * @return A function with type signature `(x0: GenSeq[IntState], t0: Time, deltat: Time) => GenSeq[IntState]`
+    * which will simulate the state of the system at time `t0+deltat` given initial state `x0` and initial time `t0`
+    */
   def gillespie1d(
     n: Spn[IntState],
     d: DoubleState,
@@ -78,7 +87,16 @@ object Spatial {
 
 
   // TODO: Selective hazard recalculation, etc. Currently _very_ inefficient...
-  // TODO: doc for gillespie2d
+  /**
+    * The 2d spatial Gillespie algorithm
+    * @param n A `Spn[IntState]` model for simulation
+    * @param d A vector of diffusion coefficients - one for each species
+    * @param minH Threshold for treating hazard as zero
+    * @param maxH Threshold for terminating simulation early
+    * 
+    * @return A function with type signature `(x0: PMatrix[IntState], t0: Time, deltat: Time) => PMatrix[IntState]`
+    * which will simulate the state of the system at time `t0+deltat` given initial state `x0` and initial time `t0`
+    */
   def gillespie2d(
     n: Spn[IntState],
     d: DoubleState,
@@ -151,9 +169,15 @@ object Spatial {
   }
 
 
-
-
-  // TODO: doc for cle1d
+  /**
+    * The 1d spatial CLE algorithm
+    * @param n A `Spn[DoubleState]` model for simulation
+    * @param d A vector of diffusion coefficients - one for each species
+    * @param dt Time step of the simulation algorithm
+    * 
+    * @return A function with type signature `(x0: GenSeq[DoubleState], t0: Time, deltat: Time) => GenSeq[DoubleState]`
+    * which will simulate the state of the system at time `t0+deltat` given initial state `x0` and initial time `t0`
+    */
   def cle1d(
     n: Spn[DoubleState],
     d: DoubleState,
@@ -200,7 +224,15 @@ object Spatial {
   }
 
 
-  // TODO: doc for cle2d
+  /**
+    * The 2d spatial CLE algorithm
+    * @param n A `Spn[DoubleState]` model for simulation
+    * @param d A vector of diffusion coefficients - one for each species
+    * @param dt Time step of the simulation algorithm
+    * 
+    * @return A function with type signature `(x0: PMatrix[DoubleState], t0: Time, deltat: Time) => PMatrix[DoubleState]`
+    * which will simulate the state of the system at time `t0+deltat` given initial state `x0` and initial time `t0`
+    */
   def cle2d(
     n: Spn[DoubleState],
     d: DoubleState,
@@ -252,7 +284,12 @@ object Spatial {
   }
 
 
-
+  /**
+    * Plot the output of a 1d time series simulation. Called solely for the side-effect 
+    * of rendering a plot on the console.
+    * 
+    * @param ts Output from a 1d spatial time series simulation
+    */
   def plotTs1d[S: State](ts: Ts[GenSeq[S]]): Unit = {
     import breeze.plot._
     val states = ts map (_._2)
