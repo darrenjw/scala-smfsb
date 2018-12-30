@@ -105,12 +105,17 @@ object Mcmc {
     */
   def summary(m: DenseMatrix[Double], plt: Boolean = true, lm: Int = 50): Unit = {
     import breeze.plot._
+    import breeze.stats.{hist => stHist, _}
     val n = m.rows
     val v = m.cols
     println(""+n+" iterates and "+v+" variables")
-    val mean = sum(m(::, *)) * (1.0/n)
-    println("Sample means:")
-    println(mean.t.toCsv)
+    val me = mean(m(::, *))
+    println("Sample means: "+me.t.toCsv)
+    val vari = variance(m(::, *))
+    println("Sample variances: "+vari.t.toCsv)
+    println("Sample SDs: "+sqrt(vari).t.toCsv)
+    val med = median(m(::, *))
+    println("Sample medians: "+med.t.toCsv)
     if (plt) {
       val f = Figure("MCMC Diagnostic plots")
         (0 until v).foreach(i => {

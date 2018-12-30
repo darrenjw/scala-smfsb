@@ -181,7 +181,6 @@ class MyTestSuite extends FunSuite {
     )
     val n = 10000
     val out = s.drop(0).take(n)
-    //println(out.take(20).toList)
     Mcmc.summary(Mcmc.toDMD(out map (d => DenseVector(d))), plt=false)
     assert(out.length === n)
     assert(math.abs(out.sum / n) < 0.2)
