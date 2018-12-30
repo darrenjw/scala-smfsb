@@ -1,9 +1,6 @@
 # scala-smfsb
 
-### Scala library for biochemical network simulation, associated with the 3rd edition of the textbook Stochastic Modelling for Systems Biology
-
-
-**This library is now ready to use, but is still undergoing rapid development, with regular updates likely until the end of 2018, by which time it should have approximate feature parity with the R package `smfsb`**
+### Scala library for stochastic kinetic modelling, biochemical network simulation, and parameter inference, associated with the 3rd edition of the textbook Stochastic Modelling for Systems Biology
 
 * The current *stable* version of this library is "0.4"
 * The current unstable *snapshot* release of this library is "0.5-SNAPSHOT"
