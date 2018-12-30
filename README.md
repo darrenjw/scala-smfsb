@@ -2,8 +2,8 @@
 
 ### Scala library for stochastic kinetic modelling, biochemical network simulation, and parameter inference, associated with the 3rd edition of the textbook Stochastic Modelling for Systems Biology
 
-* The current *stable* version of this library is "0.4"
-* The current unstable *snapshot* release of this library is "0.5-SNAPSHOT"
+* The current *stable* version of this library is "0.5"
+* The current unstable *snapshot* release of this library is "0.6-SNAPSHOT"
 
 Binaries are published to Sonatype, cross-built for Scala 2.11.x and 2.12.x.
 
@@ -13,7 +13,7 @@ Binaries are published to Sonatype, cross-built for Scala 2.11.x and 2.12.x.
 * Run `sbt` from an empty/temp directory
 * At the `sbt` prompt, enter:
 ```scala
-set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.4"
+set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.5"
 set libraryDependencies += "org.scalanlp" %% "breeze-viz" % "0.13.2"
 set scalaVersion := "2.12.6"
 console
@@ -45,7 +45,7 @@ To get the most out of this library, it will be helpful if you are already famil
 
 Just add:
 ```scala
-"com.github.darrenjw" %% "scala-smfsb" % "0.4"
+"com.github.darrenjw" %% "scala-smfsb" % "0.5"
 ```
 to your Sbt dependencies. You might also need to add an explicit dependence on `breeze-viz`:
 ```scala
@@ -56,7 +56,7 @@ to your Sbt dependencies. You might also need to add an explicit dependence on `
 
 Just add something like:
 ```scala
-libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.5-SNAPSHOT"
+libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.6-SNAPSHOT"
 resolvers += "Sonatype Snapshots" at
     "https://oss.sonatype.org/content/repositories/snapshots/"
 ```
