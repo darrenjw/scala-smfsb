@@ -225,6 +225,55 @@ object Spatial {
 
 
   /**
+    * The 1d spatial Euler algorithm
+    * @param n A `Spn[DoubleState]` model for simulation
+    * @param d A vector of diffusion coefficients - one for each species
+    * @param dt Time step of the simulation algorithm
+    * 
+    * @return A function with type signature `(x0: GenSeq[DoubleState], t0: Time, deltat: Time) => GenSeq[DoubleState]`
+    * which will simulate the state of the system at time `t0+deltat` given initial state `x0` and initial time `t0`
+    */
+  def euler1d(
+    n: Spn[DoubleState],
+    d: DoubleState,
+    dt: Double = 0.01
+  ): (GenSeq[DoubleState], Time, Time) => GenSeq[DoubleState] = {
+    val Sto = (n.post - n.pre).t map (_.toDouble)
+    val u = Sto.rows // number of species
+    val v = Sto.cols // number of reactions
+    val sdt = math.sqrt(dt)
+    val sd = sqrt(d)
+    assert(d.length == u)
+    def laplacian(x: PVector[DoubleState]): DoubleState =
+      x.forward.extract + x.back.extract + x.extract*(-2.0)
+    def diffuse(x: PVector[DoubleState]): PVector[DoubleState] = {
+      x coflatMap (xc => {
+        val nx = xc.extract + (laplacian(xc) *:* (d*dt))
+        abs(nx) // TODO: switch to rectification?
+      })
+    }
+    // returned function closure
+      (x0: GenSeq[DoubleState], t0, deltat) => {
+      val nv = x0.length
+      @tailrec
+      def go(x: PVector[DoubleState], t0: Time, deltat: Time): GenSeq[DoubleState] = {
+        if (deltat <= 0.0) x.vec else {
+          val x2 = diffuse(x)
+          val x3 = x2 map (xx => {
+            val hr = n.h(xx, t0)
+            val nx = xx + Sto * (hr*dt)
+            abs(nx)
+          })
+          go(x3, t0 + dt, deltat - dt)
+        }
+      }
+      go(PVector(0,x0.toVector.par), t0, deltat)
+    }
+  }
+
+
+
+  /**
     * The 2d spatial CLE algorithm
     * @param n A `Spn[DoubleState]` model for simulation
     * @param d A vector of diffusion coefficients - one for each species
@@ -274,6 +323,53 @@ object Spatial {
             val hr = n.h(xx, t0)
             val dwt = DenseVector(Gaussian(0.0, sdt).sample(v).toArray)
             val nx = xx + Sto * (hr*dt + (sqrt(hr) *:* dwt))
+            rectify(nx)
+          })
+          go(x3, t0 + dt, deltat - dt)
+        }
+      }
+      go(x0, t0, deltat)
+    }
+  }
+
+    /**
+    * The 2d spatial Euler algorithm
+    * @param n A `Spn[DoubleState]` model for simulation
+    * @param d A vector of diffusion coefficients - one for each species
+    * @param dt Time step of the simulation algorithm
+    * 
+    * @return A function with type signature `(x0: PMatrix[DoubleState], t0: Time, deltat: Time) => PMatrix[DoubleState]`
+    * which will simulate the state of the system at time `t0+deltat` given initial state `x0` and initial time `t0`
+    */
+  def euler2d(
+    n: Spn[DoubleState],
+    d: DoubleState,
+    dt: Double = 0.01
+  ): (PMatrix[DoubleState], Time, Time) => PMatrix[DoubleState] = {
+    val Sto = (n.post - n.pre).t map (_.toDouble)
+    val u = Sto.rows // number of species
+    val v = Sto.cols // number of reactions
+    val sdt = math.sqrt(dt)
+    val sd = sqrt(d)
+    assert(d.length == u)
+    def laplacian(x: PMatrix[DoubleState]): DoubleState =
+      x.left.extract + x.right.extract + x.up.extract + x.down.extract + x.extract*(-4.0)
+    def rectify(x: DoubleState): DoubleState = x map (xi => if (xi > 0.0) xi else 0.0)
+    def diffuse(x: PMatrix[DoubleState]): PMatrix[DoubleState] = {
+      x coflatMap (xc => {
+        val nx = xc.extract + (laplacian(xc) *:* (d*dt))
+        rectify(nx)
+      })
+    }
+    // returned function closure
+      (x0: PMatrix[DoubleState], t0, deltat) => {
+      @tailrec
+      def go(x: PMatrix[DoubleState], t0: Time, deltat: Time): PMatrix[DoubleState] = {
+        if (deltat <= 0.0) x else {
+          val x2 = diffuse(x)
+          val x3 = x2 map (xx => {
+            val hr = n.h(xx, t0)
+            val nx = xx + Sto * (hr*dt)
             rectify(nx)
           })
           go(x3, t0 + dt, deltat - dt)

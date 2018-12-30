@@ -321,6 +321,21 @@ class MyTestSuite extends FunSuite {
     assert(output(0)._2.length === N)
   }
 
+  test("simulate a time series for the LV model in 1d with the Euler method") {
+    val N = 25
+    val T = 30.0
+    val model = SpnModels.lv[DoubleState]()
+    val step = Spatial.euler1d(model, DenseVector(0.6, 0.6), 0.05)
+    val x00 = DenseVector(0.0, 0.0)
+    val x0 = DenseVector(50.0, 100.0)
+    val xx00 = Vector.fill(N)(x00)
+    val xx0 = xx00.updated(N/2, x0)
+    val output = Sim.ts(xx0, 0.0, T, 0.2, step)
+    //Spatial.plotTs1d(output)
+    assert(output.length === (T/0.2).toInt + 2)
+    assert(output(0)._2.length === N)
+  }
+
   test("create and step LV model in 2d") {
     val r = 5
     val c = 7
@@ -355,6 +370,27 @@ class MyTestSuite extends FunSuite {
     val output = step(xx0, 0.0, 8.0)
     /*
     println(output)
+    import breeze.plot._
+    val f = Figure("LV")
+    val p0 = f.subplot(2,1,0)
+    p0 += image(PMatrix.toBDM(output map (_(0))))
+    val p1 = f.subplot(2,1,1)
+    p1 += image(PMatrix.toBDM(output map (_(1))))
+     */
+    assert(output(0,0).length === 2)
+  }
+
+  test("create and step LV model in 2d with the Euler algorithm") {
+    val r = 10
+    val c = 15
+    val model = SpnModels.lv[DoubleState]()
+    val step = Spatial.euler2d(model, DenseVector(0.6,0.6), 0.05)
+    val x00 = DenseVector(0.0, 0.0)
+    val x0 = DenseVector(50.0, 100.0)
+    val xx00 = PMatrix(r, c, Vector.fill(r*c)(x00))
+    val xx0 = xx00.updated(c/2, r/2, x0)
+    val output = step(xx0, 0.0, 8.0)
+    /*
     import breeze.plot._
     val f = Figure("LV")
     val p0 = f.subplot(2,1,0)
