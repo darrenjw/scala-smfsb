@@ -115,7 +115,7 @@
                         <a class="object" href="Mll$.html" title="Functions associated with particle filtering of Markov process models against time series data and the computation of marginal model likelihoods."></a>
                         <a href="Mll$.html" title="Functions associated with particle filtering of Markov process models against time series data and the computation of marginal model likelihoods.">Mll</a>
                       </li><li class="current-entities indented1">
-                        <a class="object" href="package$$PMatrix$.html" title=""></a>
+                        <a class="object" href="" title=""></a>
                         <a class="class" href="package$$PMatrix.html" title="Comonadic pointed 2d image/matrix type (parallel implementation), used by the spatial simulation functions."></a>
                         <a href="package$$PMatrix.html" title="Comonadic pointed 2d image/matrix type (parallel implementation), used by the spatial simulation functions.">PMatrix</a>
                       </li><li class="current-entities indented1">
@@ -148,8 +148,8 @@
                         <a href="Step$.html" title="Functions which accept a Spn and return a function for simulating from the transition kernel of that model">Step</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="trait" href="" title="A type class for things which can be &quot;thinned&quot;, with an implementation for Stream."></a>
-                        <a href="" title="A type class for things which can be &quot;thinned&quot;, with an implementation for Stream.">Thinnable</a>
+                        <a class="trait" href="package$$Thinnable.html" title="A type class for things which can be &quot;thinned&quot;, with an implementation for Stream."></a>
+                        <a href="package$$Thinnable.html" title="A type class for things which can be &quot;thinned&quot;, with an implementation for Stream.">Thinnable</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
                         <a class="class" href="package$$ThinnableSyntax.html" title="Provision of the .thin syntax for Thinnable things"></a>
@@ -163,36 +163,36 @@
             </div>
           </div>
           <div id="content">
-            <body class="trait type">
+            <body class="object value">
       <div id="definition">
-        <div class="big-circle trait">t</div>
+        <a href="package$$PMatrix.html" title="See companion class"><div class="big-circle object-companion-class">o</div></a>
         <p id="owner"><a href="index.html" class="extype" name="smfsb">smfsb</a></p>
-        <h1>Thinnable<span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html" title="Permalink">
+        <h1><a href="package$$PMatrix.html" title="See companion class">PMatrix</a><span class="permalink">
+      <a href="../smfsb/package$$PMatrix$.html" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span></h1>
-        <h3><span class="morelinks"></span></h3>
+        <h3><span class="morelinks"><div>
+            Companion <a href="package$$PMatrix.html" title="See companion class">class PMatrix</a>
+          </div></span></h3>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">trait</span>
+        <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">Thinnable</span><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">PMatrix</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A type class for things which can be &quot;thinned&quot;, with an implementation for <code>Stream</code>.
-Useful for MCMC algorithms.
-</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -218,7 +218,7 @@ Useful for MCMC algorithms.
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="smfsb.Thinnable"><span>Thinnable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="smfsb.PMatrix"><span>PMatrix</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -240,34 +240,15 @@ Useful for MCMC algorithms.
 
         
 
-        <div class="values members">
-              <h3>Abstract Value Members</h3>
-              <ol><li name="smfsb.Thinnable#thin" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="thin[T](f:F[T],th:Int):F[T]"></a><a id="thin[T](F[T],Int):F[T]"></a>
-      <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html#thin[T](f:F[T],th:Int):F[T]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">thin</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="f">f: <span class="extype" name="smfsb.Thinnable.F">F</span>[<span class="extype" name="smfsb.Thinnable.thin.T">T</span>]</span>, <span name="th">th: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="smfsb.Thinnable.F">F</span>[<span class="extype" name="smfsb.Thinnable.thin.T">T</span>]</span>
-      </span>
-      
-      
-    </li></ol>
-            </div>
+        
 
         <div class="values members">
-              <h3>Concrete Value Members</h3>
+              <h3>Value Members</h3>
               <ol>
                 <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html#!=(x$1:Any):Boolean" title="Permalink">
+      <a href="../smfsb/package$$PMatrix$.html#!=(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -283,7 +264,7 @@ Useful for MCMC algorithms.
     </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html###():Int" title="Permalink">
+      <a href="../smfsb/package$$PMatrix$.html###():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -299,7 +280,7 @@ Useful for MCMC algorithms.
     </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html#==(x$1:Any):Boolean" title="Permalink">
+      <a href="../smfsb/package$$PMatrix$.html#==(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -312,10 +293,27 @@ Useful for MCMC algorithms.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="smfsb.PMatrix#apply" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply[T](r:Int,c:Int,data:scala.collection.GenSeq[T]):smfsb.package.PMatrix[T]"></a><a id="apply[T](Int,Int,GenSeq[T]):PMatrix[T]"></a>
+      <span class="permalink">
+      <a href="../smfsb/package$$PMatrix$.html#apply[T](r:Int,c:Int,data:scala.collection.GenSeq[T]):smfsb.package.PMatrix[T]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="r">r: <span class="extype" name="scala.Int">Int</span></span>, <span name="c">c: <span class="extype" name="scala.Int">Int</span></span>, <span name="data">data: <span class="extype" name="scala.collection.GenSeq">GenSeq</span>[<span class="extype" name="smfsb.PMatrix.apply.T">T</span>]</span>)</span><span class="result">: <a href="package$$PMatrix.html" class="extype" name="smfsb.PMatrix">PMatrix</a>[<span class="extype" name="smfsb.PMatrix.apply.T">T</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Constructor for <code>PMatrix</code> objects.</p><div class="fullcomment"><div class="comment cmt"><p>Constructor for <code>PMatrix</code> objects. Used for initialising 2d spatial simulations.
+</p></div></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html#asInstanceOf[T0]:T0" title="Permalink">
+      <a href="../smfsb/package$$PMatrix$.html#asInstanceOf[T0]:T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -331,7 +329,7 @@ Useful for MCMC algorithms.
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
       <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html#clone():Object" title="Permalink">
+      <a href="../smfsb/package$$PMatrix$.html#clone():Object" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -355,7 +353,7 @@ Useful for MCMC algorithms.
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html#eq(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../smfsb/package$$PMatrix$.html#eq(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -371,7 +369,7 @@ Useful for MCMC algorithms.
     </li><li name="scala.AnyRef#equals" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(x$1:Any):Boolean"></a><a id="equals(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html#equals(x$1:Any):Boolean" title="Permalink">
+      <a href="../smfsb/package$$PMatrix$.html#equals(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -387,7 +385,7 @@ Useful for MCMC algorithms.
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html#finalize():Unit" title="Permalink">
+      <a href="../smfsb/package$$PMatrix$.html#finalize():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -406,10 +404,27 @@ Useful for MCMC algorithms.
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="smfsb.PMatrix#fromBDM" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fromBDM[T](m:breeze.linalg.DenseMatrix[T]):smfsb.package.PMatrix[T]"></a><a id="fromBDM[T](DenseMatrix[T]):PMatrix[T]"></a>
+      <span class="permalink">
+      <a href="../smfsb/package$$PMatrix$.html#fromBDM[T](m:breeze.linalg.DenseMatrix[T]):smfsb.package.PMatrix[T]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fromBDM</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="m">m: <span class="extype" name="breeze.linalg.DenseMatrix">DenseMatrix</span>[<span class="extype" name="smfsb.PMatrix.fromBDM.T">T</span>]</span>)</span><span class="result">: <a href="package$$PMatrix.html" class="extype" name="smfsb.PMatrix">PMatrix</a>[<span class="extype" name="smfsb.PMatrix.fromBDM.T">T</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Convert a Breeze DenseMatrix to a PMatrix
+</p>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html#getClass():Class[_]" title="Permalink">
+      <a href="../smfsb/package$$PMatrix$.html#getClass():Class[_]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -425,29 +440,10 @@ Useful for MCMC algorithms.
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="hashCode():Int"></a>
-      <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html#hashCode():Int" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
-                <span class="name">@native</span><span class="args">()</span>
-              
-        </dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html#isInstanceOf[T0]:Boolean" title="Permalink">
+      <a href="../smfsb/package$$PMatrix$.html#isInstanceOf[T0]:Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -463,7 +459,7 @@ Useful for MCMC algorithms.
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html#ne(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../smfsb/package$$PMatrix$.html#ne(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -479,7 +475,7 @@ Useful for MCMC algorithms.
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html#notify():Unit" title="Permalink">
+      <a href="../smfsb/package$$PMatrix$.html#notify():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -498,7 +494,7 @@ Useful for MCMC algorithms.
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
       <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html#notifyAll():Unit" title="Permalink">
+      <a href="../smfsb/package$$PMatrix$.html#notifyAll():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -517,7 +513,7 @@ Useful for MCMC algorithms.
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
+      <a href="../smfsb/package$$PMatrix$.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -530,10 +526,10 @@ Useful for MCMC algorithms.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="toString():String"></a>
+    </li><li name="smfsb.PMatrix#toBDM" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="toBDM(m:smfsb.package.PMatrix[Double]):breeze.linalg.DenseMatrix[Double]"></a><a id="toBDM(PMatrix[Double]):DenseMatrix[Double]"></a>
       <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html#toString():String" title="Permalink">
+      <a href="../smfsb/package$$PMatrix$.html#toBDM(m:smfsb.package.PMatrix[Double]):breeze.linalg.DenseMatrix[Double]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -542,14 +538,15 @@ Useful for MCMC algorithms.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+        <span class="name">toBDM</span><span class="params">(<span name="m">m: <a href="package$$PMatrix.html" class="extype" name="smfsb.PMatrix">PMatrix</a>[<span class="extype" name="scala.Double">Double</span>]</span>)</span><span class="result">: <span class="extype" name="breeze.linalg.DenseMatrix">DenseMatrix</span>[<span class="extype" name="scala.Double">Double</span>]</span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+      <p class="shortcomment cmt">Convert a PMatrix[Double] to a Breeze DenseMatrix
+</p>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html#wait():Unit" title="Permalink">
+      <a href="../smfsb/package$$PMatrix$.html#wait():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -571,7 +568,7 @@ Useful for MCMC algorithms.
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
+      <a href="../smfsb/package$$PMatrix$.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -593,7 +590,7 @@ Useful for MCMC algorithms.
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
       <span class="permalink">
-      <a href="../smfsb/package$$Thinnable.html#wait(x$1:Long):Unit" title="Permalink">
+      <a href="../smfsb/package$$PMatrix$.html#wait(x$1:Long):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -624,7 +621,15 @@ Useful for MCMC algorithms.
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.Serializable">
+              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="scala.Product">
+              <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
+            </div><div class="parent" name="scala.Equals">
+              <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>

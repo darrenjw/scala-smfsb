@@ -115,9 +115,21 @@
                         <a class="object" href="Mll$.html" title="Functions associated with particle filtering of Markov process models against time series data and the computation of marginal model likelihoods."></a>
                         <a href="Mll$.html" title="Functions associated with particle filtering of Markov process models against time series data and the computation of marginal model likelihoods.">Mll</a>
                       </li><li class="current-entities indented1">
+                        <a class="object" href="package$$PMatrix$.html" title=""></a>
+                        <a class="class" href="package$$PMatrix.html" title="Comonadic pointed 2d image/matrix type (parallel implementation), used by the spatial simulation functions."></a>
+                        <a href="package$$PMatrix.html" title="Comonadic pointed 2d image/matrix type (parallel implementation), used by the spatial simulation functions.">PMatrix</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
+                        <a class="class" href="package$$PVector.html" title="Comonadic pointed vector type (parallel implementation), used by the spatial simulation functions."></a>
+                        <a href="package$$PVector.html" title="Comonadic pointed vector type (parallel implementation), used by the spatial simulation functions.">PVector</a>
+                      </li><li class="current-entities indented1">
                         <span class="separator"></span>
                         <a class="object" href="Sim$.html" title="Functions for simulating data associated with a Markov process given an appropriate transition kernel."></a>
                         <a href="Sim$.html" title="Functions for simulating data associated with a Markov process given an appropriate transition kernel.">Sim</a>
+                      </li><li class="current-entities indented1">
+                        <span class="separator"></span>
+                        <a class="object" href="Spatial$.html" title="All functions and utilities relating to spatial simulation"></a>
+                        <a href="Spatial$.html" title="All functions and utilities relating to spatial simulation">Spatial</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
                         <a class="trait" href="package$$Spn.html" title="Main trait for stochastic Petri nets (SPNs)"></a>
@@ -365,6 +377,40 @@ There should be no raw likelihoods passed into or out of any user-facing functio
       
       <p class="shortcomment cmt">Case class for SPNs that include an initial marking
 </p>
+    </li><li name="smfsb.PMatrix" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PMatrix[T]extendsProductwithSerializable"></a><a id="PMatrix[T]:PMatrix[T]"></a>
+      <span class="permalink">
+      <a href="../smfsb/index.html#PMatrix[T]extendsProductwithSerializable" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="Comonadic pointed 2d image/matrix type (parallel implementation), used by the spatial simulation functions." href="package$$PMatrix.html"><span class="name">PMatrix</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="x">x: <span class="extype" name="scala.Int">Int</span></span>, <span name="y">y: <span class="extype" name="scala.Int">Int</span></span>, <span name="r">r: <span class="extype" name="scala.Int">Int</span></span>, <span name="c">c: <span class="extype" name="scala.Int">Int</span></span>, <span name="data">data: <span class="extype" name="scala.collection.parallel.immutable.ParVector">ParVector</span>[<span class="extype" name="smfsb.PMatrix.T">T</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Comonadic pointed 2d image/matrix type (parallel implementation), used by
+the spatial simulation functions.</p>
+    </li><li name="smfsb.PVector" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PVector[T]extendsProductwithSerializable"></a><a id="PVector[T]:PVector[T]"></a>
+      <span class="permalink">
+      <a href="../smfsb/index.html#PVector[T]extendsProductwithSerializable" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="Comonadic pointed vector type (parallel implementation), used by the spatial simulation functions." href="package$$PVector.html"><span class="name">PVector</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="cur">cur: <span class="extype" name="scala.Int">Int</span></span>, <span name="vec">vec: <span class="extype" name="scala.collection.parallel.immutable.ParVector">ParVector</span>[<span class="extype" name="smfsb.PVector.T">T</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Comonadic pointed vector type (parallel implementation), used by
+the spatial simulation functions.</p>
     </li><li name="smfsb.Spn" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="Spn[S]extendsAnyRef"></a><a id="Spn[S]:Spn[S]"></a>
       <span class="permalink">
@@ -628,6 +674,22 @@ Useful for MCMC algorithms.
       </span>
       
       <p class="shortcomment cmt">Functions associated with particle filtering of Markov process models against time series data and the computation of marginal model likelihoods.</p>
+    </li><li name="smfsb.PMatrix" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PMatrix"></a><a id="PMatrix:PMatrix"></a>
+      <span class="permalink">
+      <a href="../smfsb/index.html#PMatrix" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="package$$PMatrix$.html"><span class="name">PMatrix</span></a><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      
     </li><li name="smfsb.Sim" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Sim"></a><a id="Sim:Sim"></a>
       <span class="permalink">
@@ -644,6 +706,23 @@ Useful for MCMC algorithms.
       </span>
       
       <p class="shortcomment cmt">Functions for simulating data associated with a Markov process given an appropriate transition kernel.</p>
+    </li><li name="smfsb.Spatial" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Spatial"></a><a id="Spatial:Spatial"></a>
+      <span class="permalink">
+      <a href="../smfsb/index.html#Spatial" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="All functions and utilities relating to spatial simulation" href="Spatial$.html"><span class="name">Spatial</span></a>
+      </span>
+      
+      <p class="shortcomment cmt">All functions and utilities relating to spatial simulation
+</p>
     </li><li name="smfsb.SpnModels" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="SpnModels"></a><a id="SpnModels:SpnModels"></a>
       <span class="permalink">
