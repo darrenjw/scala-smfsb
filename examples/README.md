@@ -20,6 +20,7 @@ Then just select the number of the example you want to run.
 * [Cle1d](src/main/scala/Cle1d.scala) - 1d spatial CLE simulation
 * [Gillespie2d](src/main/scala/Gillespie2d.scala) - 2d exact spatial Gillespie simulation
 * [Cle2d](src/main/scala/Cle2d.scala) - 2d spatial CLE simulation
+* [Cle2dfine](src/main/scala/Cle2dfine.scala) - 2d spatial CLE simulation on a fine grid, animated
 
 ### Bayesian parameter inference using time course data
 
