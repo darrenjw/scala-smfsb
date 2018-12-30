@@ -175,7 +175,7 @@ This approach allows us to define models that can be used for both discrete and 
 
 ## Next steps
 
-Having worked through the tutorial, next it would make sense to first run and then study the code of the [examples](../examples/). In particular, the examples cover the problem of how to do parameter inference from data. After that, the [API documentation](https://darrenjw.github.io/scala-smfsb/api/smfsb/index.html) should make some sense. After that, studying the [source code](../src/main/scala/smfsb/) will be helpful. Looking at the [test code](../src/test/scala/) can also be useful. For more on Scala, and especially its use for scientific and statistical computing, take a look at my [Scala course](https://github.com/darrenjw/scala-course/blob/master/StartHere.md) and my [blog](https://darrenjw.wordpress.com/).
+Having worked through the tutorial, next it would make sense to first run and then study the code of the [examples](../examples/). In particular, the examples cover both spatial reaction-diffusion simulation and the problem of how to do parameter inference from data. After that, the [API documentation](https://darrenjw.github.io/scala-smfsb/api/smfsb/index.html) should make some sense. After that, studying the [source code](../src/main/scala/smfsb/) will be helpful. Looking at the [test code](../src/test/scala/) can also be useful. For more on Scala, and especially its use for scientific and statistical computing, take a look at my [Scala course](https://github.com/darrenjw/scala-course/blob/master/StartHere.md) and my [blog](https://darrenjw.wordpress.com/).
 
 
 #### eof
