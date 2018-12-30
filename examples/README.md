@@ -2,7 +2,11 @@
 
 ### Directory containing runnable examples illustrating use of the scala-smfsb library
 
-Just doing `sbt run` from **this** directory should build and run the examples. That is, you should clone or fork the repo and then exectute `sbt run` from *inside* the `examples` directory.
+Just doing `sbt run` from **this** directory should build and run the examples. That is (assuming you have `sbt` installed and working), you should clone or fork the repo and then execute `sbt run` from your OS command line, with the current working directory set to *inside* the `examples` directory:
+```bash
+scala-smfsb/examples$ sbt run
+```
+Then just select the number of the example you want to run.
 
 ## Examples
 
