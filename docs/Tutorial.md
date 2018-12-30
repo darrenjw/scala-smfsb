@@ -90,7 +90,7 @@ val stepCle = Step.cle(SpnModels.lv[DoubleState]())
 val tsCle = Sim.ts(DenseVector(50.0, 100.0), 0.0, 20.0, 0.05, stepCle)
 Sim.plotTs(tsCle, "Euler-Maruyama/CLE simulation of the LV model")
 ```
-If we want to ignore noise temporarily, there's also a simple continous deterministic Euler integrator built-in.
+If we want to ignore noise temporarily, there's also a simple continuous deterministic Euler integrator built-in.
 ```scala
 val stepE = Step.euler(SpnModels.lv[DoubleState]())
 val tsE = Sim.ts(DenseVector(50.0, 100.0), 0.0, 20.0, 0.05, stepE)
