@@ -2,6 +2,8 @@ name := "scala-smfsb"
 organization := "com.github.darrenjw"
 version := "0.6-SNAPSHOT"
 
+enablePlugins(TutPlugin)
+
 scalacOptions ++= Seq(
   "-unchecked", "-deprecation", "-feature", "-language:higherKinds"
 )
