@@ -28,7 +28,7 @@ We are now ready to go.
 ### Simulating models
 
 Let's begin by instantiating a Lotka-Volterra model, simulating a single realisation of the process, and then plotting it.
-```scala
+```tut
 // Simulate LV with Gillespie
 val model = SpnModels.lv[IntState]()
 val step = Step.gillespie(model)
