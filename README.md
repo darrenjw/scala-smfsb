@@ -41,6 +41,14 @@ To get the most out of this library, it will be helpful if you are already famil
 
 ## Using the library in your own Scala projects
 
+### giter8 template:
+
+To create a new Scala `sbt` project template, just use:
+```bash
+sbt new darrenjw/scala-smfsb.g8
+```
+This will create a new project including a dependence on the stable version of the library.
+
 ### Stable:
 
 Just add:
