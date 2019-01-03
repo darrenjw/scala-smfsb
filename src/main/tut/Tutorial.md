@@ -13,7 +13,7 @@ set libraryDependencies += "org.scalanlp" %% "breeze-viz" % "0.13.2"
 set scalaVersion := "2.12.6"
 console
 ```
-The first time you run this it will take a little while to download and cache various library dependcies. But everything is cached, so it should be much quicker in future. When it is finished, you should have a Scala REPL ready to enter Scala code.
+The first time you run this it will take a little while to download and cache various library dependencies. But everything is cached, so it should be much quicker in future. When it is finished, you should have a Scala REPL ready to enter Scala code.
 
 ## An introduction to `scala-smfsb`
 
