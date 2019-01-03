@@ -19,8 +19,13 @@ The first time you run this it will take a little while to download and cache va
 
 It should be possible to type or copy-and-paste the commands below one-at-a-time into the Scala REPL. We need to start with a few imports.
 ```scala
+scala> import smfsb._
 import smfsb._
+
+scala> import breeze.linalg._
 import breeze.linalg._
+
+scala> import breeze.numerics._
 import breeze.numerics._
 ```
 We are now ready to go. 
@@ -29,11 +34,22 @@ We are now ready to go.
 
 Let's begin by instantiating a Lotka-Volterra model, simulating a single realisation of the process, and then plotting it.
 ```scala
-// Simulate LV with Gillespie
-val model = SpnModels.lv[IntState]()
-val step = Step.gillespie(model)
-val ts = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, step)
-Sim.plotTs(ts, "Gillespie simulation of LV model with default parameters")
+scala> // Simulate LV with Gillespie
+     | val model = SpnModels.lv[IntState]()
+model: smfsb.Spn[smfsb.IntState] =
+UnmarkedSpn(List(x, y),1  0
+1  1
+0  1  ,2  0
+0  2
+0  0  ,smfsb.SpnModels$$$Lambda$1158/346868357@60139c0e)
+
+scala> val step = Step.gillespie(model)
+step: (smfsb.IntState, smfsb.Time, smfsb.Time) => smfsb.IntState = smfsb.Step$$$Lambda$1169/1541557763@1496d411
+
+scala> val ts = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, step)
+ts: smfsb.Ts[smfsb.IntState] = List((0.0,DenseVector(50, 100)), (0.05,DenseVector(49, 96)), (0.1,DenseVector(48, 94)), (0.15000000000000002,DenseVector(49, 92)), (0.2,DenseVector(53, 90)), (0.25,DenseVector(56, 88)), (0.3,DenseVector(57, 86)), (0.35,DenseVector(58, 83)), (0.39999999999999997,DenseVector(60, 82)), (0.44999999999999996,DenseVector(62, 80)), (0.49999999999999994,DenseVector(65, 79)), (0.5499999999999999,DenseVector(67, 76)), (0.6,DenseVector(69, 75)), (0.65,DenseVector(71, 74)), (0.7000000000000001,DenseVector(73, 75)), (0.7500000000000001,DenseVector(73, 69)), (0.8000000000000002,DenseVector(75, 67)), (0.8500000000000002,DenseVector(80, 66)), (0.9000000000000002,DenseVector(80, 66)), (0.9500000000000003,DenseVector(83, 64)), (1.0000000000000002,D...
+
+scala> Sim.plotTs(ts, "Gillespie simulation of LV model with default parameters")
 ```
 When the model is instantiated, it can use default rate constants for the reactions. But these can be over-written. The library uses Breeze `DenseVectors` to represent parameter vectors. 
 ```scala
