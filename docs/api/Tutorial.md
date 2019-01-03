@@ -41,13 +41,13 @@ UnmarkedSpn(List(x, y),1  0
 1  1
 0  1  ,2  0
 0  2
-0  0  ,smfsb.SpnModels$$$Lambda$1158/2071610180@62aa3229)
+0  0  ,smfsb.SpnModels$$$Lambda$1158/1880169073@31aef00)
 
 scala> val step = Step.gillespie(model)
-step: (smfsb.IntState, smfsb.Time, smfsb.Time) => smfsb.IntState = smfsb.Step$$$Lambda$1169/1746930758@7a2a8c18
+step: (smfsb.IntState, smfsb.Time, smfsb.Time) => smfsb.IntState = smfsb.Step$$$Lambda$1169/1971108334@1c1ceda6
 
 scala> val ts = Sim.ts(DenseVector(50, 100), 0.0, 20.0, 0.05, step)
-ts: smfsb.Ts[smfsb.IntState] = List((0.0,DenseVector(50, 100)), (0.05,DenseVector(52, 99)), (0.1,DenseVector(55, 98)), (0.15000000000000002,DenseVector(57, 96)), (0.2,DenseVector(57, 95)), (0.25,DenseVector(59, 93)), (0.3,DenseVector(62, 90)), (0.35,DenseVector(64, 88)), (0.39999999999999997,DenseVector(65, 89)), (0.44999999999999996,DenseVector(67, 89)), (0.49999999999999994,DenseVector(72, 86)), (0.5499999999999999,DenseVector(76, 84)), (0.6,DenseVector(79, 82)), (0.65,DenseVector(80, 82)), (0.7000000000000001,DenseVector(79, 84)), (0.7500000000000001,DenseVector(81, 83)), (0.8000000000000002,DenseVector(85, 83)), (0.8500000000000002,DenseVector(88, 82)), (0.9000000000000002,DenseVector(91, 82)), (0.9500000000000003,DenseVector(96, 77)), (1.0000000000000002,D...
+ts: smfsb.Ts[smfsb.IntState] = List((0.0,DenseVector(50, 100)), (0.05,DenseVector(50, 98)), (0.1,DenseVector(54, 95)), (0.15000000000000002,DenseVector(59, 92)), (0.2,DenseVector(63, 84)), (0.25,DenseVector(62, 89)), (0.3,DenseVector(65, 89)), (0.35,DenseVector(70, 89)), (0.39999999999999997,DenseVector(72, 90)), (0.44999999999999996,DenseVector(71, 90)), (0.49999999999999994,DenseVector(79, 89)), (0.5499999999999999,DenseVector(81, 90)), (0.6,DenseVector(81, 88)), (0.65,DenseVector(85, 85)), (0.7000000000000001,DenseVector(89, 85)), (0.7500000000000001,DenseVector(95, 84)), (0.8000000000000002,DenseVector(97, 83)), (0.8500000000000002,DenseVector(98, 80)), (0.9000000000000002,DenseVector(97, 78)), (0.9500000000000003,DenseVector(99, 78)), (1.0000000000000002,D...
 
 scala> Sim.plotTs(ts, "Gillespie simulation of LV model with default parameters")
 ```
