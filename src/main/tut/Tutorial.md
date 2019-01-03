@@ -18,7 +18,7 @@ The first time you run this it will take a little while to download and cache va
 ## An introduction to `scala-smfsb`
 
 It should be possible to type or copy-and-paste the commands below one-at-a-time into the Scala REPL. We need to start with a few imports.
-```tut
+```tut:book
 import smfsb._
 import breeze.linalg._
 import breeze.numerics._
@@ -28,7 +28,7 @@ We are now ready to go.
 ### Simulating models
 
 Let's begin by instantiating a Lotka-Volterra model, simulating a single realisation of the process, and then plotting it.
-```tut
+```tut:book
 // Simulate LV with Gillespie
 val model = SpnModels.lv[IntState]()
 val step = Step.gillespie(model)
