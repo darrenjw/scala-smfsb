@@ -18,9 +18,14 @@ The first time you run this it will take a little while to download and cache va
 ## An introduction to `scala-smfsb`
 
 It should be possible to type or copy-and-paste the commands below one-at-a-time into the Scala REPL. We need to start with a few imports.
-```tut
+```scala
+scala> import smfsb._
 import smfsb._
+
+scala> import breeze.linalg._
 import breeze.linalg._
+
+scala> import breeze.numerics._
 import breeze.numerics._
 ```
 We are now ready to go. 
