@@ -189,18 +189,18 @@ object Spatial {
     val sdt = math.sqrt(dt)
     val sd = sqrt(d)
     assert(d.length == u)
-    def laplacian(x: PVector[DoubleState]): DoubleState =
-      x.forward.extract + x.back.extract + x.extract*(-2.0)
+    case class Xn(x: DoubleState, dwt: DoubleState)
+    def laplacian(xn: PVector[Xn]): DoubleState =
+      xn.forward.extract.x + xn.back.extract.x + xn.extract.x*(-2.0)
+    def rectify(x: DoubleState): DoubleState = x map (xi => if (xi > 0.0) xi else 0.0)
     def diffuse(x: PVector[DoubleState]): PVector[DoubleState] = {
-      val noise = x map (s => s map (si => Gaussian(0.0, sdt).draw))
-      val xn = x zip noise
-      xn coflatMap (xnc => {
-        val xc = xnc map (_._1)
-        val nc = xnc map (_._2)
-        val nx = xc.extract + (laplacian(xc) *:* (d*dt)) + sd *:* (
-          (sqrt(xc.extract + xc.forward.extract) *:* noise.extract) -
-            (sqrt(xc.extract + xc.back.extract) *:* noise.back.extract))
-        abs(nx) // TODO: switch to rectification?
+      val gau = Gaussian(0.0, sdt)
+      val xn = x map (xi => Xn(xi, DenseVector(gau.sample(u).toArray)))
+      xn coflatMap (xc => {
+        val nx = xc.extract.x + (laplacian(xc) *:* (d*dt)) + sd *:* (
+          (sqrt(xc.extract.x + xc.forward.extract.x) *:* xc.extract.dwt) -
+            (sqrt(xc.extract.x + xc.back.extract.x) *:* xc.back.extract.dwt))
+        rectify(nx)
       })
     }
     // returned function closure
@@ -214,7 +214,7 @@ object Spatial {
             val hr = n.h(xx, t0)
             val dwt = DenseVector(Gaussian(0.0, sdt).sample(v).toArray)
             val nx = xx + Sto * (hr*dt + sqrt(hr) *:* dwt)
-            abs(nx)
+            rectify(nx)
           })
           go(x3, t0 + dt, deltat - dt)
         }
@@ -293,22 +293,19 @@ object Spatial {
     val sdt = math.sqrt(dt)
     val sd = sqrt(d)
     assert(d.length == u)
-    def laplacian(x: PMatrix[DoubleState]): DoubleState =
-      x.left.extract + x.right.extract + x.up.extract + x.down.extract + x.extract*(-4.0)
+    case class Xn(x: DoubleState, dwt: DoubleState, dwts: DoubleState)
+    def laplacian(xn: PMatrix[Xn]): DoubleState =
+      xn.left.extract.x + xn.right.extract.x + xn.up.extract.x + xn.down.extract.x + xn.extract.x*(-4.0)
     def rectify(x: DoubleState): DoubleState = x map (xi => if (xi > 0.0) xi else 0.0)
     def diffuse(x: PMatrix[DoubleState]): PMatrix[DoubleState] = {
-      val noise1 = x map (s => s map (si => Gaussian(0.0, sdt).draw))
-      val noise2 = x map (s => s map (si => Gaussian(0.0, sdt).draw))
-      val xn = x zip (noise1 zip noise2)
-      xn coflatMap (xnc => {
-        val xc = xnc map (_._1)
-        val dwt = xnc map (_._2._1)
-        val dwts = xnc map (_._2._2)
-        val nx = xc.extract + (laplacian(xc) *:* (d*dt)) + sd *:* (
-          (sqrt(xc.extract + xc.left.extract) *:* dwt.extract) -
-            (sqrt(xc.extract + xc.right.extract) *:* dwt.right.extract) +
-            (sqrt(xc.extract + xc.up.extract) *:* dwts.extract) -
-            (sqrt(xc.extract + xc.down.extract) *:* dwts.down.extract)
+      val gau = Gaussian(0.0, sdt)
+       val xn = x map (xi => Xn(xi, DenseVector(gau.sample(u).toArray), DenseVector(gau.sample(u).toArray)))
+      xn coflatMap (xc => {
+        val nx = xc.extract.x + (laplacian(xc) *:* (d*dt)) + sd *:* (
+          (sqrt(xc.extract.x + xc.left.extract.x) *:* xc.extract.dwt) -
+            (sqrt(xc.extract.x + xc.right.extract.x) *:* xc.right.extract.dwt) +
+            (sqrt(xc.extract.x + xc.up.extract.x) *:* xc.extract.dwts) -
+            (sqrt(xc.extract.x + xc.down.extract.x) *:* xc.down.extract.dwts)
         )
         rectify(nx)
       })
