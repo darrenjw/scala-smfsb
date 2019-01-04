@@ -8,12 +8,12 @@ To follow the tutorial, you need to have [Sbt](http://www.scala-sbt.org/) instal
 
 Once you have Sbt installed, you should be able to run it by entering `sbt` at your OS command line. You now need to use Sbt to create a Scala REPL with a dependency on the `scala-smfsb` library. There are many ways to do this, but if you are new to Scala, the simplest way is probably to start up Sbt from an _empty_ or temporary directory (which doesn't contain any Scala code), and then paste the following into the Sbt prompt:
 ```scala
-set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.5"
+set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.6"
 set libraryDependencies += "org.scalanlp" %% "breeze-viz" % "0.13.2"
 set scalaVersion := "2.12.6"
 console
 ```
-The first time you run this it will take a little while to download and cache various library dependcies. But everything is cached, so it should be much quicker in future. When it is finished, you should have a Scala REPL ready to enter Scala code.
+The first time you run this it will take a little while to download and cache various library dependencies. But everything is cached, so it should be much quicker in future. When it is finished, you should have a Scala REPL ready to enter Scala code.
 
 ## An introduction to `scala-smfsb`
 

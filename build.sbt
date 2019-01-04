@@ -1,6 +1,6 @@
 name := "scala-smfsb"
 organization := "com.github.darrenjw"
-version := "0.6-SNAPSHOT"
+version := "0.6"
 
 enablePlugins(TutPlugin)
 
