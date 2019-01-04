@@ -14,7 +14,7 @@ object Cle1d {
 
   def main(args: Array[String]): Unit = {
     println("1d approximate simulation using the spatial CLE...")
-    val N = 50
+    val N = 250
     val T = 40.0
     val model = SpnModels.lv[DoubleState]()
     val step = Spatial.cle1d(model,DenseVector(0.8, 0.8))
