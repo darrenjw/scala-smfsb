@@ -35,6 +35,25 @@ object SpnModels {
       )
 
   /**
+    * 4-parameter Lotka-Volterra model
+    * 
+    * @param p Vector of rates for the 4 reactions (prey reproduction, prey consumption, predator reproduction, predator death)
+    * 
+    * @return An `Spn` object, which can be passed into a `Step` function, for example
+    */
+  def lv4[S: State](p: DenseVector[Double] = DenseVector(1.0, 0.005, 0.005, 0.6)): Spn[S] =
+    UnmarkedSpn[S](
+      List("x", "y"),
+      DenseMatrix((1, 0), (1, 1), (1, 1), (0, 1)),
+      DenseMatrix((2, 0), (0, 1), (1, 2), (0, 0)),
+        (x, t) => {
+          val xd = x.toDvd
+          DenseVector(
+        xd(0) * p(0), xd(0) * xd(1) * p(1), xd(0) * xd(0) * p(2), xd(1) * p(3)
+      )}
+      )
+
+  /**
     * Imigration-death model
     * 
     * @param p Vector of rates for the 2 reactions (imigration and death)
