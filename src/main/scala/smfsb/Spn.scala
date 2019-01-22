@@ -71,6 +71,26 @@ object SpnModels {
       }
     )
 
+
+  /**
+    * SIR model
+    * 
+    * @param p Vector of rates for the 2 reactions (S->I and I->R)
+    * 
+    * @return An `Spn` object, which can be passed into a `Step` function, for example
+    */
+  def sir[S: State](p: DenseVector[Double] = DenseVector(0.1, 0.5)): Spn[S] =
+    UnmarkedSpn[S](
+      List("S", "I", "R"),
+      DenseMatrix((1, 1, 0), (0, 1, 0)),
+      DenseMatrix((0, 2, 0), (0, 0, 1)),
+      (x, t) => {
+        val xd = x.toDvd
+        DenseVector(
+          xd(0) * xd(1) * p(0), xd(1) * p(1)
+        )}
+    )
+
   /**
     * Michaelis-Menten enzyme kinetics model
     * 

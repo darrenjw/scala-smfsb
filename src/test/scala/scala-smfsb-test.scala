@@ -50,6 +50,14 @@ class MyTestSuite extends FunSuite {
     assert(ts.length === 201)
   }
 
+  test("Sim.ts for SIR model") {
+    val model = SpnModels.sir[IntState]()
+    val step = Step.gillespie(model)
+    val ts = Sim.ts(DenseVector(100, 5, 0), 0.0, 20.0, 0.1, step)
+    // Sim.plotTs(ts)
+    assert(ts.length === 201)
+  }
+
   test("Sim.ts for MM model") {
     val model = SpnModels.mm[IntState]()
     val step = Step.gillespie(model)
