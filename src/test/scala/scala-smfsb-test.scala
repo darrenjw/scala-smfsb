@@ -8,12 +8,9 @@ Some basic tests
 package smfsb
 
 import org.scalatest._
-import org.scalatest.junit._
-import org.junit.runner.RunWith
 
 import breeze.linalg.{Vector => BVec, _}
 
-@RunWith(classOf[JUnitRunner])
 class MyTestSuite extends FunSuite {
 
   test("1+2=3") {

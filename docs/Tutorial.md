@@ -10,7 +10,7 @@ Once you have Sbt installed, you should be able to run it by entering `sbt` at y
 ```scala
 set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.6"
 set libraryDependencies += "org.scalanlp" %% "breeze-viz" % "0.13.2"
-set scalaVersion := "2.12.6"
+set scalaVersion := "2.12.10"
 console
 ```
 The first time you run this it will take a little while to download and cache various library dependencies. But everything is cached, so it should be much quicker in future. When it is finished, you should have a Scala REPL ready to enter Scala code.
