@@ -57,18 +57,18 @@ This will create a new project including a dependence on the stable version of t
 
 Just add:
 ```scala
-"com.github.darrenjw" %% "scala-smfsb" % "0.6"
+"com.github.darrenjw" %% "scala-smfsb" % "0.7"
 ```
-to your Sbt dependencies. You might also need to add an explicit dependence on `breeze-viz`:
+to your Sbt library dependencies. You might also need to add an explicit dependence on `breeze-viz`:
 ```scala
-"org.scalanlp" %% "breeze-viz" % "0.13.2"
+"org.scalanlp" %% "breeze-viz" % "1.0"
 ```
 
 ### Snapshot:
 
 Just add something like:
 ```scala
-libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.7-SNAPSHOT"
+libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.8-SNAPSHOT"
 resolvers += "Sonatype Snapshots" at
     "https://oss.sonatype.org/content/repositories/snapshots/"
 ```
@@ -76,9 +76,9 @@ to your Sbt build file.
 
 ## Building from source
 
-Download or clone the repo and do:
+Download or clone the repo and do something like:
 ```scala
-sbt clean compile test doc package
+sbt clean compile doc test package
 ```
-from the top-level directory.
+from the top-level directory (the directory containing `build.sbt`).
 
