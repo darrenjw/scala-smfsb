@@ -2,10 +2,12 @@
 
 ### Scala library for stochastic kinetic modelling, biochemical network simulation, and parameter inference, associated with the 3rd edition of the textbook Stochastic Modelling for Systems Biology
 
-* The current *stable* version of this library is "0.6"
-* The current unstable *snapshot* release of this library is "0.7-SNAPSHOT"
+* The current *stable* version of this library is "0.7"
+* The current unstable *snapshot* release of this library is "0.8-SNAPSHOT"
 
 Binaries are published to Sonatype, cross-built for Scala 2.11.x and 2.12.x.
+
+**N.B. Version 0.7 includes SIR and SEIR epidemic models, for convenience, due to their topical interest.**
 
 ## Quickstart
 
@@ -13,9 +15,9 @@ Binaries are published to Sonatype, cross-built for Scala 2.11.x and 2.12.x.
 * Run `sbt` from an empty/temp directory
 * At the `sbt` prompt, enter:
 ```scala
-set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.6"
-set libraryDependencies += "org.scalanlp" %% "breeze-viz" % "0.13.2"
-set scalaVersion := "2.12.6"
+set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.7"
+set libraryDependencies += "org.scalanlp" %% "breeze-viz" % "1.0"
+set scalaVersion := "2.12.10"
 console
 ```
 * You should now have a Scala REPL with a dependency on this library. At the Scala REPL, enter the following:
