@@ -8,8 +8,8 @@ To follow the tutorial, you need to have [Sbt](http://www.scala-sbt.org/) instal
 
 Once you have Sbt installed, you should be able to run it by entering `sbt` at your OS command line. You now need to use Sbt to create a Scala REPL with a dependency on the `scala-smfsb` library. There are many ways to do this, but if you are new to Scala, the simplest way is probably to start up Sbt from an _empty_ or temporary directory (which doesn't contain any Scala code), and then paste the following into the Sbt prompt:
 ```scala
-set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.6"
-set libraryDependencies += "org.scalanlp" %% "breeze-viz" % "0.13.2"
+set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.7-SNAPSHOT"
+set libraryDependencies += "org.scalanlp" %% "breeze-viz" % "1.0"
 set scalaVersion := "2.12.10"
 console
 ```
@@ -55,6 +55,12 @@ and an immigration-death model
 val stepID = Step.gillespie(SpnModels.id[IntState]())
 val tsID = Sim.ts(DenseVector(0), 0.0, 40.0, 0.1, stepID)
 Sim.plotTs(tsID, "Gillespie simulation of the ID model")
+```
+and an SIR epidemic model
+```scala
+val stepSIR = Step.gillespie(SpnModels.sir[IntState]())
+val tsSIR = Sim.ts(DenseVector(100,5,0), 0.0, 10.0, 0.05, stepSIR)
+Sim.plotTs(tsSIR, "Gillespie simulation of the SIR model")
 ```
 and an auto-regulatory genetic network model.
 ```scala

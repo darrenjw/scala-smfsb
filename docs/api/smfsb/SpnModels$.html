@@ -294,9 +294,9 @@ discrete or continous states.
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="smfsb.SpnModels#ar" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="ar[S](c:breeze.linalg.DenseVector[Double])(implicitevidence$6:smfsb.State[S]):smfsb.Spn[S]"></a><a id="ar[S](DenseVector[Double])(State[S]):Spn[S]"></a>
+      <a id="ar[S](c:breeze.linalg.DenseVector[Double])(implicitevidence$7:smfsb.State[S]):smfsb.Spn[S]"></a><a id="ar[S](DenseVector[Double])(State[S]):Spn[S]"></a>
       <span class="permalink">
-      <a href="../smfsb/SpnModels$.html#ar[S](c:breeze.linalg.DenseVector[Double])(implicitevidence$6:smfsb.State[S]):smfsb.Spn[S]" title="Permalink">
+      <a href="../smfsb/SpnModels$.html#ar[S](c:breeze.linalg.DenseVector[Double])(implicitevidence$7:smfsb.State[S]):smfsb.Spn[S]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -514,9 +514,9 @@ discrete or continous states.
 </p><div class="fullcomment"><div class="comment cmt"><p>4-parameter Lotka-Volterra model
 </p></div><dl class="paramcmts block"><dt class="param">p</dt><dd class="cmt"><p>Vector of rates for the 4 reactions (prey reproduction, prey consumption, predator reproduction, predator death)</p></dd><dt>returns</dt><dd class="cmt"><p>An <code>Spn</code> object, which can be passed into a <code>Step</code> function, for example</p></dd></dl></div>
     </li><li name="smfsb.SpnModels#mm" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="mm[S](p:breeze.linalg.DenseVector[Double])(implicitevidence$5:smfsb.State[S]):smfsb.Spn[S]"></a><a id="mm[S](DenseVector[Double])(State[S]):Spn[S]"></a>
+      <a id="mm[S](p:breeze.linalg.DenseVector[Double])(implicitevidence$6:smfsb.State[S]):smfsb.Spn[S]"></a><a id="mm[S](DenseVector[Double])(State[S]):Spn[S]"></a>
       <span class="permalink">
-      <a href="../smfsb/SpnModels$.html#mm[S](p:breeze.linalg.DenseVector[Double])(implicitevidence$5:smfsb.State[S]):smfsb.Spn[S]" title="Permalink">
+      <a href="../smfsb/SpnModels$.html#mm[S](p:breeze.linalg.DenseVector[Double])(implicitevidence$6:smfsb.State[S]):smfsb.Spn[S]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -585,6 +585,24 @@ discrete or continous states.
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="smfsb.SpnModels#seir" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="seir[S](p:breeze.linalg.DenseVector[Double])(implicitevidence$5:smfsb.State[S]):smfsb.Spn[S]"></a><a id="seir[S](DenseVector[Double])(State[S]):Spn[S]"></a>
+      <span class="permalink">
+      <a href="../smfsb/SpnModels$.html#seir[S](p:breeze.linalg.DenseVector[Double])(implicitevidence$5:smfsb.State[S]):smfsb.Spn[S]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">seir</span><span class="tparams">[<span name="S">S</span>]</span><span class="params">(<span name="p">p: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Double">Double</span>] = <span class="symbol">DenseVector(0.1, 0.2, 0.5)</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="package$$State.html" class="extype" name="smfsb.State">State</a>[<span class="extype" name="smfsb.SpnModels.seir.S">S</span>]</span>)</span><span class="result">: <a href="package$$Spn.html" class="extype" name="smfsb.Spn">Spn</a>[<span class="extype" name="smfsb.SpnModels.seir.S">S</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">SEIR model
+</p><div class="fullcomment"><div class="comment cmt"><p>SEIR model
+</p></div><dl class="paramcmts block"><dt class="param">p</dt><dd class="cmt"><p>Vector of rates for the 3 reactions (S-&gt;E, E-&gt;I, and I-&gt;R)</p></dd><dt>returns</dt><dd class="cmt"><p>An <code>Spn</code> object, which can be passed into a <code>Step</code> function, for example</p></dd></dl></div>
     </li><li name="smfsb.SpnModels#sir" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="sir[S](p:breeze.linalg.DenseVector[Double])(implicitevidence$4:smfsb.State[S]):smfsb.Spn[S]"></a><a id="sir[S](DenseVector[Double])(State[S]):Spn[S]"></a>
       <span class="permalink">

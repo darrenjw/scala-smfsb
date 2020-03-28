@@ -71,7 +71,6 @@ object SpnModels {
       }
     )
 
-
   /**
     * SIR model
     * 
@@ -88,6 +87,25 @@ object SpnModels {
         val xd = x.toDvd
         DenseVector(
           xd(0) * xd(1) * p(0), xd(1) * p(1)
+        )}
+    )
+
+  /**
+    * SEIR model
+    * 
+    * @param p Vector of rates for the 3 reactions (S->E, E->I, and I->R)
+    * 
+    * @return An `Spn` object, which can be passed into a `Step` function, for example
+    */
+  def seir[S: State](p: DenseVector[Double] = DenseVector(0.1, 0.2, 0.5)): Spn[S] =
+    UnmarkedSpn[S](
+      List("S", "E", "I", "R"),
+      DenseMatrix((1, 0, 1, 0), (0, 1, 0, 0), (0, 0, 1, 0)),
+      DenseMatrix((0, 1, 1, 0), (0, 0, 1 ,0), (0, 0, 0, 1)),
+      (x, t) => {
+        val xd = x.toDvd
+        DenseVector(
+          xd(0) * xd(2) * p(0), xd(1) * p(1), xd(2) * p(2)
         )}
     )
 
