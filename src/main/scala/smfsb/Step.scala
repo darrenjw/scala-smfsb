@@ -35,9 +35,9 @@ object Step {
           val h = n.h(x, t0)
           val h0 = sum(h)
           val t = if ((h0 < minH)|(h0 > maxH)) 1e99
-          else new Exponential(h0).draw
+          else new Exponential(h0).draw()
           if (t > dt) x else {
-            val i = Multinomial(h).sample
+            val i = Multinomial(h).sample()
             go(x + Sto(::, i), t0 + t, dt - t)
           }
         }
@@ -48,9 +48,9 @@ object Step {
 
   private def myPoisson(mean: Double): Int = if (mean < 250.0) {
     // should cope better with large means...
-    Poisson(mean).sample
+    Poisson(mean).sample()
   } else {
-    abs(round(Gaussian(mean, math.sqrt(mean)).draw)).toInt
+    abs(round(Gaussian(mean, math.sqrt(mean)).draw())).toInt
   }
 
   /**

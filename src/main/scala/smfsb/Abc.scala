@@ -12,7 +12,10 @@ package smfsb
   */
 object Abc {
 
-  import scala.collection.GenSeq
+  // import scala.collection.GenSeq
+  import scala.collection.parallel.immutable.ParSeq
+  import scala.collection.parallel.CollectionConverters._
+
   import breeze.linalg._
   import breeze.numerics._
   import breeze.stats.DescriptiveStats._
@@ -32,7 +35,7 @@ object Abc {
     * @return The collection of generated parameters together with their
     * simulated distances from a target data set
     */
-  def run[P, D](n: Int, rprior: => P, dist: P => D): GenSeq[(P, D)] = {
+  def run[P, D](n: Int, rprior: => P, dist: P => D): ParSeq[(P, D)] = {
     (1 to n).par.map(i => {
       val p = rprior
       (p,dist(p))
@@ -41,11 +44,11 @@ object Abc {
 
   // One step of an ABC-SMC algorithm - called by "smc"
   private def smcStep[P](
-    dprior: P => LogLik, priorSample: GenSeq[P],
-    priorLW: GenSeq[LogLik], rdist: P => Double,
+    dprior: P => LogLik, priorSample: ParSeq[P],
+    priorLW: ParSeq[LogLik], rdist: P => Double,
     rperturb: P => P, dperturb: (P,P) => LogLik,
     factor: Int = 10
-  ): (GenSeq[P], GenSeq[LogLik]) = {
+  ): (ParSeq[P], ParSeq[LogLik]) = {
     val n = priorSample.length
     val mx = priorLW reduce (math.max(_,_))
     val rw = priorLW map (w => math.exp(w - mx))
@@ -96,11 +99,11 @@ object Abc {
     N: Int, rprior: => P, dprior: P => LogLik, rdist: P => Double,
     rperturb: P => P, dperturb: (P,P) => LogLik, factor: Int = 10,
     steps: Int = 15, verb: Boolean = false
-  ): GenSeq[P] = {
+  ): ParSeq[P] = {
     val priorLW = collection.immutable.Vector.fill(N)(math.log(1.0/N)).par
     val priorSample = priorLW map (w => rprior)
     @annotation.tailrec
-    def go(samp: GenSeq[P], lw: GenSeq[LogLik], n: Int): GenSeq[P] = {
+    def go(samp: ParSeq[P], lw: ParSeq[LogLik], n: Int): ParSeq[P] = {
       if (verb) println(n)
       if (n == 0) {
         val idx = Mll.sample(N, exp(DenseVector(lw.toArray))).par
@@ -121,8 +124,8 @@ object Abc {
     * @param output Collection of runs (and distances) such as generated
     * from `run`
     */
-  def summary[P: CsvRow, D](output: GenSeq[(P, D)]): Unit = {
-    Mcmc.summary(Mcmc.toDMD(output map (_._1)))
+  def summary[P: CsvRow, D](output: ParSeq[(P, D)]): Unit = {
+    Mcmc.summary(Mcmc.toDMD(output.seq map (_._1)))
   }
 
 

@@ -9,6 +9,9 @@ package smfsb
 
 import org.scalatest._
 
+import scala.collection.parallel.immutable.ParSeq
+import scala.collection.parallel.CollectionConverters._
+
 import breeze.linalg.{Vector => BVec, _}
 
 class MyTestSuite extends FunSuite {
@@ -182,7 +185,7 @@ class MyTestSuite extends FunSuite {
     import breeze.stats.distributions._
     val kernel = Mcmc.nextValue(
       Gaussian(0.0,1.0).logPdf,
-      (o: Double) => o + Uniform(-0.1,0.1).draw,
+      (o: Double) => o + Uniform(-0.1,0.1).draw(),
       (n: Double, o: Double) => 1.0,
       (p: Double) => 1.0
     ) _
@@ -196,7 +199,7 @@ class MyTestSuite extends FunSuite {
     val s = Mcmc.mhStream(
       0.0,
       Gaussian(0.0,1.0).logPdf,
-      (o: Double) => o + Uniform(-1.5,1.5).draw,
+      (o: Double) => o + Uniform(-1.5,1.5).draw(),
       (n: Double, o: Double) => 1.0,
       (p: Double) => 1.0
     )
@@ -208,7 +211,7 @@ class MyTestSuite extends FunSuite {
   }
 
   test("toDMD") {
-    val s = List(DenseVector(1,2,3),DenseVector(4,5,6)).toStream
+    val s = LazyList(DenseVector(1,2,3),DenseVector(4,5,6))
     val m = Mcmc.toDMD(s)
     assert(m.rows === 2)
     assert(m.cols === 3)

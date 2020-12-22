@@ -29,7 +29,7 @@ object Mcmc {
     val prop = rprop(p)
     val llprop = logLik(prop)
     val a = llprop - ll + dprior(prop) - dprior(p) + dprop(p, prop) - dprop(prop, p)
-    if (math.log(Uniform(0.0,1.0).draw) < a)
+    if (math.log(Uniform(0.0,1.0).draw()) < a)
       (prop, llprop) else (p, ll)
   }
 
@@ -47,9 +47,9 @@ object Mcmc {
     */
   def mhStream[P](
     init: P, logLik: P => LogLik, rprop: P => P,dprop: (P, P) => LogLik, dprior: P => LogLik, verb: Boolean = false
-  ): Stream[P] = {
+  ): LazyList[P] = {
     val kernel = nextValue(logLik, rprop, dprop, dprior, verb) _
-    Stream.iterate((init, Double.MinValue)){
+    LazyList.iterate((init, Double.MinValue)){
     case (p,ll) => kernel(p, ll)
     }.map(_._1)
   }
@@ -65,7 +65,7 @@ object Mcmc {
     * 
     * @return A matrix with rows corresponding to iterations and columns corresponding to variables.
     */
-  def toDMD[P: CsvRow](s: GenSeq[P]): DenseMatrix[Double] = {
+  def toDMD[P: CsvRow](s: Seq[P]): DenseMatrix[Double] = {
     val n = s.length
     val p = s(0).toDvd.length
     val m = new DenseMatrix[Double](n, p)
@@ -125,7 +125,7 @@ object Mcmc {
           p0.ylabel = "Value"
           p0.title = "Trace plot"
           val p1 = f.subplot(v, 3, 3*i+1)
-          p1 += plot(DenseVector((0 to lm).map(_.toDouble).toArray), acf(m(::, i).toArray, lm))
+          p1 += plot(DenseVector((0 to lm).map(_.toDouble).toArray), acf(m(::, i).toArray.toVector, lm))
           p1.xlabel = "Lag"
           p1.ylabel = "ACF"
           p1.title = "ACF"
@@ -144,7 +144,7 @@ object Mcmc {
     * @param s A *finite* stream of MCMC iterations.
     * @param plot Generate plots?
     */
-  def summary[P: CsvRow](s: GenSeq[P], plot: Boolean): Unit = {
+  def summary[P: CsvRow](s: Seq[P], plot: Boolean): Unit = {
     summary(toDMD(s), plot)
   }
 

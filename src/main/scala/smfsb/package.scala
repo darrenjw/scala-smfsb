@@ -9,6 +9,9 @@ Mainly types and type classes used throughout the package
 
 // package smfsb
 
+import collection.GenSeq
+import scala.collection.parallel.immutable.ParSeq
+import scala.collection.parallel.CollectionConverters._
 
 /**
   * Object containing basic types used throughout the library.
@@ -159,11 +162,11 @@ package object smfsb {
   /**
     * A `Thinnable` instance for `Stream`
     */
-  implicit val streamThinnable: Thinnable[Stream] =
-    new Thinnable[Stream] {
-      def thin[T](s: Stream[T],th: Int): Stream[T] = {
+  implicit val streamThinnable: Thinnable[LazyList] =
+    new Thinnable[LazyList] {
+      def thin[T](s: LazyList[T],th: Int): LazyList[T] = {
         val ss = s.drop(th-1)
-        if (ss.isEmpty) Stream.empty else
+        if (ss.isEmpty) LazyList.empty else
           ss.head #:: thin(ss.tail, th)
       }
     }
@@ -248,7 +251,7 @@ package object smfsb {
     /**
       * Constructor for `PMatrix` objects. Used for initialising 2d spatial simulations.
       */
-    def apply[T](r: Int, c: Int, data: GenSeq[T]): PMatrix[T] = {
+    def apply[T](r: Int, c: Int, data: Seq[T]): PMatrix[T] = {
       assert (r*c == data.length)
       PMatrix(0,0,r,c,data.toVector.par)
     }
@@ -261,7 +264,7 @@ package object smfsb {
       * Convert a Breeze DenseMatrix to a PMatrix
       */
     def fromBDM[T](m: DenseMatrix[T]): PMatrix[T] =
-      apply(m.rows, m.cols, m.data)
+      apply(m.rows, m.cols, m.data.toVector)
   }
 
 
