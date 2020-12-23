@@ -25,12 +25,12 @@ object Cle2dfine {
     val xx0 = xx00.updated(c/2, r/2, x0)
 
     // create an infinite stream of states
-    val s = Stream.iterate(xx0)(x => step(x, 0.0, 1.0))
+    val s = LazyList.iterate(xx0)(x => step(x, 0.0, 1.0))
 
     // animate computation of the stream
     val f = Figure("2d spatial CLE simulation of the LV model")
     s.foreach(x => {
-      f.clear
+      f.clear()
       f.width = 500
       f.height = 800
       val p0 = f.subplot(2, 1, 0)
@@ -39,7 +39,7 @@ object Cle2dfine {
       val p1 = f.subplot(2, 1, 1)
       p1 += image(PMatrix.toBDM(x map (_.data(1))))
       p1.title = "Predator"
-      f.refresh
+      f.refresh()
     })
 
     println("Finished")

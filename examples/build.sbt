@@ -8,9 +8,9 @@ scalacOptions ++= Seq(
 
 libraryDependencies  ++= Seq(
   "org.scalatest" %% "scalatest" % "3.0.8" % "test",
-  "org.scalanlp" %% "breeze" % "1.0",
-  "org.scalanlp" %% "breeze-viz" % "1.0",
-  "org.scalanlp" %% "breeze-natives" % "1.0",
+  "org.scalanlp" %% "breeze" % "1.1",
+  "org.scalanlp" %% "breeze-viz" % "1.1",
+  "org.scalanlp" %% "breeze-natives" % "1.1",
   "com.github.darrenjw" %% "scala-smfsb" % "0.8-SNAPSHOT"
 )
 
@@ -21,8 +21,10 @@ resolvers ++= Seq(
     "https://oss.sonatype.org/content/repositories/releases/"
 )
 
-scalaVersion := "2.12.10"
+// scalaVersion := "2.12.10"
 
-scalaVersion in ThisBuild := "2.12.10" // for ensime
+scalaVersion := "2.13.4"
+
+//scalaVersion in ThisBuild := "2.12.10" // for ensime
 
 
