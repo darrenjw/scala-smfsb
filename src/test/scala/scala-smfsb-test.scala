@@ -8,13 +8,14 @@ Some basic tests
 package smfsb
 
 import org.scalatest._
+import funsuite._
 
 import scala.collection.parallel.immutable.ParSeq
 import scala.collection.parallel.CollectionConverters._
 
 import breeze.linalg.{Vector => BVec, _}
 
-class MyTestSuite extends FunSuite {
+class MyTestSuite extends AnyFunSuite {
 
   test("1+2=3") {
     assert(1 + 2 === 3)
