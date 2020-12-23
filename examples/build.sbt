@@ -11,7 +11,7 @@ libraryDependencies  ++= Seq(
   "org.scalanlp" %% "breeze" % "1.1",
   "org.scalanlp" %% "breeze-viz" % "1.1",
   "org.scalanlp" %% "breeze-natives" % "1.1",
-  "com.github.darrenjw" %% "scala-smfsb" % "0.8-SNAPSHOT"
+  "com.github.darrenjw" %% "scala-smfsb" % "0.8"
 )
 
 resolvers ++= Seq(
