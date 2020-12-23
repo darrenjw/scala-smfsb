@@ -4,6 +4,10 @@ version := "0.8-SNAPSHOT"
 
 // enablePlugins(TutPlugin)
 
+mdocIn := file("mdoc/")
+mdocOut := file("docs/")
+enablePlugins(MdocPlugin)
+
 scalacOptions ++= Seq(
   "-unchecked", "-deprecation", "-feature", "-language:higherKinds"
 )

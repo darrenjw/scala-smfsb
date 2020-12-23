@@ -13,9 +13,8 @@ api:
 	cp -r target/scala-2.12/api/* docs/api/
 	git add docs/api
 
-tut:
-	sbt tut
-	cp target/scala-2.12/tut/*.md docs/
+mdoc:
+	sbt mdoc
 	git add docs/*.md
 
 todo:
