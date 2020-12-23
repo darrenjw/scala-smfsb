@@ -2,12 +2,11 @@
 
 ### Scala library for stochastic kinetic modelling, biochemical network simulation, and parameter inference, associated with the 3rd edition of the textbook Stochastic Modelling for Systems Biology
 
-* The current *stable* version of this library is "0.7"
-* The current unstable *snapshot* release of this library is "0.8-SNAPSHOT"
+* The current *stable* version of this library is "0.8", for Scala 2.13
+* Use version "0.7" for Scala 2.11 and 2.12
+* The current unstable *snapshot* release of this library is "0.9-SNAPSHOT"
 
-Binaries are published to Sonatype, cross-built for Scala 2.11.x and 2.12.x.
-
-**N.B. Version 0.7 includes SIR and SEIR epidemic models, for convenience, due to their topical interest.**
+Binaries are published to Sonatype.
 
 ## Quickstart
 
@@ -15,9 +14,9 @@ Binaries are published to Sonatype, cross-built for Scala 2.11.x and 2.12.x.
 * Run `sbt` from an empty/temp directory
 * At the `sbt` prompt, enter:
 ```scala
-set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.7"
-set libraryDependencies += "org.scalanlp" %% "breeze-viz" % "1.0"
-set scalaVersion := "2.12.10"
+set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.8"
+set libraryDependencies += "org.scalanlp" %% "breeze-viz" % "1.1"
+set scalaVersion := "2.13.4"
 console
 ```
 * You should now have a Scala REPL with a dependency on this library. At the Scala REPL, enter the following:
@@ -57,18 +56,18 @@ This will create a new project including a dependence on the stable version of t
 
 Just add:
 ```scala
-"com.github.darrenjw" %% "scala-smfsb" % "0.7"
+"com.github.darrenjw" %% "scala-smfsb" % "0.8"
 ```
 to your Sbt library dependencies. You might also need to add an explicit dependence on `breeze-viz`:
 ```scala
-"org.scalanlp" %% "breeze-viz" % "1.0"
+"org.scalanlp" %% "breeze-viz" % "1.1"
 ```
 
 ### Snapshot:
 
 Just add something like:
 ```scala
-libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.8-SNAPSHOT"
+libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.9-SNAPSHOT"
 resolvers += "Sonatype Snapshots" at
     "https://oss.sonatype.org/content/repositories/snapshots/"
 ```
