@@ -6,11 +6,11 @@ FORCE:
 
 docs: FORCE
 	make api
-	make tut
+	make mdoc
 
 api:
 	sbt doc
-	cp -r target/scala-2.12/api/* docs/api/
+	cp -r target/scala-2.13/api/* docs/api/
 	git add docs/api
 
 mdoc:
