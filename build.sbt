@@ -29,7 +29,7 @@ scalaVersion := "2.13.4"
 // crossScalaVersions := Seq("2.11.11", "2.12.10")
 
 
-scalaVersion in ThisBuild := "2.12.10" // for ensime...
+ThisBuild / scalaVersion := "2.12.10" // for ensime...
 
 
 // eof
