@@ -2,8 +2,6 @@ name := "scala-smfsb"
 organization := "com.github.darrenjw"
 version := "0.9-SNAPSHOT"
 
-// enablePlugins(TutPlugin)
-
 mdocIn := file("mdoc/")
 mdocOut := file("docs/")
 enablePlugins(MdocPlugin)
@@ -13,24 +11,24 @@ scalacOptions ++= Seq(
 )
 
 libraryDependencies  ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.2.2" % "test",
-  "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.0",
-  "org.scalanlp" %% "breeze" % "2.0-SNAPSHOT",
-  "org.scalanlp" %% "breeze-viz" % "2.0-SNAPSHOT",
-  "org.scalanlp" %% "breeze-natives" % "2.0-SNAPSHOT"
+  "org.scalatest" %% "scalatest" % "3.2.9" % "test",
+  "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.3",
+  "org.scalanlp" %% "breeze" % "2.0-RC1",
+  "org.scalanlp" %% "breeze-viz" % "2.0-RC1",
+  "org.scalanlp" %% "breeze-natives" % "2.0-RC1"
 )
 
 resolvers +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
-// scalaVersion := "2.12.10"
 
-scalaVersion := "2.13.4"
+scalaVersion := "2.13.5"
+//scalaVersion := "3.0.1"
 
 // crossScalaVersions := Seq("2.11.11", "2.12.10")
 
 
-ThisBuild / scalaVersion := "2.12.10" // for ensime...
+// ThisBuild / scalaVersion := "2.12.10" // for ensime...
 
 
 // eof

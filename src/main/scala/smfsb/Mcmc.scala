@@ -118,7 +118,7 @@ object Mcmc {
     println("Sample medians: "+med.t.toCsv)
     if (plt) {
       val f = Figure("MCMC Diagnostic plots")
-        (0 until v).foreach(i => {
+      (0 until v).foreach(i => {
           val p0 = f.subplot(v, 3, 3*i)
           p0 += plot(DenseVector((1 to n).map(_.toDouble).toArray), m(::, i))
           p0.xlabel = "Iteration"

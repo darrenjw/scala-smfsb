@@ -40,7 +40,7 @@ object Spatial {
     val Sto = (n.post - n.pre).t
     val u = Sto.rows // number of species
     assert(d.length == u)
-      (x0: Seq[IntState], t0, dt) => {
+    (x0: Seq[IntState], t0, dt) => {
       val nv = x0.length
       @tailrec
       def go(x: Seq[IntState], t0: Time, dt: Time): Seq[IntState] = {
@@ -107,9 +107,9 @@ object Spatial {
   ): (PMatrix[IntState], Time, Time) => PMatrix[IntState] = {
     val Sto = (n.post - n.pre).t
     val u = Sto.rows // number of species
-      (x0: PMatrix[IntState], t0, dt) => {
-      @tailrec
-      def go(x: PMatrix[IntState], t0: Time, dt: Time): PMatrix[IntState] = {
+    (x0: PMatrix[IntState], t0, dt) => {
+    @tailrec
+    def go(x: PMatrix[IntState], t0: Time, dt: Time): PMatrix[IntState] = {
         if (dt <= 0.0) x else {
           val hr = x map (n.h(_, t0))
           val hrs = hr map (sum(_))
@@ -206,10 +206,10 @@ object Spatial {
       })
     }
     // returned function closure
-      (x0: Seq[DoubleState], t0, deltat) => {
-      val nv = x0.length
-      @tailrec
-      def go(x: PVector[DoubleState], t0: Time, deltat: Time): Seq[DoubleState] = {
+    (x0: Seq[DoubleState], t0, deltat) => {
+    val nv = x0.length
+    @tailrec
+    def go(x: PVector[DoubleState], t0: Time, deltat: Time): Seq[DoubleState] = {
         if (deltat <= 0.0) x.vec.seq else {
           val x2 = diffuse(x)
           val x3 = x2 map (xx => {
@@ -255,10 +255,10 @@ object Spatial {
       })
     }
     // returned function closure
-      (x0: Seq[DoubleState], t0, deltat) => {
-      val nv = x0.length
-      @tailrec
-      def go(x: PVector[DoubleState], t0: Time, deltat: Time): Seq[DoubleState] = {
+    (x0: Seq[DoubleState], t0, deltat) => {
+    val nv = x0.length
+    @tailrec
+    def go(x: PVector[DoubleState], t0: Time, deltat: Time): Seq[DoubleState] = {
         if (deltat <= 0.0) x.vec.seq else {
           val x2 = diffuse(x)
           val x3 = x2 map (xx => {
@@ -313,9 +313,9 @@ object Spatial {
       })
     }
     // returned function closure
-      (x0: PMatrix[DoubleState], t0, deltat) => {
-      @tailrec
-      def go(x: PMatrix[DoubleState], t0: Time, deltat: Time): PMatrix[DoubleState] = {
+    (x0: PMatrix[DoubleState], t0, deltat) => {
+    @tailrec
+    def go(x: PMatrix[DoubleState], t0: Time, deltat: Time): PMatrix[DoubleState] = {
         if (deltat <= 0.0) x else {
           val x2 = diffuse(x)
           val x3 = x2 map (xx => {
@@ -361,9 +361,9 @@ object Spatial {
       })
     }
     // returned function closure
-      (x0: PMatrix[DoubleState], t0, deltat) => {
-      @tailrec
-      def go(x: PMatrix[DoubleState], t0: Time, deltat: Time): PMatrix[DoubleState] = {
+    (x0: PMatrix[DoubleState], t0, deltat) => {
+    @tailrec
+    def go(x: PMatrix[DoubleState], t0: Time, deltat: Time): PMatrix[DoubleState] = {
         if (deltat <= 0.0) x else {
           val x2 = diffuse(x)
           val x3 = x2 map (xx => {

@@ -77,7 +77,7 @@ package object smfsb {
   /**
     * Evidence that `IntState` belongs to the `State` type class
     */
-  implicit val dviState = new State[IntState] {
+  implicit val dviState: State[IntState] = new State[IntState] {
     def toCsv(s: IntState): String = (s.toArray map (_.toString)).mkString(",")
     def toDvd(s: IntState): DenseVector[Double] = s.map(_*1.0)
   }
@@ -90,7 +90,7 @@ package object smfsb {
   /**
     * Evidence that `DoubleState` belongs to the `State` type class
     */
-  implicit val dvdState = new State[DoubleState] {
+  implicit val dvdState: State[DoubleState] = new State[DoubleState] {
     def toCsv(s: DoubleState): String = (s.toArray map (_.toString)).mkString(",")
     def toDvd(s: DoubleState): DenseVector[Double] = s
   }
@@ -134,13 +134,13 @@ package object smfsb {
   /**
     * Evidence that `Ts[IntState]` is a `DataSet`
     */
-  implicit val tsisDs = new DataSet[Ts[IntState]] {
+  implicit val tsisDs: DataSet[Ts[IntState]] = new DataSet[Ts[IntState]] {
   }
 
   /**
     * Evidence that `Ts[DoubleState]` is a `DataSet`
     */
-  implicit val tsdsDs = new DataSet[Ts[DoubleState]] {
+  implicit val tsdsDs: DataSet[Ts[DoubleState]] = new DataSet[Ts[DoubleState]] {
   }
 
   /**
