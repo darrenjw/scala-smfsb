@@ -19,6 +19,8 @@ object Mll {
   import spire.math._
   import spire.implicits._
 
+  import breeze.stats.distributions.Rand.VariableSeed.randBasis
+
   // TODO: support alternative resampling methods, such as systematic
 
   // TODO: scaladoc

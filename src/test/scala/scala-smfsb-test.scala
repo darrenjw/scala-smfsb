@@ -13,6 +13,8 @@ import funsuite._
 import scala.collection.parallel.immutable.ParSeq
 import scala.collection.parallel.CollectionConverters._
 
+import breeze.stats.distributions.Rand.VariableSeed.randBasis
+
 import breeze.linalg.{Vector => BVec, _}
 
 class MyTestSuite extends AnyFunSuite {

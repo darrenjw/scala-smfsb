@@ -15,6 +15,8 @@ object Mcmc {
 
   import breeze.stats.distributions.Uniform
 
+  import breeze.stats.distributions.Rand.VariableSeed.randBasis
+
   /**
     * Function for executing one step of a MH algorithm. Called by `mhStream`.
     */

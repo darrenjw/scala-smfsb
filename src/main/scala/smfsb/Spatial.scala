@@ -15,6 +15,8 @@ import breeze.linalg._
 import breeze.numerics._
 import breeze.stats.distributions._
 
+import breeze.stats.distributions.Rand.VariableSeed.randBasis
+
 /**
   * All functions and utilities relating to spatial simulation
   */
@@ -388,7 +390,7 @@ object Spatial {
   def plotTs1d[S: State](ts: Ts[Seq[S]]): Unit = {
     import breeze.plot._
     val states = ts map (_._2)
-      (0 until states(0)(0).toDvd.length).foreach{ i =>
+    (0 until states(0)(0).toDvd.length).foreach{ i =>
         val f = Figure("Species " + i)
         val p = f.subplot(0)
         val speciesi = states map (statetime => statetime map (_.toDvd.data(i)))

@@ -12,6 +12,8 @@ import breeze.linalg._
 import breeze.numerics._
 import breeze.stats.distributions._
 
+import breeze.stats.distributions.Rand.VariableSeed.randBasis
+
 /**
   * Functions which accept a `Spn` and return a function for simulating from the transition kernel of that model
   */
