@@ -1,17 +1,19 @@
+scalaVersion := "2.13.5"
+scalaVersion := "2.13.5"
 name := "scala-smfsb-examples"
 
-version := "0.3-SNAPSHOT"
+version := "0.9-SNAPSHOT"
 
 scalacOptions ++= Seq(
   "-unchecked", "-deprecation", "-feature"
 )
 
 libraryDependencies  ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.2.2" % "test",
-  "org.scalanlp" %% "breeze" % "1.1",
-  "org.scalanlp" %% "breeze-viz" % "1.1",
-  "org.scalanlp" %% "breeze-natives" % "1.1",
-  "com.github.darrenjw" %% "scala-smfsb" % "0.8"
+  "org.scalatest" %% "scalatest" % "3.2.9" % "test",
+  "org.scalanlp" %% "breeze" % "2.0-RC3",
+  "org.scalanlp" %% "breeze-viz" % "2.0-RC3",
+  "org.scalanlp" %% "breeze-natives" % "2.0-RC3",
+  "com.github.darrenjw" %% "scala-smfsb" % "0.9-SNAPSHOT"
 )
 
 resolvers ++= Seq(
@@ -21,9 +23,9 @@ resolvers ++= Seq(
     "https://oss.sonatype.org/content/repositories/releases/"
 )
 
-// scalaVersion := "2.12.10"
 
-scalaVersion := "2.13.4"
+//scalaVersion := "2.13.5"
+scalaVersion := "3.0.1"
 
 //scalaVersion in ThisBuild := "2.12.10" // for ensime
 

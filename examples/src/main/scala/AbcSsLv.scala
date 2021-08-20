@@ -12,6 +12,8 @@ import breeze.numerics._
 import breeze.stats._
 import breeze.stats.distributions._
 
+import breeze.stats.distributions.Rand.VariableSeed.randBasis
+
 object AbcSsLv {
 
   def statePriorSample() = DenseVector(Poisson(50.0).draw(), Poisson(100.0).draw())

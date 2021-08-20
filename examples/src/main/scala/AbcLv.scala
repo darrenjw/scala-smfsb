@@ -11,6 +11,8 @@ import breeze.linalg._
 import breeze.numerics._
 import breeze.stats.distributions._
 
+import breeze.stats.distributions.Rand.VariableSeed.randBasis
+
 object AbcLv {
 
   // state prior
