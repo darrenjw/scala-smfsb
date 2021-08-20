@@ -4,7 +4,7 @@
 
 * The current *stable* version of this library is "0.8", for Scala 2.13
 * Use version "0.7" for Scala 2.11 and 2.12
-* The current unstable *snapshot* release of this library is "0.9-SNAPSHOT"
+* The current unstable *snapshot* release of this library is "0.9-SNAPSHOT" (cross-built for Scala 2.13 and Scala 3)
 
 Binaries are published to Sonatype.
 
