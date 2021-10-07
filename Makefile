@@ -10,7 +10,7 @@ docs: FORCE
 
 api:
 	sbt doc
-	cp -r target/scala-3.0.1/api/* docs/api/
+	cp -r target/scala-3.0.1/api/* docs/
 	git add docs/api
 
 mdoc:
