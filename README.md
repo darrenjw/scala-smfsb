@@ -21,8 +21,8 @@ console
 ```
 * You should now have a Scala REPL with a dependency on this library. At the Scala REPL, enter the following:
 ```scala
-import smfsb._
-import breeze.linalg._
+import smfsb.*
+import breeze.linalg.*
 val model = SpnModels.lv[IntState]()
 val step = Step.gillespie(model)
 val ts = Sim.ts(DenseVector(50, 40), 0.0, 20.0, 0.1, step)
