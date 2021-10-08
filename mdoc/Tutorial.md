@@ -88,7 +88,7 @@ We also don't have to just sample one realisation. We can look at many realisati
 ```scala mdoc:silent
 // Simulate a sample
 val samp = Sim.sample(1000, DenseVector(50,100), 0.0, 10.0, step)
-import breeze.plot._
+import breeze.plot.*
 val fig = Figure("Marginal of transition kernel")
 fig.subplot(1,2,0) += hist(DenseVector(samp.map(_.data(0)).toArray))
 fig.subplot(1,2,1) += hist(DenseVector(samp.map(_.data(1)).toArray))
