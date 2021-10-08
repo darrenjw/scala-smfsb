@@ -4,24 +4,28 @@ This tutorial document will walk through some basic features of the `scala-smfsb
 
 ## Setup
 
-To follow the tutorial, you need to have [Sbt](http://www.scala-sbt.org/) installed, and this in turn requires a recent [JDK](http://www.oracle.com/technetwork/java/javase/downloads). If you are new to Scala, you may find the [setup page](https://github.com/darrenjw/scala-course/blob/master/Setup.md) for my [Scala course](https://github.com/darrenjw/scala-course/blob/master/StartHere.md) to be useful, but note that on many Linux systems it can be as simple as installing the packages `openjdk-8-jdk` and `sbt`.
+To follow the tutorial, you need to have [sbt](http://www.scala-sbt.org/) installed, and this in turn requires a recent [JDK](http://www.oracle.com/technetwork/java/javase/downloads). If you are new to Scala, you may find the [setup page](https://github.com/darrenjw/scala-course/blob/master/Setup.md) for my [Scala course](https://github.com/darrenjw/scala-course/blob/master/StartHere.md) to be useful, but note that on many Linux systems it can be as simple as installing the packages `openjdk-8-jdk` and `sbt`.
 
-Once you have Sbt installed, you should be able to run it by entering `sbt` at your OS command line. You now need to use Sbt to create a Scala REPL with a dependency on the `scala-smfsb` library. There are many ways to do this, but if you are new to Scala, the simplest way is probably to start up Sbt from an _empty_ or temporary directory (which doesn't contain any Scala code), and then paste the following into the Sbt prompt:
+Once you have `sbt` installed, you should be able to run it by entering `sbt` at your OS command line. You now need to use `sbt` to create a Scala REPL with a dependency on the `scala-smfsb` library. There are many ways to do this, but if you are new to Scala, the simplest way is probably to start up `sbt` from an _empty_ or temporary directory (which doesn't contain any Scala code). Note that Scala 3 requires a fairly up-to-date version of `sbt`, so if you have an older version of the `sbt` launcher installed, you can ensure that you launch with a recent version by starting `sbt` from the command line with:
+```bash
+sbt "-Dsbt.version=1.5.1"
+```
+Then paste the following into the `sbt` prompt:
 ```scala
-set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.8"
-set libraryDependencies += "org.scalanlp" %% "breeze-viz" % "1.1"
-set scalaVersion := "2.13.4"
+set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.9"
+set libraryDependencies += "org.scalanlp" %% "breeze-viz" % "2.0"
+set scalaVersion := "3.0.1"
 console
 ```
-The first time you run this it will take a little while to download and cache various library dependencies. But everything is cached, so it should be much quicker in future. When it is finished, you should have a Scala REPL ready to enter Scala code.
+The first time you run this it will take a little while to download and cache various library dependencies. But everything is cached, so it should be much quicker in future. When it is finished, you should have a Scala 3 REPL ready to enter Scala code.
 
 ## An introduction to `scala-smfsb`
 
 It should be possible to type or copy-and-paste the commands below one-at-a-time into the Scala REPL. We need to start with a few imports.
 ```scala mdoc:silent
-import smfsb._
-import breeze.linalg._
-import breeze.numerics._
+import smfsb.*
+import breeze.linalg.*
+import breeze.numerics.*
 ```
 We are now ready to go. 
 
