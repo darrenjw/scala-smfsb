@@ -121,10 +121,9 @@ val mylv0 = UnmarkedSpn[IntState](
   List("x", "y"),
   DenseMatrix((1, 0), (1, 1), (0, 1)),
   DenseMatrix((2, 0), (0, 2), (0, 0)),
-  (x, t) => {
+  (x, t) =>
     DenseVector(
-      x.data(0) * 1.0, x.data(0) * x.data(1) * 0.005, x.data(1) * 0.6
-    )}
+      x.data(0) * 1.0, x.data(0) * x.data(1) * 0.005, x.data(1) * 0.6)
 )
 ```
 We create a fully parametrised model (without an initial marking), but providing a list of species names, a *Pre* and *Post* matrix, and a hazard vector, which in general may be a function of both the state, `x` and the current time, `t`. Note that it should be OK to write, say, `x(0)`, rather than `x.data(0)`, but sometimes correct resolution of the indexing fails with `IntState` (but doesn't for `DoubleState`). We can test that this works.
@@ -139,10 +138,9 @@ def lvparam(p: DenseVector[Double] = DenseVector(1.0, 0.005, 0.6)): Spn[IntState
     List("x", "y"),
     DenseMatrix((1, 0), (1, 1), (0, 1)),
     DenseMatrix((2, 0), (0, 2), (0, 0)),
-    (x, t) => {
+    (x, t) =>
       DenseVector(
-        x.data(0) * p(0), x.data(0) * x.data(1) * p(1), x.data(1) * p(2)
-      )}
+        x.data(0) * p(0), x.data(0) * x.data(1) * p(1), x.data(1) * p(2))
   )
 ```
 Using a method allows the inclusion of a default parameter vector, which can be convenient. The follow code shows how we can use this.
@@ -166,11 +164,10 @@ def lv[S: State](p: DenseVector[Double] = DenseVector(1.0, 0.005, 0.6)): Spn[S] 
     List("x", "y"),
     DenseMatrix((1, 0), (1, 1), (0, 1)),
     DenseMatrix((2, 0), (0, 2), (0, 0)),
-    (x, t) => {
+    (x, t) =>
       val xd = x.toDvd
       DenseVector(
-        xd(0) * p(0), xd(0) * xd(1) * p(1), xd(1) * p(2)
-      )}
+        xd(0) * p(0), xd(0) * xd(1) * p(1), xd(1) * p(2))
   )
 ```
 Note the use of `.toDvd` to convert a state to a `DenseVector[Double]`, which is necessary since we do not require that all instances of the `State` type class are explicitly indexed. We can use this as we have already seen, by specifying the particular `State` to use for instantiation at call time.
@@ -191,7 +188,7 @@ This approach allows us to define models that can be used for both discrete and 
 
 ## Next steps
 
-Having worked through the tutorial, next it would make sense to first run and then study the code of the [examples](../examples/). In particular, the examples cover both spatial reaction-diffusion simulation and the problem of how to do parameter inference from data. After that, the [API documentation](https://darrenjw.github.io/scala-smfsb/api/smfsb/index.html) should make some sense. After that, studying the [source code](../src/main/scala/smfsb/) will be helpful. Looking at the [test code](../src/test/scala/) can also be useful. For more on Scala, and especially its use for scientific and statistical computing, take a look at my [Scala course](https://github.com/darrenjw/scala-course/blob/master/StartHere.md) and my [blog](https://darrenjw.wordpress.com/).
+Having worked through the tutorial, next it would make sense to first run and then study the code of the [examples](../examples/). In particular, the examples cover both spatial reaction-diffusion simulation and the problem of how to do parameter inference from data. After that, the [API documentation](https://darrenjw.github.io/scala-smfsb/api/smfsb.html) should make some sense. After that, studying the [source code](../src/main/scala/smfsb/) will be helpful. Looking at the [test code](../src/test/scala/) can also be useful. For more on Scala, and especially its use for scientific and statistical computing, take a look at my [Scala course](https://github.com/darrenjw/scala-course/blob/master/StartHere.md) and my [blog](https://darrenjw.wordpress.com/).
 
 
 #### eof
