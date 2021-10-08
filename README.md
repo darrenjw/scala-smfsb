@@ -36,11 +36,10 @@ To get the most out of this library, it will be helpful if you are already famil
 
 ## Documentation
 
-* [An introduction to scala-smfsb](https://darrenjw.wordpress.com/2019/01/04/the-scala-smfsb-library/) - a "taster" blog post
 * [Tutorial](docs/Tutorial.md) - walk through of basic functionality
 * There are more interesting examples in the [examples directory](examples/). To run them, download or clone the repo, and do `sbt run` from *inside* the examples directory.
-* A blog post looking at [stochastic reaction-diffusion modelling](https://darrenjw.wordpress.com/2019/01/22/stochastic-reaction-diffusion-modelling/) using the library
 * [Latest API docs](https://darrenjw.github.io/scala-smfsb/api/smfsb.html)
+* I also have a couple of (oldish) blog posts: [An introduction to scala-smfsb](https://darrenjw.wordpress.com/2019/01/04/the-scala-smfsb-library/) - a "taster", and a post looking at [stochastic reaction-diffusion modelling](https://darrenjw.wordpress.com/2019/01/22/stochastic-reaction-diffusion-modelling/) using the library. But please note that these use an older version of the library and an older version of Scala, so a few details may need updating.
 
 ## Using the library in your own Scala projects
 
