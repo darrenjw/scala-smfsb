@@ -10,8 +10,8 @@ Binaries are published to Sonatype.
 
 ## Quickstart
 
-* To use this software library, you should first install a recent [JDK](http://www.oracle.com/technetwork/java/javase/downloads) and [Sbt](http://www.scala-sbt.org/).
-* Run `sbt` from an empty/temp directory
+* To use this software library, you should first install a recent [JDK](http://www.oracle.com/technetwork/java/javase/downloads) and [sbt](http://www.scala-sbt.org/).
+* Run `sbt` from an empty/temp directory:
 ```bash
 sbt "-Dsbt.version=1.5.1"
 set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.9"
@@ -57,7 +57,7 @@ Just add:
 ```scala
 "com.github.darrenjw" %% "scala-smfsb" % "0.9"
 ```
-to your Sbt library dependencies. You might also need to add an explicit dependence on `breeze-viz`:
+to your `sbt` library dependencies. You might also need to add an explicit dependence on `breeze-viz`:
 ```scala
 "org.scalanlp" %% "breeze-viz" % "2.0"
 ```
@@ -70,7 +70,7 @@ libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "1.0-SNAPSHOT"
 resolvers += "Sonatype Snapshots" at
     "https://oss.sonatype.org/content/repositories/snapshots/"
 ```
-to your Sbt build file.
+to your `sbt` build file.
 
 ## Building from source
 
