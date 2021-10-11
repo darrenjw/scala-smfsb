@@ -5,16 +5,15 @@ Inference for the parameters of a Lotka-Volterra model using ABC-SMC with summar
 
  */
 
-import smfsb._
-import scala.io.Source
-import breeze.linalg._
-import breeze.numerics._
-import breeze.stats._
-import breeze.stats.distributions._
+object AbcSmcLvO:
 
-import breeze.stats.distributions.Rand.VariableSeed.randBasis
-
-object AbcSmcLv {
+  import smfsb.*
+  import scala.io.Source
+  import breeze.linalg.*
+  import breeze.numerics.*
+  import breeze.stats.*
+  import breeze.stats.distributions.*
+  import breeze.stats.distributions.Rand.VariableSeed.randBasis
 
   def statePriorSample = DenseVector(Poisson(50.0).draw(), Poisson(100.0).draw())
 
@@ -32,21 +31,19 @@ object AbcSmcLv {
   def distance(real: DoubleState)(sim: DoubleState): Double =
     math.sqrt(sum((real-sim).map(x => x*x)))
 
-  def ssds(ts: Ts[DoubleState]): DoubleState = {
+  def ssds(ts: Ts[DoubleState]): DoubleState =
     val v = DenseVector(ts.map(_._2(0)).toArray)
-    import breeze.stats._
+    import breeze.stats.*
     val m = meanAndVariance(v)
     val acf = Mcmc.acf(v.data.toVector, 3)
     DenseVector(m.mean, math.sqrt(m.variance), acf(1), acf(2), acf(3))
-  }
 
-  def ss(ts: Ts[IntState]): DoubleState = {
-    ssds(ts.map{case (t,v) => (t, v.map(_.toDouble))})
-  }
+  def ss(ts: Ts[IntState]): DoubleState =
+    ssds(ts.map((t,v) => (t, v.map(_.toDouble))))
 
   def step(p: DoubleState) = Step.gillespie(SpnModels.lv[IntState](exp(p)), maxH=1e5)
 
-  def main(args: Array[String]): Unit = {
+  @main def abcSmcLv() =
     println("ABC-SMC demo (with summary stats)...")
     val N = 5000 // required number of iterations from the ABC-SMC algorithm
     val rawData = Source.fromFile("LVpreyNoise10.txt").getLines()
@@ -69,10 +66,6 @@ object AbcSmcLv {
     val eout = out map (exp(_))
     Mcmc.summary(eout.seq,true)
     println("Done.")
-  }
-
-}
-
 
 // eof
 

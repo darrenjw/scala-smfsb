@@ -7,20 +7,17 @@ Some basic tests
 
 package smfsb
 
-import org.scalatest._
-import funsuite._
+import org.scalatest.*
+import funsuite.*
 
-import breeze.linalg._
-import breeze.stats.distributions._
+import breeze.linalg.*
+import breeze.stats.distributions.*
 
-class MyTestSuite extends AnyFunSuite {
+class MyTestSuite extends AnyFunSuite:
 
   test("dummy test") {
     assert(1 === 1)
   }
 
 
-
-
-}
 
