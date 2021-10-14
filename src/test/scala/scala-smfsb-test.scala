@@ -9,7 +9,6 @@ package smfsb
 
 import org.scalatest._
 import funsuite._
-
 import scala.collection.parallel.immutable.ParSeq
 import scala.collection.parallel.CollectionConverters._
 
@@ -426,9 +425,6 @@ class MyTestSuite extends AnyFunSuite {
      */
     assert(output(0,0).length === 2)
   }
-
-
-
 
 
 }
