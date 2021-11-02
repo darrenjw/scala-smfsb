@@ -25,7 +25,7 @@ resolvers +=
 //scalaVersion := "2.13.5"
 scalaVersion := "3.0.1"
 
-crossScalaVersions := Seq("2.13.5", "3.0.1")
+crossScalaVersions := Seq("2.13.7", "3.0.1")
 
 
 // ThisBuild / scalaVersion := "2.12.10" // for ensime...
