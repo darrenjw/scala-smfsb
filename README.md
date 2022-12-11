@@ -2,9 +2,9 @@
 
 ### Scala library for stochastic kinetic modelling, biochemical network simulation, and parameter inference, associated with the 3rd edition of the textbook Stochastic Modelling for Systems Biology
 
-* The current *stable* version of this library is "0.9", for Scala 2.13 and **Scala 3**
+* The current *stable* version of this library is "1.0", for Scala 2.13 and **Scala 3**
 * Use version "0.7" for Scala 2.11 and 2.12
-* The current unstable *snapshot* release of this library is "1.0-SNAPSHOT" (cross-built for Scala 2.13 and Scala 3)
+* The current unstable *snapshot* release of this library is "1.1-SNAPSHOT" (cross-built for Scala 2.13 and Scala 3)
 
 Binaries are published to Sonatype.
 
