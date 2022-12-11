@@ -11,24 +11,18 @@ scalacOptions ++= Seq(
 )
 
 libraryDependencies  ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.2.9" % "test",
-  "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.3",
-  "org.scalanlp" %% "breeze" % "2.0",
-  "org.scalanlp" %% "breeze-viz" % "2.0",
-  "org.scalanlp" %% "breeze-natives" % "2.0"
+  "org.scalatest" %% "scalatest" % "3.2.14" % "test",
+  "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4",
+  "org.scalanlp" %% "breeze" % "2.1.0",
+  "org.scalanlp" %% "breeze-viz" % "2.1.0"
 )
 
 resolvers +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
+scalaVersion := "3.2.1"
 
-//scalaVersion := "2.13.5"
-scalaVersion := "3.0.1"
-
-crossScalaVersions := Seq("2.13.7", "3.0.1")
-
-
-// ThisBuild / scalaVersion := "2.12.10" // for ensime...
+crossScalaVersions := Seq("2.13.10", "3.2.1")
 
 
 // eof
