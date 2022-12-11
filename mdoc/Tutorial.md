@@ -8,13 +8,13 @@ To follow the tutorial, you need to have [sbt](http://www.scala-sbt.org/) instal
 
 Once you have `sbt` installed, you should be able to run it by entering `sbt` at your OS command line. You now need to use `sbt` to create a Scala REPL with a dependency on the `scala-smfsb` library. There are many ways to do this, but if you are new to Scala, the simplest way is probably to start up `sbt` from an _empty_ or temporary directory (which doesn't contain any Scala code). Note that Scala 3 requires a fairly up-to-date version of `sbt`, so if you have an older version of the `sbt` launcher installed, you can ensure that you launch with a recent version by starting `sbt` from the command line with:
 ```bash
-sbt "-Dsbt.version=1.5.1"
+sbt "-Dsbt.version=1.8.0"
 ```
 Then paste the following into the `sbt` prompt:
 ```scala
-set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "0.9"
-set libraryDependencies += "org.scalanlp" %% "breeze-viz" % "2.0"
-set scalaVersion := "3.0.1"
+set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "1.0"
+set libraryDependencies += "org.scalanlp" %% "breeze-viz" % "2.1.0"
+set scalaVersion := "3.2.1"
 console
 ```
 The first time you run this it will take a little while to download and cache various library dependencies. But everything is cached, so it should be much quicker in future. When it is finished, you should have a Scala 3 REPL ready to enter Scala code.
