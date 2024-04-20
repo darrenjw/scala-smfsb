@@ -1,6 +1,6 @@
 name := "scala-smfsb"
 organization := "com.github.darrenjw"
-version := "1.0"
+version := "1.1-SNAPSHOT"
 
 mdocIn := file("mdoc/")
 mdocOut := file("docs/")
@@ -22,7 +22,7 @@ resolvers +=
 
 scalaVersion := "3.2.1"
 
-crossScalaVersions := Seq("2.13.10", "3.2.1")
+crossScalaVersions := Seq("2.13.13", "3.3.3")
 
 
 // eof
