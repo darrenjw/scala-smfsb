@@ -7,10 +7,13 @@ mdocOut := file("docs/")
 enablePlugins(MdocPlugin)
 
 scalacOptions ++= Seq(
-  "-unchecked", "-deprecation", "-feature", "-language:higherKinds"
+  "-unchecked",
+  "-deprecation",
+  "-feature",
+  "-language:higherKinds"
 )
 
-libraryDependencies  ++= Seq(
+libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.2.19" % "test",
   "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4",
   "org.scalanlp" %% "breeze" % "2.1.0",
@@ -24,7 +27,4 @@ scalaVersion := "3.3.4"
 
 crossScalaVersions := Seq("2.13.15", "3.3.4")
 
-
 // eof
-
-

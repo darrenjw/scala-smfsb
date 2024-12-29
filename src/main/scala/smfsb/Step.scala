@@ -14,31 +14,43 @@ import breeze.stats.distributions._
 
 import breeze.stats.distributions.Rand.VariableSeed.randBasis
 
-/**
-  * Functions which accept a `Spn` and return a function for simulating from the transition kernel of that model
+/** Functions which accept a `Spn` and return a function for simulating from the
+  * transition kernel of that model
   */
 object Step {
 
-  /**
-    * The Gillespie algorithm, sometimes known as the direct method, or the stochastic simulation algorithm (SSA)
-    * @param n A `Spn[IntState]` model
-    * @param minH Threshold for treating hazard as zero
-    * @param maxH Threshold for terminating simulation early
-    * 
-    * @return A function with type signature `(x0: IntState, t0: Time, deltat: Time) => IntState`
-    * which will simulate the state of the system at time `t0+deltat` given initial state `x0` and intial time `t0`
+  /** The Gillespie algorithm, sometimes known as the direct method, or the
+    * stochastic simulation algorithm (SSA)
+    * @param n
+    *   A `Spn[IntState]` model
+    * @param minH
+    *   Threshold for treating hazard as zero
+    * @param maxH
+    *   Threshold for terminating simulation early
+    *
+    * @return
+    *   A function with type signature `(x0: IntState, t0: Time, deltat: Time)
+    *   \=> IntState` which will simulate the state of the system at time
+    *   `t0+deltat` given initial state `x0` and intial time `t0`
     */
-  def gillespie(n: Spn[IntState], minH: Double = 1e-20, maxH: Double = 1e6): (IntState, Time, Time) => IntState = {
+  def gillespie(
+      n: Spn[IntState],
+      minH: Double = 1e-20,
+      maxH: Double = 1e6
+  ): (IntState, Time, Time) => IntState = {
     val Sto = (n.post - n.pre).t
     (x: IntState, t0, dt) => {
       @tailrec
       def go(x: IntState, t0: Time, dt: Time): IntState = {
-        if (dt <= 0.0) x else {
+        if (dt <= 0.0) x
+        else {
           val h = n.h(x, t0)
           val h0 = sum(h)
-          val t = if ((h0 < minH)|(h0 > maxH)) 1e99
-          else new Exponential(h0).draw()
-          if (t > dt) x else {
+          val t =
+            if ((h0 < minH) | (h0 > maxH)) 1e99
+            else new Exponential(h0).draw()
+          if (t > dt) x
+          else {
             val i = Multinomial(h).sample()
             go(x + Sto(::, i), t0 + t, dt - t)
           }
@@ -55,23 +67,32 @@ object Step {
     abs(round(Gaussian(mean, math.sqrt(mean)).draw())).toInt
   }
 
-  /**
-    * A Poisson time-stepping algorithm. Like a tau-leaping algorithm, but with fixed step sizes.
-    * 
-    * @param n A `Spn[IntState]` model
-    * @param dt The internal time step of the algorithm. Not the same as the `deltat` of the returned transition kernel.
-    * 
-    * @return A function with type signature `(x0: IntState, t0: Time, deltat: Time) => IntState`
-    * which will simulate the state of the system at time `t0+deltat` given initial state `x0` and intial time `t0`
+  /** A Poisson time-stepping algorithm. Like a tau-leaping algorithm, but with
+    * fixed step sizes.
+    *
+    * @param n
+    *   A `Spn[IntState]` model
+    * @param dt
+    *   The internal time step of the algorithm. Not the same as the `deltat` of
+    *   the returned transition kernel.
+    *
+    * @return
+    *   A function with type signature `(x0: IntState, t0: Time, deltat: Time)
+    *   \=> IntState` which will simulate the state of the system at time
+    *   `t0+deltat` given initial state `x0` and intial time `t0`
     */
-  def pts(n: Spn[IntState], dt: Double = 0.01): (IntState, Time, Time) => IntState = {
+  def pts(
+      n: Spn[IntState],
+      dt: Double = 0.01
+  ): (IntState, Time, Time) => IntState = {
     val Sto = (n.post - n.pre).t
     val v = Sto.cols
     (x, t0, deltat) => {
       @tailrec
       def go(x: IntState, t0: Time, deltat: Time): IntState = {
-        //println(x.toCsv+" | "+t0+" "+deltat)
-        if (deltat <= 1.0e-8) x else {
+        // println(x.toCsv+" | "+t0+" "+deltat)
+        if (deltat <= 1.0e-8) x
+        else {
           val adt = if (dt > deltat) deltat else dt
           val h = n.h(x, t0)
           val r = h map (hi => myPoisson(hi * adt))
@@ -84,24 +105,31 @@ object Step {
     }
   }
 
-
-  /**
-    * An Euler-Maruyama simulation of a CLE approximation to the provided `Spn`.
-    * 
-    * @param n A `Spn[DoubleState]` model (note that the state must be continous)
-    * @param dt The internal time step of the algorithm. Not the same as the `deltat` of the returned transition kernel.
-    * 
-    * @return A function with type signature `(x0: DoubleState, t0: Time, deltat: Time) => DoubleState`
-    * which will simulate the state of the system at time `t0+deltat` given initial state `x0` and intial time `t0`
+  /** An Euler-Maruyama simulation of a CLE approximation to the provided `Spn`.
+    *
+    * @param n
+    *   A `Spn[DoubleState]` model (note that the state must be continous)
+    * @param dt
+    *   The internal time step of the algorithm. Not the same as the `deltat` of
+    *   the returned transition kernel.
+    *
+    * @return
+    *   A function with type signature `(x0: DoubleState, t0: Time, deltat:
+    *   Time) => DoubleState` which will simulate the state of the system at
+    *   time `t0+deltat` given initial state `x0` and intial time `t0`
     */
-  def cle(n: Spn[DoubleState], dt: Double = 0.01): (DoubleState, Time, Time) => DoubleState = {
+  def cle(
+      n: Spn[DoubleState],
+      dt: Double = 0.01
+  ): (DoubleState, Time, Time) => DoubleState = {
     val Sto = ((n.post - n.pre) map { _ * 1.0 }).t
     val v = Sto.cols
     val sdt = Math.sqrt(dt)
     (x, t0, deltat) => {
       @tailrec
       def go(x: DoubleState, t0: Time, deltat: Time): DoubleState = {
-        if (deltat <= 0.0) x else {
+        if (deltat <= 0.0) x
+        else {
           val adt = if (dt > deltat) deltat else dt
           val sdt = Math.sqrt(adt)
           val h = n.h(x, t0)
@@ -116,24 +144,33 @@ object Step {
     }
   }
 
-  /**
-    * A simple Euler integration of the continuous deterministic approximation to the provided `Spn`.
-    * Euler methods are well-known to be very unstable, but the function can be useful for getting
-    * a basic idea of how the model behaves in the absence of noise.
-    * 
-    * @param n A `Spn[DoubleState]` model (note that the state must be continous)
-    * @param dt The internal time step of the algorithm. Not the same as the `deltat` of the returned transition kernel.
-    * 
-    * @return A function with type signature `(x0: DoubleState, t0: Time, deltat: Time) => DoubleState`
-    * which will simulate the state of the system at time `t0+deltat` given initial state `x0` and intial time `t0`
+  /** A simple Euler integration of the continuous deterministic approximation
+    * to the provided `Spn`. Euler methods are well-known to be very unstable,
+    * but the function can be useful for getting a basic idea of how the model
+    * behaves in the absence of noise.
+    *
+    * @param n
+    *   A `Spn[DoubleState]` model (note that the state must be continous)
+    * @param dt
+    *   The internal time step of the algorithm. Not the same as the `deltat` of
+    *   the returned transition kernel.
+    *
+    * @return
+    *   A function with type signature `(x0: DoubleState, t0: Time, deltat:
+    *   Time) => DoubleState` which will simulate the state of the system at
+    *   time `t0+deltat` given initial state `x0` and intial time `t0`
     */
-  def euler(n: Spn[DoubleState], dt: Double = 0.01): (DoubleState, Time, Time) => DoubleState = {
+  def euler(
+      n: Spn[DoubleState],
+      dt: Double = 0.01
+  ): (DoubleState, Time, Time) => DoubleState = {
     val Sto = ((n.post - n.pre) map { _ * 1.0 }).t
     val v = Sto.cols
     (x, t0, deltat) => {
       @tailrec
       def go(x: DoubleState, t0: Time, deltat: Time): DoubleState = {
-        if (deltat <= 0.0) x else {
+        if (deltat <= 0.0) x
+        else {
           val adt = if (dt > deltat) deltat else dt
           val sdt = Math.sqrt(adt)
           val h = n.h(x, t0)
@@ -147,10 +184,6 @@ object Step {
     }
   }
 
-
-
-
 } // object Step
-
 
 // eof

@@ -3,7 +3,7 @@ examples-test.scala
 
 Some basic tests
 
-*/
+ */
 
 package smfsb
 
@@ -18,6 +18,3 @@ class MyTestSuite extends AnyFunSuite:
   test("dummy test") {
     assert(1 === 1)
   }
-
-
-
