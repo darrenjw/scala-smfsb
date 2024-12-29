@@ -5,9 +5,9 @@
 
 ### Scala library for stochastic kinetic modelling, biochemical network simulation, and parameter inference, associated with the 3rd edition of the textbook Stochastic Modelling for Systems Biology
 
-* The current *stable* version of this library is "1.0", for Scala 2.13 and **Scala 3**
+* The current *stable* version of this library is "1.1", for Scala 2.13 and **Scala 3**
 * Use version "0.7" for Scala 2.11 and 2.12
-* The current unstable *snapshot* release of this library is "1.1-SNAPSHOT" (cross-built for Scala 2.13 and Scala 3)
+* The current unstable *snapshot* release of this library is "1.2-SNAPSHOT" (cross-built for Scala 2.13 and Scala 3)
 
 Binaries are published to Sonatype.
 
@@ -18,8 +18,8 @@ This library is published to the Sonatype Central Repository (formally known as 
 A minimal example for `scala-cli` is given below:
 ```scala
 //> using scala 3.3.4
-//> using dep com.github.darrenjw::scala-smfsb:1.0
-//> using dep org.scalanlp::breeze-viz:2.1.0
+//> using dep com.github.darrenjw::scala-smfsb:1.1
+//> using dep org.scalanlp::breeze-viz:2.1.1
 
 import smfsb.*
 import breeze.linalg.*
@@ -59,7 +59,7 @@ This will create a new project including a dependence on the stable version of t
 
 Just add:
 ```scala
-"com.github.darrenjw" %% "scala-smfsb" % "1.0"
+"com.github.darrenjw" %% "scala-smfsb" % "1.1"
 ```
 to your `sbt` library dependencies. You might also need to add an explicit dependence on `breeze-viz`:
 ```scala
@@ -70,7 +70,7 @@ to your `sbt` library dependencies. You might also need to add an explicit depen
 
 Just add something like:
 ```scala
-libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "1.1-SNAPSHOT"
+libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "1.2-SNAPSHOT"
 resolvers += "Sonatype Snapshots" at
     "https://oss.sonatype.org/content/repositories/snapshots/"
 ```
