@@ -1,6 +1,7 @@
 # scala-smfsb
 
-[![](https://github.com/darrenjw/scala-smfsb/actions/workflows/ci.yml/badge.svg)](https://github.com/darrenjw/scala-smfsb/actions)
+[![Tests](https://github.com/darrenjw/scala-smfsb/actions/workflows/ci.yml/badge.svg)](https://github.com/darrenjw/scala-smfsb/actions)
+[![Pages](https://github.com/darrenjw/scala-smfsb/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/darrenjw/scala-smfsb/actions/workflows/pages/pages-build-deployment)
 
 ### Scala library for stochastic kinetic modelling, biochemical network simulation, and parameter inference, associated with the 3rd edition of the textbook Stochastic Modelling for Systems Biology
 
