@@ -18,6 +18,9 @@ mdoc:
 	sbt mdoc
 	git add docs/*.md
 
+format:
+	scalafmt
+
 todo:
 	grep "TODO:" src/main/scala/smfsb/*.scala
 
