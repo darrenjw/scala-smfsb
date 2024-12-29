@@ -1,5 +1,6 @@
 # Makefile
 
+SCALA_VERSION=3.3.4
 
 FORCE:
 	sbt test package
@@ -10,7 +11,7 @@ docs: FORCE
 
 api:
 	sbt doc
-	cp -r target/scala-3.2.1/api/* docs/
+	cp -r target/scala-$(SCALA_VERSION)/api/* docs/
 	git add docs/*
 
 mdoc:
