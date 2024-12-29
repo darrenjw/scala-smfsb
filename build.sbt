@@ -1,6 +1,6 @@
 name := "scala-smfsb"
 organization := "com.github.darrenjw"
-version := "1.1"
+version := "1.2-SNAPSHOT"
 
 mdocIn := file("mdoc/")
 mdocOut := file("docs/")
