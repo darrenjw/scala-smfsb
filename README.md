@@ -1,5 +1,7 @@
 # scala-smfsb
 
+[![](https://github.com/darrenjw/scala-smfsb/actions/workflows/ci.yml/badge.svg)](https://github.com/darrenjw/scala-smfsb/actions)
+
 ### Scala library for stochastic kinetic modelling, biochemical network simulation, and parameter inference, associated with the 3rd edition of the textbook Stochastic Modelling for Systems Biology
 
 * The current *stable* version of this library is "1.0", for Scala 2.13 and **Scala 3**
