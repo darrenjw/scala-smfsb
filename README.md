@@ -19,7 +19,7 @@ A minimal example for `scala-cli` is given below:
 ```scala
 //> using scala 3.3.4
 //> using dep com.github.darrenjw::scala-smfsb:1.1
-//> using dep org.scalanlp::breeze-viz:2.1.1
+//> using dep org.scalanlp::breeze-viz:2.1.0
 
 import smfsb.*
 import breeze.linalg.*
