@@ -12,24 +12,26 @@ Binaries are published to Sonatype.
 
 ## Quickstart
 
-* To use this software library, you should first install a recent [JDK](http://www.oracle.com/technetwork/java/javase/downloads) and [sbt](http://www.scala-sbt.org/).
-* Run `sbt` from an empty/temp directory:
-```bash
-sbt "-Dsbt.version=1.8.0"
-set libraryDependencies += "com.github.darrenjw" %% "scala-smfsb" % "1.0"
-set libraryDependencies += "org.scalanlp" %% "breeze-viz" % "2.1.0"
-set scalaVersion := "3.2.1"
-console
-```
-* You should now have a Scala REPL with a dependency on this library. At the Scala REPL, enter the following:
+This library is published to the Sonatype Central Repository (formally known as Maven Central), and hence can be used with any standard Scala build tool. The recommended ways to use it are via either [sbt](http://www.scala-sbt.org/) or [scala-cli](https://scala-cli.virtuslab.org/), and the recommended way to install and set up your Scala environment is using [coursier](https://get-coursier.io/docs/cli-installation). Coursier setup (`cs setup`) will install both `sbt` and `scala-cli` by default.
+
+A minimal example for `scala-cli` is given below:
 ```scala
+//> using scala 3.3.4
+//> using dep com.github.darrenjw::scala-smfsb:1.0
+//> using dep org.scalanlp::breeze-viz:2.1.0
+
 import smfsb.*
 import breeze.linalg.*
-val model = SpnModels.lv[IntState]()
-val step = Step.gillespie(model)
-val ts = Sim.ts(DenseVector(50, 40), 0.0, 20.0, 0.1, step)
-Sim.plotTs(ts)
+
+@main
+def run() =
+  val model = SpnModels.lv[IntState]()
+  val step = Step.gillespie(model)
+  val ts = Sim.ts(DenseVector(50, 40), 0.0, 20.0, 0.1, step)
+  Sim.plotTs(ts)
+
 ```
+* Copy this into a file called (say) `lv.scala`, and then run from the command line with `scala-cli lv.scala`.
 * This should simulate a trajectory from a Lotka-Volterra model and plot the result in a window on the console which looks a little bit like the following:
 
 ![Lotka-Volterra trajectory](LV-trajectory.png)
@@ -41,9 +43,8 @@ To get the most out of this library, it will be helpful if you are already famil
 * [Tutorial](docs/Tutorial.md) - walk through of basic functionality
 * There are more interesting examples in the [examples directory](examples/). To run them, download or clone the repo, and do `sbt run` from *inside* the examples directory.
 * [Latest API docs](https://darrenjw.github.io/scala-smfsb/api/smfsb.html)
-* I also have a couple of (oldish) blog posts: [An introduction to scala-smfsb](https://darrenjw.wordpress.com/2019/01/04/the-scala-smfsb-library/) - a "taster", and a post looking at [stochastic reaction-diffusion modelling](https://darrenjw.wordpress.com/2019/01/22/stochastic-reaction-diffusion-modelling/) using the library. But please note that these use an older version of the library and an older version of Scala, so a few details may need updating.
 
-## Using the library in your own Scala projects
+## Using the library in Scala `sbt` projects
 
 ### giter8 template:
 
