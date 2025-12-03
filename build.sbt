@@ -23,8 +23,8 @@ libraryDependencies ++= Seq(
 resolvers +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
-scalaVersion := "3.3.4"
+scalaVersion := "3.3.7"
 
-crossScalaVersions := Seq("2.13.15", "3.3.4")
+crossScalaVersions := Seq("2.13.18", "3.3.7")
 
 // eof
